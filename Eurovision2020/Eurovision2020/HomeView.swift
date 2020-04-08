@@ -49,9 +49,11 @@ class HomeView: UIView {
         layout {
             100
             |-20-title-20-|
-            100
-            |-20-phoneNumberField-20-| ~ 60
         }
+        
+        phoneNumberField.centerVertically(offset: -100)
+        |-20-phoneNumberField-20-| ~ 60
+        
         vibrancyView.fillContainer()
         
         okButton.Bottom == keyboardLayoutGuide.Top - 20
@@ -75,13 +77,44 @@ class HomeView: UIView {
             f.layer.borderWidth = 1
         }
         okButton.style { b in
-            b.backgroundColor = .systemRed//UIColor(red: 160/255.0, green: 21/255.0, blue: 21/255.0, alpha: 1)
+            b.setBackgroundColor(.systemRed, for: .normal)//UIColor(red: 160/255.0, green: 21/255.0, blue: 21/255.0, alpha: 1)
             b.layer.cornerRadius = 5
+            b.clipsToBounds = true
         }
     
         title.text = "Euro 2020 voting app"
         let attrStr = NSAttributedString(string: " Enter your phone number", attributes: [.foregroundColor: UIColor.white])
         phoneNumberField.attributedPlaceholder = attrStr
-        okButton.setTitle("OK", for: .normal)
+        okButton.setTitle("Validate my phone number", for: .normal)
+    }
+}
+
+
+extension UIButton {
+
+    public func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
+        let img = UIImage(color: color, size: CGSize(width: 1.0, height: 1.0))
+        setBackgroundImage(img, for: state)
+    }
+}
+
+extension UIImage {
+    public convenience init(color: UIColor, size: CGSize) {
+        
+        var rect = CGRect.zero
+        rect.size = size
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
+        color.setFill()
+        UIRectFill(rect)
+        
+        let uiImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        if let cgImage = uiImage?.cgImage {
+            self.init(cgImage: cgImage)
+        } else {
+            self.init()
+        }
     }
 }
