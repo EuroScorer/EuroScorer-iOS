@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99112B8A243F94600067CF2D /* FlagKit.framework */; };
+		99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8C243F9CAD0067CF2D /* SummaryVC.swift */; };
+		99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8E243F9CD60067CF2D /* SummaryView.swift */; };
 		99298514243C632200F14364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298513243C632200F14364 /* AppDelegate.swift */; };
 		99298518243C632200F14364 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298517243C632200F14364 /* HomeVC.swift */; };
 		9929851D243C632300F14364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9929851C243C632300F14364 /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 /* Begin PBXFileReference section */
 		99112B88243F93C90067CF2D /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = ../Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
 		99112B8A243F94600067CF2D /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
+		99112B8C243F9CAD0067CF2D /* SummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
+		99112B8E243F9CD60067CF2D /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		99298510243C632200F14364 /* Eurovision2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurovision2020.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99298513243C632200F14364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99298517243C632200F14364 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -84,6 +88,8 @@
 				9963479C243F06890095BCF1 /* VotingVC.swift */,
 				9963479E243F06D10095BCF1 /* VotingView.swift */,
 				996347A0243F0BD90095BCF1 /* VotingCell.swift */,
+				99112B8C243F9CAD0067CF2D /* SummaryVC.swift */,
+				99112B8E243F9CD60067CF2D /* SummaryView.swift */,
 				9929851C243C632300F14364 /* Assets.xcassets */,
 				9929851E243C632300F14364 /* LaunchScreen.storyboard */,
 				99298521243C632300F14364 /* Info.plist */,
@@ -192,10 +198,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */,
 				9963479F243F06D10095BCF1 /* VotingView.swift in Sources */,
 				9963479B243E36A50095BCF1 /* HomeView.swift in Sources */,
 				9963479D243F06890095BCF1 /* VotingVC.swift in Sources */,
 				99298518243C632200F14364 /* HomeVC.swift in Sources */,
+				99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */,
 				996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */,
 				99298514243C632200F14364 /* AppDelegate.swift in Sources */,
 			);
