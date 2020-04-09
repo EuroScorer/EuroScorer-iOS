@@ -14,6 +14,9 @@
 		99298529243C7B7200F14364 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = 99298528243C7B7200F14364 /* Stevia */; };
 		99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */ = {isa = PBXBuildFile; productRef = 99634798243E36500095BCF1 /* KeyboardLayoutGuide */; };
 		9963479B243E36A50095BCF1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479A243E36A50095BCF1 /* HomeView.swift */; };
+		9963479D243F06890095BCF1 /* VotingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479C243F06890095BCF1 /* VotingVC.swift */; };
+		9963479F243F06D10095BCF1 /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479E243F06D10095BCF1 /* VotingView.swift */; };
+		996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347A0243F0BD90095BCF1 /* VotingCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,9 @@
 		9929851F243C632300F14364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99298521243C632300F14364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9963479A243E36A50095BCF1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9963479C243F06890095BCF1 /* VotingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingVC.swift; sourceTree = "<group>"; };
+		9963479E243F06D10095BCF1 /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
+		996347A0243F0BD90095BCF1 /* VotingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,9 @@
 				99298513243C632200F14364 /* AppDelegate.swift */,
 				99298517243C632200F14364 /* HomeVC.swift */,
 				9963479A243E36A50095BCF1 /* HomeView.swift */,
+				9963479C243F06890095BCF1 /* VotingVC.swift */,
+				9963479E243F06D10095BCF1 /* VotingView.swift */,
+				996347A0243F0BD90095BCF1 /* VotingCell.swift */,
 				9929851C243C632300F14364 /* Assets.xcassets */,
 				9929851E243C632300F14364 /* LaunchScreen.storyboard */,
 				99298521243C632300F14364 /* Info.plist */,
@@ -146,8 +155,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9963479F243F06D10095BCF1 /* VotingView.swift in Sources */,
 				9963479B243E36A50095BCF1 /* HomeView.swift in Sources */,
+				9963479D243F06890095BCF1 /* VotingVC.swift in Sources */,
 				99298518243C632200F14364 /* HomeVC.swift in Sources */,
+				996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */,
 				99298514243C632200F14364 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
