@@ -19,6 +19,7 @@ class VotingCell: UITableViewCell {
     weak var delegate: VotingCellDelegate?
     let rank = UILabel()
     let country = UILabel()
+    let flag = UIImageView()
     let title = UILabel()
     let stepper = UIStepper()
     let votes = UILabel()
@@ -30,6 +31,7 @@ class VotingCell: UITableViewCell {
         subviews {
             rank
             country
+            flag
             title
             stepper
             votes
@@ -37,10 +39,12 @@ class VotingCell: UITableViewCell {
         
         layout {
             20
-            |-20-rank.width(36)
+            |-20-rank.width(38)
         }
         
-        rank-20-country
+        rank-20-flag-country
+        
+        flag.CenterY == country.CenterY
                 
         layout {
             20
@@ -57,12 +61,12 @@ class VotingCell: UITableViewCell {
             20
         }
         
-        title.Left == country.Left
-        stepper.Left == country.Left
+        title.Left == flag.Left
+        stepper.Left == flag.Left
         
         rank.style { l in
             l.textColor = .white
-            l.font = UIFont.systemFont(ofSize: 18, weight: .black)
+            l.font = UIFont.systemFont(ofSize: 18, weight: .bold)
             l.textAlignment = .center
         }
         country.style { l in

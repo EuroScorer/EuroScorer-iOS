@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99112B8A243F94600067CF2D /* FlagKit.framework */; };
 		99298514243C632200F14364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298513243C632200F14364 /* AppDelegate.swift */; };
 		99298518243C632200F14364 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298517243C632200F14364 /* HomeVC.swift */; };
 		9929851D243C632300F14364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9929851C243C632300F14364 /* Assets.xcassets */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		99112B88243F93C90067CF2D /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = ../Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
+		99112B8A243F94600067CF2D /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
 		99298510243C632200F14364 /* Eurovision2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurovision2020.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99298513243C632200F14364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99298517243C632200F14364 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -39,17 +42,28 @@
 			files = (
 				99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */,
 				99298529243C7B7200F14364 /* Stevia in Frameworks */,
+				99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		99112B85243F92B70067CF2D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				99112B8A243F94600067CF2D /* FlagKit.framework */,
+				99112B88243F93C90067CF2D /* FlagKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		99298507243C632200F14364 = {
 			isa = PBXGroup;
 			children = (
 				99298512243C632200F14364 /* Eurovision2020 */,
 				99298511243C632200F14364 /* Products */,
+				99112B85243F92B70067CF2D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,6 +101,7 @@
 				9929850C243C632200F14364 /* Sources */,
 				9929850D243C632200F14364 /* Frameworks */,
 				9929850E243C632200F14364 /* Resources */,
+				99112B84243F924E0067CF2D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -149,6 +164,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		99112B84243F924E0067CF2D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FlagKit.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FlagKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9929850C243C632200F14364 /* Sources */ = {
@@ -298,6 +335,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SG9BHA8J2M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Eurovision2020/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -316,6 +357,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SG9BHA8J2M;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Eurovision2020/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

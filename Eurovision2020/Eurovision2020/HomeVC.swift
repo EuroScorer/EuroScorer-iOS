@@ -27,6 +27,17 @@ class HomeVC: UIViewController {
 //        }
         
         v.okButton.addTarget(self, action: #selector(okTapped), for: .touchUpInside)
+        
+        
+        
+        let countryCode = Locale.current.regionCode!
+//
+//        if countryCode == "FR" {
+//            v.phoneNumberField.text = "+33"
+//        } else if countryCode == "US" {
+//            v.phoneNumberField.text = "+1 456"
+//        }
+        
     }
     
     @objc

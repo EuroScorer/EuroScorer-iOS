@@ -8,13 +8,19 @@
 
 import UIKit
 import Stevia
+import FlagKit
+
+struct Country {
+    let code: String
+    let name: String
+}
 
 class Song {
-    let country: String
+    let country: Country
     let title: String
     var numberOfVotesGiven: Int = 0
     
-    init(country: String, title: String) {
+    init(country: Country, title: String) {
         self.country = country
         self.title = title
     }
@@ -36,7 +42,7 @@ class VotingVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+            
         availableVotes = maxVotes
     
         self.render()
@@ -69,7 +75,27 @@ extension VotingVC: UITableViewDataSource {
         let cell = VotingCell()
         cell.backgroundColor = .clear
         cell.rank.text = "#\(indexPath.row)"
-        cell.country.text = song.country
+        cell.country.text = song.country.name
+        
+        
+//        let countryCode = Locale.current.regionCode!
+        let flag = Flag(countryCode: song.country.code)!
+        cell.flag.image = flag.image(style: .roundedRect)
+        
+            
+
+    //        // Retrieve the unstyled image for customized use
+    //        let originalImage = flag.originalImage
+    //
+    //        // Or retrieve a styled flag
+    //        let styledImage = flag.image(style: .circle)
+    //        You can always access the underlying assets directly, through the bundled Asset Catalog:
+    //
+    
+    
+        
+        
+        
         cell.title.text = song.title
         cell.votes.text = "\(song.numberOfVotesGiven) votes"
 //        cell.detailTextLabel?.text = song.country
