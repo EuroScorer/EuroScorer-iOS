@@ -1,5 +1,6 @@
 # Eurovision2020
 Eurovision 2020 voting app
+
 <img src="screen.png" width="300px"/>
 
 ## Firebase
