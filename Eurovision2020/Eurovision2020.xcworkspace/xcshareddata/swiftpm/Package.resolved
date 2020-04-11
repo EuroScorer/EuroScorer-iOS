@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "KeyboardLayoutGuide",
+        "repositoryURL": "https://github.com/freshOS/KeyboardLayoutGuide.git",
+        "state": {
+          "branch": null,
+          "revision": "2a62a1a0b64e3c7db227c7da67e94292c1897903",
+          "version": "1.7.0"
+        }
+      },
+      {
+        "package": "Stevia",
+        "repositoryURL": "https://github.com/freshOS/Stevia.git",
+        "state": {
+          "branch": null,
+          "revision": "4b7e6403b28e8460afbe1121e789b4f0d220e2ed",
+          "version": "5.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
