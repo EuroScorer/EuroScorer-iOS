@@ -60,7 +60,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         FirebaseApp.configure()
+        
+        let db = Firestore.firestore()
+        
+        db.collection("countries").getDocuments() { (querySnapshot, err) in
+            
+            if let err = err {
+                print("Error getting documents: \(err)")
+            } else {
+                for document in querySnapshot!.documents {
+                    print("\(document.documentID) => \(document.data())")
+                
+                }
+            }
+        }
+        
+
+        
+        
         window = UIWindow()
         let navVC = UINavigationController(rootViewController: HomeVC())
         navVC.navigationBar.isHidden = true
