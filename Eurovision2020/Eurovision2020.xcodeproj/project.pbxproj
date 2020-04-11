@@ -11,17 +11,17 @@
 		99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99112B8A243F94600067CF2D /* FlagKit.framework */; };
 		99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8C243F9CAD0067CF2D /* SummaryVC.swift */; };
 		99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8E243F9CD60067CF2D /* SummaryView.swift */; };
-		99198A812441B9C100C394C7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99198A802441B9C100C394C7 /* GoogleService-Info.plist */; };
 		99298514243C632200F14364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298513243C632200F14364 /* AppDelegate.swift */; };
 		99298518243C632200F14364 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298517243C632200F14364 /* HomeVC.swift */; };
 		9929851D243C632300F14364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9929851C243C632300F14364 /* Assets.xcassets */; };
 		99298520243C632300F14364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9929851E243C632300F14364 /* LaunchScreen.storyboard */; };
-		99298529243C7B7200F14364 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 99298528243C7B7200F14364 /* SwiftPackageProductDependency */; };
-		99634799243E36500095BCF1 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 99634798243E36500095BCF1 /* SwiftPackageProductDependency */; };
+		99298529243C7B7200F14364 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = 99298528243C7B7200F14364 /* Stevia */; };
+		99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */ = {isa = PBXBuildFile; productRef = 99634798243E36500095BCF1 /* KeyboardLayoutGuide */; };
 		9963479B243E36A50095BCF1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479A243E36A50095BCF1 /* HomeView.swift */; };
 		9963479D243F06890095BCF1 /* VotingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479C243F06890095BCF1 /* VotingVC.swift */; };
 		9963479F243F06D10095BCF1 /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479E243F06D10095BCF1 /* VotingView.swift */; };
 		996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347A0243F0BD90095BCF1 /* VotingCell.swift */; };
+		99E25F212441C56600D9446C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99E25F202441C56600D9446C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,7 +30,6 @@
 		99112B8A243F94600067CF2D /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
 		99112B8C243F9CAD0067CF2D /* SummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
 		99112B8E243F9CD60067CF2D /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
-		99198A802441B9C100C394C7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99298510243C632200F14364 /* Eurovision2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurovision2020.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99298513243C632200F14364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99298517243C632200F14364 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
@@ -41,6 +40,7 @@
 		9963479C243F06890095BCF1 /* VotingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingVC.swift; sourceTree = "<group>"; };
 		9963479E243F06D10095BCF1 /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
 		996347A0243F0BD90095BCF1 /* VotingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingCell.swift; sourceTree = "<group>"; };
+		99E25F202441C56600D9446C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C8F67B4E9DA075C51D4D149B /* Pods_Eurovision2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurovision2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4AB9607EED72B90F8705FB3 /* Pods-Eurovision2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurovision2020.release.xcconfig"; path = "Target Support Files/Pods-Eurovision2020/Pods-Eurovision2020.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -50,8 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99634799243E36500095BCF1 /* BuildFile in Frameworks */,
-				99298529243C7B7200F14364 /* BuildFile in Frameworks */,
+				99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */,
+				99298529243C7B7200F14364 /* Stevia in Frameworks */,
 				99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */,
 				5E1AABCD616444C39F84AF77 /* Pods_Eurovision2020.framework in Frameworks */,
 			);
@@ -66,7 +66,6 @@
 				3F0EA228B16E3A9BD1043BED /* Pods-Eurovision2020.debug.xcconfig */,
 				F4AB9607EED72B90F8705FB3 /* Pods-Eurovision2020.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,7 +82,7 @@
 		99298507243C632200F14364 = {
 			isa = PBXGroup;
 			children = (
-				99198A802441B9C100C394C7 /* GoogleService-Info.plist */,
+				99E25F202441C56600D9446C /* GoogleService-Info.plist */,
 				99298512243C632200F14364 /* Eurovision2020 */,
 				99298511243C632200F14364 /* Products */,
 				99112B85243F92B70067CF2D /* Frameworks */,
@@ -137,8 +136,8 @@
 			);
 			name = Eurovision2020;
 			packageProductDependencies = (
-				99298528243C7B7200F14364 /* SwiftPackageProductDependency */,
-				99634798243E36500095BCF1 /* SwiftPackageProductDependency */,
+				99298528243C7B7200F14364 /* Stevia */,
+				99634798243E36500095BCF1 /* KeyboardLayoutGuide */,
 			);
 			productName = Eurovision2020;
 			productReference = 99298510243C632200F14364 /* Eurovision2020.app */;
@@ -169,8 +168,8 @@
 			);
 			mainGroup = 99298507243C632200F14364;
 			packageReferences = (
-				99298527243C7B7200F14364 /* RemoteSwiftPackageReference */,
-				99634797243E36500095BCF1 /* RemoteSwiftPackageReference */,
+				99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */,
+				99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */,
 			);
 			productRefGroup = 99298511243C632200F14364 /* Products */;
 			projectDirPath = "";
@@ -188,7 +187,7 @@
 			files = (
 				99298520243C632300F14364 /* LaunchScreen.storyboard in Resources */,
 				9929851D243C632300F14364 /* Assets.xcassets in Resources */,
-				99198A812441B9C100C394C7 /* GoogleService-Info.plist in Resources */,
+				99E25F212441C56600D9446C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,8 +403,9 @@
 			baseConfigurationReference = 3F0EA228B16E3A9BD1043BED /* Pods-Eurovision2020.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SG9BHA8J2M;
+				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -415,8 +415,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.marsacproductions.eurovision2020;
+				PRODUCT_BUNDLE_IDENTIFIER = com.marsacprod.eurovision2020;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -427,8 +428,9 @@
 			baseConfigurationReference = F4AB9607EED72B90F8705FB3 /* Pods-Eurovision2020.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = SG9BHA8J2M;
+				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -438,8 +440,9 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.marsacproductions.eurovision2020;
+				PRODUCT_BUNDLE_IDENTIFIER = com.marsacprod.eurovision2020;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -469,7 +472,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		99298527243C7B7200F14364 /* RemoteSwiftPackageReference */ = {
+		99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/freshOS/Stevia.git";
 			requirement = {
@@ -477,7 +480,7 @@
 				version = 5.0.0;
 			};
 		};
-		99634797243E36500095BCF1 /* RemoteSwiftPackageReference */ = {
+		99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/freshOS/KeyboardLayoutGuide.git";
 			requirement = {
@@ -488,14 +491,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		99298528243C7B7200F14364 /* SwiftPackageProductDependency */ = {
+		99298528243C7B7200F14364 /* Stevia */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 99298527243C7B7200F14364 /* RemoteSwiftPackageReference */;
+			package = 99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */;
 			productName = Stevia;
 		};
-		99634798243E36500095BCF1 /* SwiftPackageProductDependency */ = {
+		99634798243E36500095BCF1 /* KeyboardLayoutGuide */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 99634797243E36500095BCF1 /* RemoteSwiftPackageReference */;
+			package = 99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */;
 			productName = KeyboardLayoutGuide;
 		};
 /* End XCSwiftPackageProductDependency section */

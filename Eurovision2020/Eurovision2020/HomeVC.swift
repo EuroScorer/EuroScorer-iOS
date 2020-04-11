@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class HomeVC: UIViewController {
     
@@ -47,7 +48,45 @@ class HomeVC: UIViewController {
     
     @objc
     func okTapped() {
-        print("Phone number is : \(v.phoneNumberField.text) ")
+        guard let phoneNumber = v.phoneNumberField.text else {
+            return
+        }
+        
+        // Localize sms sent to user's laguage
+        Auth.auth().languageCode = Locale.current.languageCode ?? "en"
+        
+        // Start SMS confirmation
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] (verificationID, error) in
+            guard let verificationID = verificationID else {
+                print(error)
+                return
+            }
+
+            // Ask for SMS confirmation code.
+            let alert = UIAlertController(title: "SMS confirmation",
+                                          message: "Confim your phone number by entering the code received via SMS",
+                                          preferredStyle: UIAlertController.Style.alert)
+            alert.addTextField { $0.placeholder = "SMS Code" }
+            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { a in
+                if let smsCode = alert.textFields?.first?.text {
+                    // Confirm Phone number with both verificationID amd SMS code.
+                    self?.authWith(id: verificationID, code: smsCode)
+                }
+            }))
+            self?.present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func authWith(id: String, code: String) {
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: id, verificationCode: code)
+        Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
+            
+            print("authResult \(authResult)")
+            print("error \(error)")
+            
+            if error == nil {
+                self?.navigationController?.pushViewController(VotingVC(), animated: true)
+            }
+        }
     }
 }
-

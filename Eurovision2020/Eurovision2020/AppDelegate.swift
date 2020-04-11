@@ -62,7 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         window = UIWindow()
-        window?.rootViewController = VotingVC()
+        let navVC = UINavigationController(rootViewController: HomeVC())
+        navVC.navigationBar.isHidden = true
+        window?.rootViewController = navVC
         window?.makeKeyAndVisible()
         Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
         return true

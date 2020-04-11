@@ -62,6 +62,7 @@ class VotingView: UIView {
         confirm.centerHorizontally().height(50)
         
         
+        backgroundImage.clipsToBounds = true
         backgroundImage.image = #imageLiteral(resourceName: "background")
         backgroundImage.contentMode = .scaleAspectFill
         tableView.backgroundColor = .clear
