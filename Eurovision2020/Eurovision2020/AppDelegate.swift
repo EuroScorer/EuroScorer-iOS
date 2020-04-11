@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 
 
 let songs:[Song] = [
@@ -72,7 +73,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
-                
                 }
             }
         }
