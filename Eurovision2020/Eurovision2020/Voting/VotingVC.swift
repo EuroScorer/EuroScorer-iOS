@@ -47,6 +47,7 @@ class VotingVC: UIViewController {
         refresh()
         v.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         v.confirm.addTarget(self, action:#selector(confirmTapped), for: .touchUpInside)
+        v.tableView.register(VotingCell.self, forCellReuseIdentifier: "VotingCell")
     }
         
     @objc
@@ -83,27 +84,21 @@ extension VotingVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let song = songs[indexPath.row]
-        let cell = VotingCell()
-    
+        let isMyCountry = song.country?.code == user.countryCode
+        let cell = tableView.dequeueReusableCell(withIdentifier: "VotingCell", for: indexPath) as! VotingCell
         cell.number.text = (song.number < 10) ? "0\(song.number)" : "\(song.number)"
-        cell.country.text = song.country?.name
         let flag = Flag(countryCode: song.country?.code ?? "GB")!
         cell.flag.image = flag.image(style: .roundedRect)
         cell.title.text = song.title
         cell.votes.text = "\(song.numberOfVotesGiven) votes"
+        cell.minusButton.isEnabled = !isMyCountry
+        cell.minusButton.isHidden = isMyCountry
+        cell.plusButton.isEnabled = !isMyCountry
+        cell.plusButton.isHidden = isMyCountry
+        cell.votes.isHidden = isMyCountry
+        cell.country.text = isMyCountry ? "\(song.country?.name ?? "") (Your country)" : song.country?.name
+        cell.backgroundColor = isMyCountry ? UIColor.black.withAlphaComponent(0.5) : .clear
         cell.delegate = self
-    
-//        cell.stepper.isEnabled = true
-        if song.country?.code == user.countryCode {
-            cell.minusButton.isEnabled = false
-            cell.plusButton.isEnabled = false
-            cell.country.text = "\(song.country?.name ?? "") (Your country)"
-            cell.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-            cell.votes.text = "X votes"
-            cell.minusButton.isHidden = true
-            cell.plusButton.isHidden = true
-            cell.votes.isHidden = true
-        }
         return cell
     }
 }
@@ -121,7 +116,6 @@ extension VotingVC: VotingCellDelegate {
             v.tableView.reloadData()
         }
     }
-    
     
     func votingCellDidAddVote(cell: VotingCell) {
         if let indexPath = v.tableView.indexPath(for: cell) {
