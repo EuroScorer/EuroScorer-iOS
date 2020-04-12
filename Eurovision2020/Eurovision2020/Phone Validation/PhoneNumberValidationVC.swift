@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PhoneNumberValidationVC.swift
 //  Eurovision2020
 //
 //  Created by Sacha DSO on 07/04/2020.
@@ -10,9 +10,9 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class HomeVC: UIViewController {
+class PhoneNumberValidationVC: UIViewController {
     
-    var v = HomeView()
+    var v = PhoneNumberValidationView()
     override func loadView() {
         view = v
     }

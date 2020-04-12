@@ -1,5 +1,5 @@
 //
-//  HomeView.swift
+//  PhoneNumberValidationView.swift
 //  Eurovision2020
 //
 //  Created by Sacha DSO on 08/04/2020.
@@ -10,7 +10,7 @@ import UIKit
 import Stevia
 import KeyboardLayoutGuide
 
-class HomeView: UIView {
+class PhoneNumberValidationView: UIView {
     
     var blurredEffectView: UIVisualEffectView!
     let okButton = UIButton()

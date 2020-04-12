@@ -12,12 +12,12 @@
 		99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8C243F9CAD0067CF2D /* SummaryVC.swift */; };
 		99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8E243F9CD60067CF2D /* SummaryView.swift */; };
 		99298514243C632200F14364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298513243C632200F14364 /* AppDelegate.swift */; };
-		99298518243C632200F14364 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298517243C632200F14364 /* HomeVC.swift */; };
+		99298518243C632200F14364 /* PhoneNumberValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298517243C632200F14364 /* PhoneNumberValidationVC.swift */; };
 		9929851D243C632300F14364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9929851C243C632300F14364 /* Assets.xcassets */; };
 		99298520243C632300F14364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9929851E243C632300F14364 /* LaunchScreen.storyboard */; };
 		99298529243C7B7200F14364 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = 99298528243C7B7200F14364 /* Stevia */; };
 		99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */ = {isa = PBXBuildFile; productRef = 99634798243E36500095BCF1 /* KeyboardLayoutGuide */; };
-		9963479B243E36A50095BCF1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479A243E36A50095BCF1 /* HomeView.swift */; };
+		9963479B243E36A50095BCF1 /* PhoneNumberValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479A243E36A50095BCF1 /* PhoneNumberValidationView.swift */; };
 		9963479D243F06890095BCF1 /* VotingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479C243F06890095BCF1 /* VotingVC.swift */; };
 		9963479F243F06D10095BCF1 /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479E243F06D10095BCF1 /* VotingView.swift */; };
 		996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347A0243F0BD90095BCF1 /* VotingCell.swift */; };
@@ -39,11 +39,11 @@
 		99112B8E243F9CD60067CF2D /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		99298510243C632200F14364 /* Eurovision2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurovision2020.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99298513243C632200F14364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		99298517243C632200F14364 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		99298517243C632200F14364 /* PhoneNumberValidationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberValidationVC.swift; sourceTree = "<group>"; };
 		9929851C243C632300F14364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9929851F243C632300F14364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99298521243C632300F14364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9963479A243E36A50095BCF1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9963479A243E36A50095BCF1 /* PhoneNumberValidationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberValidationView.swift; sourceTree = "<group>"; };
 		9963479C243F06890095BCF1 /* VotingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingVC.swift; sourceTree = "<group>"; };
 		9963479E243F06D10095BCF1 /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
 		996347A0243F0BD90095BCF1 /* VotingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingCell.swift; sourceTree = "<group>"; };
@@ -117,8 +117,9 @@
 			children = (
 				99298513243C632200F14364 /* AppDelegate.swift */,
 				99FFA2CC24431174002DBD9C /* FirebaseImplementation.swift */,
+				99B60F76244345D200C1FA44 /* Welcome */,
 				99B60F7524433B8D00C1FA44 /* Core */,
-				99FFA2C224431091002DBD9C /* Home */,
+				99FFA2C224431091002DBD9C /* Phone Validation */,
 				99FFA2C32443109A002DBD9C /* Voting */,
 				99FFA2C4244310A5002DBD9C /* Summary */,
 				99FFA2C5244310B6002DBD9C /* Helpers */,
@@ -140,13 +141,20 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		99FFA2C224431091002DBD9C /* Home */ = {
+		99B60F76244345D200C1FA44 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
-				99298517243C632200F14364 /* HomeVC.swift */,
-				9963479A243E36A50095BCF1 /* HomeView.swift */,
 			);
-			path = Home;
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		99FFA2C224431091002DBD9C /* Phone Validation */ = {
+			isa = PBXGroup;
+			children = (
+				99298517243C632200F14364 /* PhoneNumberValidationVC.swift */,
+				9963479A243E36A50095BCF1 /* PhoneNumberValidationView.swift */,
+			);
+			path = "Phone Validation";
 			sourceTree = "<group>";
 		};
 		99FFA2C32443109A002DBD9C /* Voting */ = {
@@ -327,9 +335,9 @@
 				99FFA2CF244312EE002DBD9C /* Country+UseCases.swift in Sources */,
 				99FFA2CB2443111C002DBD9C /* Song+UseCases.swift in Sources */,
 				9963479F243F06D10095BCF1 /* VotingView.swift in Sources */,
-				9963479B243E36A50095BCF1 /* HomeView.swift in Sources */,
+				9963479B243E36A50095BCF1 /* PhoneNumberValidationView.swift in Sources */,
 				9963479D243F06890095BCF1 /* VotingVC.swift in Sources */,
-				99298518243C632200F14364 /* HomeVC.swift in Sources */,
+				99298518243C632200F14364 /* PhoneNumberValidationVC.swift in Sources */,
 				99FFA2BF244301D7002DBD9C /* CombineSugar.swift in Sources */,
 				99FFA2C7244310E5002DBD9C /* Country.swift in Sources */,
 				99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */,
