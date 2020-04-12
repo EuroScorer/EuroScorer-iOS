@@ -49,7 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         
         navVC.navigationBar.barStyle = .black
-//        navVC.navigationBar.isTranslucent = false
         navVC.navigationBar.prefersLargeTitles = true
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
