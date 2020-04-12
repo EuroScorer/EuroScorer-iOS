@@ -6,3 +6,11 @@ Eurovision 2020 voting app
 ## Documentation
 
 https://github.com/Eurovision2020/Documentation/blob/master/README.md
+
+## Time Spent
+
+### iOS app
+~ 12h
+
+### Backend
+~ 3h
