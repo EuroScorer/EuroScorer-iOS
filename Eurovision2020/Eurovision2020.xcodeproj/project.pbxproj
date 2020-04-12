@@ -22,6 +22,13 @@
 		9963479F243F06D10095BCF1 /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479E243F06D10095BCF1 /* VotingView.swift */; };
 		996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347A0243F0BD90095BCF1 /* VotingCell.swift */; };
 		99E25F212441C56600D9446C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99E25F202441C56600D9446C /* GoogleService-Info.plist */; };
+		99FFA2BF244301D7002DBD9C /* CombineSugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2BE244301D7002DBD9C /* CombineSugar.swift */; };
+		99FFA2C124431035002DBD9C /* DatabaseScripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2C024431035002DBD9C /* DatabaseScripts.swift */; };
+		99FFA2C7244310E5002DBD9C /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2C6244310E5002DBD9C /* Country.swift */; };
+		99FFA2C9244310F9002DBD9C /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2C8244310F9002DBD9C /* Song.swift */; };
+		99FFA2CB2443111C002DBD9C /* Song+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2CA2443111C002DBD9C /* Song+UseCases.swift */; };
+		99FFA2CD24431174002DBD9C /* FirebaseImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2CC24431174002DBD9C /* FirebaseImplementation.swift */; };
+		99FFA2CF244312EE002DBD9C /* Country+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2CE244312EE002DBD9C /* Country+UseCases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +48,13 @@
 		9963479E243F06D10095BCF1 /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
 		996347A0243F0BD90095BCF1 /* VotingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingCell.swift; sourceTree = "<group>"; };
 		99E25F202441C56600D9446C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		99FFA2BE244301D7002DBD9C /* CombineSugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineSugar.swift; sourceTree = "<group>"; };
+		99FFA2C024431035002DBD9C /* DatabaseScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseScripts.swift; sourceTree = "<group>"; };
+		99FFA2C6244310E5002DBD9C /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		99FFA2C8244310F9002DBD9C /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		99FFA2CA2443111C002DBD9C /* Song+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+UseCases.swift"; sourceTree = "<group>"; };
+		99FFA2CC24431174002DBD9C /* FirebaseImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImplementation.swift; sourceTree = "<group>"; };
+		99FFA2CE244312EE002DBD9C /* Country+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Country+UseCases.swift"; sourceTree = "<group>"; };
 		C8F67B4E9DA075C51D4D149B /* Pods_Eurovision2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurovision2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F4AB9607EED72B90F8705FB3 /* Pods-Eurovision2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurovision2020.release.xcconfig"; path = "Target Support Files/Pods-Eurovision2020/Pods-Eurovision2020.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,18 +116,57 @@
 			isa = PBXGroup;
 			children = (
 				99298513243C632200F14364 /* AppDelegate.swift */,
-				99298517243C632200F14364 /* HomeVC.swift */,
-				9963479A243E36A50095BCF1 /* HomeView.swift */,
-				9963479C243F06890095BCF1 /* VotingVC.swift */,
-				9963479E243F06D10095BCF1 /* VotingView.swift */,
-				996347A0243F0BD90095BCF1 /* VotingCell.swift */,
-				99112B8C243F9CAD0067CF2D /* SummaryVC.swift */,
-				99112B8E243F9CD60067CF2D /* SummaryView.swift */,
+				99FFA2C6244310E5002DBD9C /* Country.swift */,
+				99FFA2C8244310F9002DBD9C /* Song.swift */,
+				99FFA2CA2443111C002DBD9C /* Song+UseCases.swift */,
+				99FFA2CE244312EE002DBD9C /* Country+UseCases.swift */,
+				99FFA2CC24431174002DBD9C /* FirebaseImplementation.swift */,
+				99FFA2C224431091002DBD9C /* Home */,
+				99FFA2C32443109A002DBD9C /* Voting */,
+				99FFA2C4244310A5002DBD9C /* Summary */,
+				99FFA2C5244310B6002DBD9C /* Helpers */,
 				9929851C243C632300F14364 /* Assets.xcassets */,
 				9929851E243C632300F14364 /* LaunchScreen.storyboard */,
 				99298521243C632300F14364 /* Info.plist */,
 			);
 			path = Eurovision2020;
+			sourceTree = "<group>";
+		};
+		99FFA2C224431091002DBD9C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				99298517243C632200F14364 /* HomeVC.swift */,
+				9963479A243E36A50095BCF1 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		99FFA2C32443109A002DBD9C /* Voting */ = {
+			isa = PBXGroup;
+			children = (
+				9963479E243F06D10095BCF1 /* VotingView.swift */,
+				996347A0243F0BD90095BCF1 /* VotingCell.swift */,
+				9963479C243F06890095BCF1 /* VotingVC.swift */,
+			);
+			path = Voting;
+			sourceTree = "<group>";
+		};
+		99FFA2C4244310A5002DBD9C /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				99112B8E243F9CD60067CF2D /* SummaryView.swift */,
+				99112B8C243F9CAD0067CF2D /* SummaryVC.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		99FFA2C5244310B6002DBD9C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				99FFA2C024431035002DBD9C /* DatabaseScripts.swift */,
+				99FFA2BE244301D7002DBD9C /* CombineSugar.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,11 +312,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99FFA2CD24431174002DBD9C /* FirebaseImplementation.swift in Sources */,
+				99FFA2C9244310F9002DBD9C /* Song.swift in Sources */,
 				99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */,
+				99FFA2C124431035002DBD9C /* DatabaseScripts.swift in Sources */,
+				99FFA2CF244312EE002DBD9C /* Country+UseCases.swift in Sources */,
+				99FFA2CB2443111C002DBD9C /* Song+UseCases.swift in Sources */,
 				9963479F243F06D10095BCF1 /* VotingView.swift in Sources */,
 				9963479B243E36A50095BCF1 /* HomeView.swift in Sources */,
 				9963479D243F06890095BCF1 /* VotingVC.swift in Sources */,
 				99298518243C632200F14364 /* HomeVC.swift in Sources */,
+				99FFA2BF244301D7002DBD9C /* CombineSugar.swift in Sources */,
+				99FFA2C7244310E5002DBD9C /* Country.swift in Sources */,
 				99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */,
 				996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */,
 				99298514243C632200F14364 /* AppDelegate.swift in Sources */,

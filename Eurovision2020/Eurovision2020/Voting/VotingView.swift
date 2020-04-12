@@ -11,6 +11,7 @@ import Stevia
 
 class VotingView: UIView {
     
+    let refreshControl = UIRefreshControl()
     let tableView = UITableView()
     let votesLeft = UILabel()
     let votesGiven = UILabel()
@@ -40,6 +41,7 @@ class VotingView: UIView {
                 confirm
             }
         }
+        tableView.addSubview(refreshControl)
         
         backgroundImage.fillContainer()
         blurredEffectView.fillContainer()

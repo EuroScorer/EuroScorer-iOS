@@ -10,28 +10,12 @@ import UIKit
 import Stevia
 import FlagKit
 
-struct Country {
-    let code: String
-    let name: String
-}
-
-class Song {
-    let country: Country
-    let title: String
-    var numberOfVotesGiven: Int = 0
-    
-    init(country: Country, title: String) {
-        self.country = country
-        self.title = title
-    }
-    
-    func addVote() {
-        numberOfVotesGiven = numberOfVotesGiven + 1
-    }
-}
+import Combine
 
 class VotingVC: UIViewController {
     
+    var cancellables = Set<AnyCancellable>()
+    var songs = [Song]()
     let maxVotes = 20
     var availableVotes = 0
     
@@ -42,7 +26,6 @@ class VotingVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-            
         availableVotes = maxVotes
     
         self.render()
@@ -51,6 +34,20 @@ class VotingVC: UIViewController {
             self.view = self.v
             self.render()
         }
+        
+        
+        refresh()
+        v.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc
+    func refresh() {
+        Song.fetchSongs().then { [unowned self] fetchedSongs in
+            self.songs = fetchedSongs
+            self.v.tableView.reloadData()
+        }.finally { [unowned self] in
+            self.v.refreshControl.endRefreshing()
+        }.sinkAndStore(in: &cancellables)
     }
     
     func render() {
@@ -75,11 +72,11 @@ extension VotingVC: UITableViewDataSource {
         let cell = VotingCell()
         cell.backgroundColor = .clear
         cell.rank.text = "#\(indexPath.row)"
-        cell.country.text = song.country.name
+        cell.country.text = song.country?.name
         
         
 //        let countryCode = Locale.current.regionCode!
-        let flag = Flag(countryCode: song.country.code)!
+        let flag = Flag(countryCode: song.country?.code ?? "GB")!
         cell.flag.image = flag.image(style: .roundedRect)
         
             
