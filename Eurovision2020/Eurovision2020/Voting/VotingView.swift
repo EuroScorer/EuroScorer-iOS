@@ -67,6 +67,7 @@ class VotingView: UIView {
         backgroundImage.clipsToBounds = true
         backgroundImage.image = #imageLiteral(resourceName: "background")
         backgroundImage.contentMode = .scaleAspectFill
+        refreshControl.tintColor = .white
         tableView.backgroundColor = .clear
         tableView.separatorColor = UIColor.white.withAlphaComponent(0.2)
         tableView.allowsSelection = false
