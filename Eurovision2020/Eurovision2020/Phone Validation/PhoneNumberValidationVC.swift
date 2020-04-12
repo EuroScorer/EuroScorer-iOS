@@ -125,9 +125,15 @@ class PhoneNumberValidationVC: UIViewController {
             print("error \(error)")
             
             if let userPhoneNumber = self?.userInternationalNumberPhoneNumber, error == nil {
-                
                 if let regionID = self?.userRegionID {
                     let user = User(countryCode: regionID, phoneNumber: userPhoneNumber)
+            
+                    // Store to defaults to persist login even after app exit
+                    let ud = UserDefaults.standard
+                    ud.setValue(userPhoneNumber, forKey: "userPhoneNumber")
+                    ud.setValue(regionID, forKey: "userRegionId")
+                    ud.synchronize()
+                    
                     self?.navigationController?.pushViewController(VotingVC(user: user), animated: true)
                 }
                     

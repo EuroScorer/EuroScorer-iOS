@@ -36,7 +36,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let fakeUser = User(countryCode: "FR", phoneNumber: "+33778127906")
 //        let votingVC = VotingVC(user: fakeUser)
         
-        let navVC = NavVC(rootViewController: PhoneNumberValidationVC())
+        var navVC: NavVC! = NavVC(rootViewController: PhoneNumberValidationVC())
+        
+        let ud = UserDefaults.standard
+        if let userPhoneNumber = ud.string(forKey: "userPhoneNumber"),
+            let regionCode = ud.string(forKey: "userRegionId") {
+            
+            let user = User(countryCode: regionCode, phoneNumber: userPhoneNumber)
+            navVC = NavVC(rootViewController: VotingVC(user: user))
+        }
+            
+        
         navVC.navigationBar.barStyle = .black
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
