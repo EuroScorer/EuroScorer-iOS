@@ -21,7 +21,8 @@ class VotingCell: UITableViewCell {
     let country = UILabel()
     let flag = UIImageView()
     let title = UILabel()
-    let stepper = UIStepper()
+    let minusButton = UIButton()
+    let plusButton = UIButton()
     let votes = UILabel()
     
     required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder)}
@@ -33,7 +34,8 @@ class VotingCell: UITableViewCell {
             country
             flag
             title
-            stepper
+            minusButton
+            plusButton
             votes
         }
         
@@ -52,9 +54,11 @@ class VotingCell: UITableViewCell {
             8
             title
             8
-            stepper
+            minusButton-plusButton
             20
         }
+        
+//        alignHorizontally(minusButton, with: plusButton)
         
         layout {
             votes-20-|
@@ -62,7 +66,7 @@ class VotingCell: UITableViewCell {
         }
         
         title.Left == flag.Left
-        stepper.Left == flag.Left
+        minusButton.Left == flag.Left
         
         backgroundColor = .clear
         number.style { l in
@@ -83,11 +87,30 @@ class VotingCell: UITableViewCell {
             l.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         }
         
-        stepper.addTarget(self, action: #selector(stepperValueChanged), for: .valueChanged)
+        let buttonStyle = { (b: UIButton) in
+            b.setBackgroundColor(UIColor.white.withAlphaComponent(0.2), for: .normal)
+            b.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+            b.layer.cornerRadius = 6
+            b.clipsToBounds = true
+            b.titleLabel?.font = UIFont.monospacedSystemFont(ofSize: 20, weight: .bold)
+        }
+        minusButton.style(buttonStyle)
+        plusButton.style(buttonStyle)
+        
+        minusButton.addTarget(self, action: #selector(didTapMinus), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(didTapPlus), for: .touchUpInside)
+        
+        minusButton.setTitle("-", for: .normal)
+        plusButton.setTitle("+", for: .normal)
     }
     
     @objc
-    func stepperValueChanged() {
+    func didTapMinus() {
+        delegate?.votingCellDidRemoveVote(cell: self)
+    }
+    
+    @objc
+    func didTapPlus() {
         delegate?.votingCellDidAddVote(cell: self)
     }
 }

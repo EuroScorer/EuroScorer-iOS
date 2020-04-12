@@ -18,4 +18,8 @@ class Song {
     func addVote() {
         numberOfVotesGiven = numberOfVotesGiven + 1
     }
+    
+    func removeVote() {
+        numberOfVotesGiven = numberOfVotesGiven - 1
+    }
 }

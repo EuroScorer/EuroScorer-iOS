@@ -86,13 +86,15 @@ extension VotingVC: UITableViewDataSource {
         cell.votes.text = "\(song.numberOfVotesGiven) votes"
         cell.delegate = self
     
-        cell.stepper.isEnabled = true
+//        cell.stepper.isEnabled = true
         if song.country?.code == user.countryCode {
-            cell.stepper.isEnabled = false
+            cell.minusButton.isEnabled = false
+            cell.plusButton.isEnabled = false
             cell.country.text = "\(song.country?.name ?? "") (Your country)"
             cell.backgroundColor = UIColor.black.withAlphaComponent(0.5)
             cell.votes.text = "X votes"
-            cell.stepper.isHidden = true
+            cell.minusButton.isHidden = true
+            cell.plusButton.isHidden = true
             cell.votes.isHidden = true
         }
         return cell
@@ -100,23 +102,29 @@ extension VotingVC: UITableViewDataSource {
 }
 
 extension VotingVC: VotingCellDelegate {
+    
     func votingCellDidRemoveVote(cell: VotingCell) {
-        
+        if let indexPath = v.tableView.indexPath(for: cell) {
+            let song = songs[indexPath.row]
+            if availableVotes < maxVotes {
+                song.removeVote()
+                availableVotes = availableVotes + 1
+            }
+            refreshVotes()
+            v.tableView.reloadData()
+        }
     }
     
     
     func votingCellDidAddVote(cell: VotingCell) {
         if let indexPath = v.tableView.indexPath(for: cell) {
             let song = songs[indexPath.row]
-            
             if availableVotes > 0 {
                 song.addVote()
                 availableVotes = availableVotes - 1
             }
             refreshVotes()
-            
             v.tableView.reloadData()
         }
-        
     }
 }
