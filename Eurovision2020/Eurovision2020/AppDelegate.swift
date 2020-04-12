@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         window = UIWindow()
-        let navVC = UINavigationController(rootViewController: VotingVC())
+        let navVC = NavVC(rootViewController: VotingVC())
         navVC.navigationBar.isHidden = true
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
@@ -39,6 +39,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }.sinkAndStore(in: &cancellables)
         
         return true
+    }
+}
+
+class NavVC: UINavigationController {
+  
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
