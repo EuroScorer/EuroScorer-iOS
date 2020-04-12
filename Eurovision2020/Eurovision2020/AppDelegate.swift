@@ -35,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Test code
 //        let fakeUser = User(countryCode: "FR", phoneNumber: "+33778127906")
 //        let votingVC = VotingVC(user: fakeUser)
+//        var navVC: NavVC! = NavVC(rootViewController: SummaryVC())
         
         var navVC: NavVC! = NavVC(rootViewController: PhoneNumberValidationVC())
         
@@ -48,10 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
         
         navVC.navigationBar.barStyle = .black
+//        navVC.navigationBar.isTranslucent = false
+        navVC.navigationBar.prefersLargeTitles = true
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
         
-        Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
+//        Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
         
         // Fetch countries on App Start
         Country.fetchCountries().then { fetchedCountries in

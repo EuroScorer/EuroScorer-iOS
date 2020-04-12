@@ -9,7 +9,6 @@
 import UIKit
 import Stevia
 import FlagKit
-
 import Combine
 
 class VotingVC: UIViewController {
@@ -33,6 +32,7 @@ class VotingVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .never
         title = "Spread your votes!"
         availableVotes = maxVotes
     
@@ -46,8 +46,9 @@ class VotingVC: UIViewController {
         
         refresh()
         v.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        v.confirm.addTarget(self, action:#selector(confirmTapped), for: .touchUpInside)
     }
-    
+        
     @objc
     func refresh() {
         Song.fetchSongs().then { [unowned self] fetchedSongs in
@@ -67,6 +68,11 @@ class VotingVC: UIViewController {
         v.votesLeft.text = "\(availableVotes)\nLeft"
         v.votesGiven.text = "\(maxVotes - availableVotes)\nGiven"
     }
+    
+    @objc
+    func confirmTapped() {
+        navigationController?.pushViewController(SummaryVC(), animated: true)
+    }
 }
 
 extension VotingVC: UITableViewDataSource {
@@ -78,7 +84,8 @@ extension VotingVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let song = songs[indexPath.row]
         let cell = VotingCell()
-        cell.number.text = "#\(song.number)"
+    
+        cell.number.text = (song.number < 10) ? "0\(song.number)" : "\(song.number)"
         cell.country.text = song.country?.name
         let flag = Flag(countryCode: song.country?.code ?? "GB")!
         cell.flag.image = flag.image(style: .roundedRect)

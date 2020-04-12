@@ -17,6 +17,8 @@ class SummaryVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.largeTitleDisplayMode = .always
+        title = "Vote Summary"
         
         NotificationCenter.default.addObserver(forName:
             NSNotification.Name(rawValue:"INJECTION_BUNDLE_NOTIFICATION"),

@@ -14,32 +14,19 @@ class SummaryView: UIView {
     convenience init() {
         self.init(frame: .zero)
         
-        let backgroundImage = UIImageView()
-        let blurrEffect = UIBlurEffect(style: .dark)
-        let blurredEffectView = UIVisualEffectView(effect: blurrEffect)
-    
+        let background = BlurredBackgroundView()
         
-        let title = UILabel()
         
         subviews {
-            backgroundImage
-            blurredEffectView
-            title
+            background
         }
         
-        backgroundImage.fillContainer()
-        blurredEffectView.fillContainer()
-        
-        title.centerHorizontally().top(80)
-        
-        
-        backgroundImage.image = #imageLiteral(resourceName: "background")
-        backgroundImage.contentMode = .scaleAspectFill
-        title.style { l in
-            l.textColor = .white
-            l.font = UIFont.systemFont(ofSize: 30, weight: .bold)
-        }
-        
-        title.text = "Vote Summary"
+        background.fillContainer()
+
     }
+}
+
+
+struct Vote {
+    let user: User
 }

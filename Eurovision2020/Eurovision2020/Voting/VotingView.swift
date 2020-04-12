@@ -15,26 +15,24 @@ class VotingView: UIView {
     let tableView = UITableView()
     let votesLeft = UILabel()
     let votesGiven = UILabel()
+    let confirm = UIButton()
     
     convenience init() {
         self.init(frame: .zero)
         backgroundColor = .blue
         
-        let backgroundImage = UIImageView()
-        let blurrEffect = UIBlurEffect(style: .dark)
-        let blurredEffectView = UIVisualEffectView(effect: blurrEffect)
+        let blurredbackground = BlurredBackgroundView()
         let recapContainer = UIView()
-        
-
         let votesTitle = UILabel()
         
-        let confirm = UIButton()
+        
+        let hairline = UIView()
         
         subviews {
-            backgroundImage
-            blurredEffectView
+            blurredbackground
             tableView
             recapContainer.subviews {
+                hairline
                 votesTitle
                 votesLeft
                 votesGiven
@@ -43,8 +41,8 @@ class VotingView: UIView {
         }
         tableView.addSubview(refreshControl)
         
-        backgroundImage.fillContainer()
-        blurredEffectView.fillContainer()
+        blurredbackground.fillContainer()
+
     
         layout {
             0
@@ -54,26 +52,27 @@ class VotingView: UIView {
         }
         
         layout {
-//            2
-//            |-20-votesTitle-20-|
-            40
+            0
+            |hairline| ~ 0.5
+        }
+        
+        
+        layout {
+            20
             |-20⁃votesLeft⁃confirm⁃votesGiven⁃20-|
-            40
+            20
         }
         
         confirm.centerHorizontally().height(50)
         confirm.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
         
-        
-        backgroundImage.clipsToBounds = true
-        backgroundImage.image = #imageLiteral(resourceName: "background")
-        backgroundImage.contentMode = .scaleAspectFill
         refreshControl.tintColor = .white
         tableView.backgroundColor = .clear
         tableView.separatorColor = UIColor.white.withAlphaComponent(0.2)
         tableView.allowsSelection = false
-        recapContainer.backgroundColor = UIColor.black
+        recapContainer.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         
+        hairline.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         votesTitle.textColor = .white
         votesTitle.text = "Spread your votes".uppercased()
         votesTitle.textAlignment = .center

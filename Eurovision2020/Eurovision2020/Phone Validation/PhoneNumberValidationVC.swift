@@ -30,11 +30,11 @@ class PhoneNumberValidationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Phone Number Validation"
+        title = "Phone Validation"
         v.okButton.isEnabled = false
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
-        v.blurredEffectView.addGestureRecognizer(tap)
+        v.blurredbackground.addGestureRecognizer(tap)
      
         on("INJECTION_BUNDLE_NOTIFICATION") {
             self.v = PhoneNumberValidationView()

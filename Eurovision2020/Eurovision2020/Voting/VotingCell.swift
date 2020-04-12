@@ -71,7 +71,7 @@ class VotingCell: UITableViewCell {
         backgroundColor = .clear
         number.style { l in
             l.textColor = .white
-            l.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+            l.font = UIFont.monospacedSystemFont(ofSize: 18, weight: .bold)
             l.textAlignment = .center
         }
         country.style { l in
