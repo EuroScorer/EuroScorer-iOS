@@ -52,7 +52,7 @@ class VotingCell: UITableViewCell {
             20
             country
             8
-            title
+            title-20-|
             8
             minusButton-plusButton
             20
@@ -66,6 +66,7 @@ class VotingCell: UITableViewCell {
         }
         
         title.Left == flag.Left
+        
         minusButton.Left == flag.Left
         
         backgroundColor = .clear
@@ -81,6 +82,7 @@ class VotingCell: UITableViewCell {
         title.style { l in
             l.textColor = .white
             l.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+            title.numberOfLines = 0
         }
         votes.style { l in
             l.textColor = .white
