@@ -108,7 +108,7 @@ extension VotingVC: VotingCellDelegate {
     func votingCellDidRemoveVote(cell: VotingCell) {
         if let indexPath = v.tableView.indexPath(for: cell) {
             let song = songs[indexPath.row]
-            if availableVotes < maxVotes {
+            if availableVotes < maxVotes && song.numberOfVotesGiven > 0 {
                 song.removeVote()
                 availableVotes = availableVotes + 1
             }
