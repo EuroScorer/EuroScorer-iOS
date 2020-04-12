@@ -30,8 +30,6 @@ class PhoneNumberValidationVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         title = "Phone Number Validation"
         v.okButton.isEnabled = false
         
@@ -44,17 +42,6 @@ class PhoneNumberValidationVC: UIViewController {
         }
         
         v.okButton.addTarget(self, action: #selector(okTapped), for: .touchUpInside)
-        
-        
-        
-        let countryCode = Locale.current.regionCode!
-//
-//        if countryCode == "FR" {
-//            v.phoneNumberField.text = "+33"
-//        } else if countryCode == "US" {
-//            v.phoneNumberField.text = "+1 456"
-//        }
-        
         v.phoneNumberField.addTarget(self, action: #selector(phoneNumberChanged), for: .editingChanged)
     }
     
@@ -79,7 +66,6 @@ class PhoneNumberValidationVC: UIViewController {
     
     @objc
     func okTapped() {
-        
         // Test Code
 //        let user = User(countryCode: "FR", phoneNumber: "XXX")
 //        navigationController?.pushViewController(VotingVC(user: user), animated: true)
@@ -99,20 +85,9 @@ class PhoneNumberValidationVC: UIViewController {
         
         userInternationalNumberPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .international)
         userRegionID = phoneNumber.regionID
-        
-//            PhoneNumber(numberString: "+33778127906",
-//            countryCode: 33,
-//            leadingZero: false,
-//            nationalNumber: 778127906,
-//            numberExtension: nil,
-//            type: PhoneNumberKit.PhoneNumberType.mobile,
-//            regionID: Optional("FR"))
-        
-        
+                
         // Localize sms sent to user's laguage
         Auth.auth().languageCode = Locale.current.languageCode ?? "en"
-        
-        
         
         // Start SMS confirmation
         PhoneAuthProvider.provider().verifyPhoneNumber(userInternationalNumberPhoneNumber!, uiDelegate: nil) { [weak self] (verificationID, error) in
@@ -127,8 +102,10 @@ class PhoneNumberValidationVC: UIViewController {
                                           message: "Confim your phone number by entering the code received via SMS",
                                           preferredStyle: UIAlertController.Style.alert)
             alert.addTextField {
-                $0.placeholder = "SMS Code"
+                $0.placeholder = "Code"
                 $0.keyboardType = .numberPad
+                $0.keyboardType = .numberPad
+                $0.font = .systemFont(ofSize: 40, weight: .bold)
             }
             alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { a in
                 if let smsCode = alert.textFields?.first?.text {
