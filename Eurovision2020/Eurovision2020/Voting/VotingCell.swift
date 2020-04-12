@@ -17,7 +17,7 @@ protocol VotingCellDelegate: class {
 class VotingCell: UITableViewCell {
     
     weak var delegate: VotingCellDelegate?
-    let rank = UILabel()
+    let number = UILabel()
     let country = UILabel()
     let flag = UIImageView()
     let title = UILabel()
@@ -29,7 +29,7 @@ class VotingCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         subviews {
-            rank
+            number
             country
             flag
             title
@@ -39,10 +39,10 @@ class VotingCell: UITableViewCell {
         
         layout {
             20
-            |-20-rank.width(38)
+            |-20-number.width(38)
         }
         
-        rank-20-flag-country
+        number-20-flag-country
         
         flag.CenterY == country.CenterY
                 
@@ -64,7 +64,8 @@ class VotingCell: UITableViewCell {
         title.Left == flag.Left
         stepper.Left == flag.Left
         
-        rank.style { l in
+        backgroundColor = .clear
+        number.style { l in
             l.textColor = .white
             l.font = UIFont.systemFont(ofSize: 18, weight: .bold)
             l.textAlignment = .center
@@ -81,8 +82,6 @@ class VotingCell: UITableViewCell {
             l.textColor = .white
             l.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         }
-        
-        votes.text = "16 votes"
         
         stepper.addTarget(self, action: #selector(stepperValueChanged), for: .valueChanged)
     }

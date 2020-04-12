@@ -31,9 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         window = UIWindow()
+        
+        // Test code
+//        let fakeUser = User(countryCode: "FR", phoneNumber: "+33778127906")
+//        let votingVC = VotingVC(user: fakeUser)
+        
         let navVC = NavVC(rootViewController: PhoneNumberValidationVC())
         navVC.navigationBar.barStyle = .black
-
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
         

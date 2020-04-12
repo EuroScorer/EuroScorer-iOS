@@ -54,14 +54,15 @@ class VotingView: UIView {
         }
         
         layout {
-            20
-            |-20-votesTitle-20-|
-            20
-            |-20⁃votesLeft⁃(>=8)⁃confirm⁃(>=8)⁃votesGiven⁃20-|
+//            2
+//            |-20-votesTitle-20-|
+            40
+            |-20⁃votesLeft⁃confirm⁃votesGiven⁃20-|
             40
         }
         
         confirm.centerHorizontally().height(50)
+        confirm.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
         
         
         backgroundImage.clipsToBounds = true
@@ -77,17 +78,17 @@ class VotingView: UIView {
         votesTitle.text = "Spread your votes".uppercased()
         votesTitle.textAlignment = .center
         votesTitle.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        votesTitle.isHidden = true
         
-        votesLeft.style { l in
+        let textStyle = { (l: UILabel) in
+            l.font = .systemFont(ofSize: 20, weight: .semibold)
             l.textColor = .white
             l.numberOfLines = 0
             l.textAlignment = .center
         }
-        votesGiven.style { l in
-            l.textColor = .white
-            l.numberOfLines = 0
-            l.textAlignment = .center
-        }
+        votesLeft.style(textStyle)
+        votesGiven.style(textStyle)
+        
         confirm.setBackgroundColor(.systemRed, for: .normal)
         confirm.layer.cornerRadius = 5
         confirm.clipsToBounds = true

@@ -12,16 +12,26 @@ import FirebaseFirestore
 import PhoneNumberKit
 
 class PhoneNumberValidationVC: UIViewController {
-    
+        
     let phoneNumberKit = PhoneNumberKit()
+    
+    var userRegionID: String?
+    var userInternationalNumberPhoneNumber: String?
     
     var v = PhoneNumberValidationView()
     override func loadView() {
         view = v
     }
-
+    
+    convenience init() {
+        self.init(nibName: nil, bundle: nil)
+        overrideUserInterfaceStyle = .dark
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         title = "Phone Number Validation"
         v.okButton.isEnabled = false
         
@@ -48,6 +58,11 @@ class PhoneNumberValidationVC: UIViewController {
         v.phoneNumberField.addTarget(self, action: #selector(phoneNumberChanged), for: .editingChanged)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        v.phoneNumberField.becomeFirstResponder()
+    }
+    
     @objc
     func phoneNumberChanged() {
         guard let phoneNumberString = v.phoneNumberField.text else {
@@ -64,13 +79,27 @@ class PhoneNumberValidationVC: UIViewController {
     
     @objc
     func okTapped() {
+        
+        // Test Code
+//        let user = User(countryCode: "FR", phoneNumber: "XXX")
+//        navigationController?.pushViewController(VotingVC(user: user), animated: true)
+//        return
+        //
+    
+        
+        v.okButton.isEnabled = false
         guard let phoneNumberString = v.phoneNumberField.text else {
+            v.okButton.isEnabled = true
             return
         }
         guard let phoneNumber = try? phoneNumberKit.parse(phoneNumberString) else {
+            v.okButton.isEnabled = true
             return
         }
-    
+        
+        userInternationalNumberPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .international)
+        userRegionID = phoneNumber.regionID
+        
 //            PhoneNumber(numberString: "+33778127906",
 //            countryCode: 33,
 //            leadingZero: false,
@@ -83,10 +112,13 @@ class PhoneNumberValidationVC: UIViewController {
         // Localize sms sent to user's laguage
         Auth.auth().languageCode = Locale.current.languageCode ?? "en"
         
+        
+        
         // Start SMS confirmation
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber.numberString, uiDelegate: nil) { [weak self] (verificationID, error) in
+        PhoneAuthProvider.provider().verifyPhoneNumber(userInternationalNumberPhoneNumber!, uiDelegate: nil) { [weak self] (verificationID, error) in
             guard let verificationID = verificationID else {
                 print(error)
+                self?.v.okButton.isEnabled = true
                 return
             }
 
@@ -94,7 +126,10 @@ class PhoneNumberValidationVC: UIViewController {
             let alert = UIAlertController(title: "SMS confirmation",
                                           message: "Confim your phone number by entering the code received via SMS",
                                           preferredStyle: UIAlertController.Style.alert)
-            alert.addTextField { $0.placeholder = "SMS Code" }
+            alert.addTextField {
+                $0.placeholder = "SMS Code"
+                $0.keyboardType = .numberPad
+            }
             alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { a in
                 if let smsCode = alert.textFields?.first?.text {
                     // Confirm Phone number with both verificationID amd SMS code.
@@ -112,8 +147,13 @@ class PhoneNumberValidationVC: UIViewController {
             print("authResult \(authResult)")
             print("error \(error)")
             
-            if error == nil {
-                self?.navigationController?.pushViewController(VotingVC(), animated: true)
+            if let userPhoneNumber = self?.userInternationalNumberPhoneNumber, error == nil {
+                
+                if let regionID = self?.userRegionID {
+                    let user = User(countryCode: regionID, phoneNumber: userPhoneNumber)
+                    self?.navigationController?.pushViewController(VotingVC(user: user), animated: true)
+                }
+                    
             }
         }
     }
