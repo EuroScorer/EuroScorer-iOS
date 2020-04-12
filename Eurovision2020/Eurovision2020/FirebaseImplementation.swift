@@ -22,8 +22,11 @@ struct FirebaseImplementation {
                     let songs = querySnapshot!.documents.map { d -> Song in
                         let song = Song()
                         song.identifier = d.documentID
-                        if let title: String = d.data()["title"] as? String {
+                        if let title = d.data()["title"] as? String {
                             song.title = title
+                        }
+                        if let number = d.data()["number"] as? Int {
+                            song.number = number
                         }
                         
                         if let countryCode: String = d.data()["countryCode"] as? String {
@@ -37,7 +40,7 @@ struct FirebaseImplementation {
             
         }.eraseToAnyPublisher()
     }
-    
+        
     func fetchCountries() -> AnyPublisher<[Country], Error> {
         Future { promise in
             let db = Firestore.firestore()
@@ -48,7 +51,7 @@ struct FirebaseImplementation {
                     let countries = querySnapshot!.documents.map { d -> Country in
                         var country = Country()
                         country.code = d.documentID
-                        if let name: String = d.data()["name"] as? String {
+                        if let name = d.data()["name"] as? String {
                             country.name = name
                         }
                         return country

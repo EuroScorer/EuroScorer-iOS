@@ -12,6 +12,7 @@ class Song {
     var identifier = ""
     var country: Country?
     var title = ""
+    var number = 0
     var numberOfVotesGiven = 0
     
     func addVote() {

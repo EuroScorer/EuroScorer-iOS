@@ -43,7 +43,7 @@ class VotingVC: UIViewController {
     @objc
     func refresh() {
         Song.fetchSongs().then { [unowned self] fetchedSongs in
-            self.songs = fetchedSongs
+            self.songs = fetchedSongs.sorted { $0.number < $1.number }
             self.v.tableView.reloadData()
         }.finally { [unowned self] in
             self.v.refreshControl.endRefreshing()
@@ -71,7 +71,7 @@ extension VotingVC: UITableViewDataSource {
         let song = songs[indexPath.row]
         let cell = VotingCell()
         cell.backgroundColor = .clear
-        cell.rank.text = "#\(indexPath.row)"
+        cell.rank.text = "#\(song.number)"
         cell.country.text = song.country?.name
         
         
@@ -88,15 +88,9 @@ extension VotingVC: UITableViewDataSource {
     //        let styledImage = flag.image(style: .circle)
     //        You can always access the underlying assets directly, through the bundled Asset Catalog:
     //
-    
-    
-        
-        
-        
+
         cell.title.text = song.title
         cell.votes.text = "\(song.numberOfVotesGiven) votes"
-//        cell.detailTextLabel?.text = song.country
-        
         cell.delegate = self
         return cell
     }
