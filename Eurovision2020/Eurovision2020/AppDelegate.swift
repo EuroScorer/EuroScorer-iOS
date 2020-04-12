@@ -10,6 +10,11 @@ import UIKit
 import Firebase
 import Combine
 
+struct User {
+    var countryCode: String
+    var phoneNumber: String
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -26,8 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         window = UIWindow()
-        let navVC = NavVC(rootViewController: VotingVC())
-        navVC.navigationBar.isHidden = true
+        let navVC = NavVC(rootViewController: PhoneNumberValidationVC())
+        navVC.navigationBar.barStyle = .black
+
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
         

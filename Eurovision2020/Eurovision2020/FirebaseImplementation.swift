@@ -28,7 +28,6 @@ struct FirebaseImplementation {
                         if let number = d.data()["number"] as? Int {
                             song.number = number
                         }
-                        
                         if let countryCode: String = d.data()["countryCode"] as? String {
                             song.country = Country.countries.first(where: { $0.code == countryCode })
                         }

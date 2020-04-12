@@ -9,12 +9,14 @@
 import UIKit
 import Stevia
 import KeyboardLayoutGuide
+import PhoneNumberKit
 
 class PhoneNumberValidationView: UIView {
     
     var blurredEffectView: UIVisualEffectView!
     let okButton = UIButton()
-    let phoneNumberField = UITextField()
+    let phoneNumberBackground = UIView()
+    let phoneNumberField = PhoneNumberTextField()
     
     convenience init() {
         self.init(frame: .zero)
@@ -24,11 +26,12 @@ class PhoneNumberValidationView: UIView {
         blurredEffectView = UIVisualEffectView(effect: blurrEffect)
         let title = UILabel()
         
-        
-        
         subviews {
             backgroundImage
             blurredEffectView!
+            phoneNumberBackground.subviews {
+                phoneNumberField
+            }
             okButton
         }
         
@@ -42,7 +45,6 @@ class PhoneNumberValidationView: UIView {
 
         vibrancyView.contentView.subviews {
             title
-            phoneNumberField
         }
         blurredEffectView.contentView.subviews { vibrancyView }
         
@@ -51,8 +53,14 @@ class PhoneNumberValidationView: UIView {
             |-20-title-20-|
         }
         
-        phoneNumberField.centerVertically(offset: -100)
-        |-20-phoneNumberField-20-| ~ 60
+        phoneNumberBackground.centerVertically(offset: -100)
+        |-20-phoneNumberBackground-20-| ~ 60
+        
+        layout {
+            0
+            |-20-phoneNumberField-20-|
+            0
+        }
         
         vibrancyView.fillContainer()
         
@@ -66,15 +74,16 @@ class PhoneNumberValidationView: UIView {
             l.font = UIFont.systemFont(ofSize: 50, weight: .black)
             l.numberOfLines = 0
             l.textAlignment = .center
+            l.isHidden = true
+        }
+        phoneNumberBackground.style { v in
+            v.backgroundColor = UIColor.black.withAlphaComponent(0.2)
+            v.layer.cornerRadius = 10
         }
         phoneNumberField.style { f in
             f.font = UIFont.systemFont(ofSize: 30, weight: .light)
             f.textColor = .white
-            f.backgroundColor = UIColor.white.withAlphaComponent(0.2)
-            f.layer.cornerRadius = 10
-            f.keyboardType = .phonePad
-            f.layer.borderColor = UIColor.white.cgColor
-            f.layer.borderWidth = 1
+//            f.keyboardType = .phonePad
         }
         okButton.style { b in
             b.setBackgroundColor(.systemRed, for: .normal)//UIColor(red: 160/255.0, green: 21/255.0, blue: 21/255.0, alpha: 1)
@@ -86,6 +95,11 @@ class PhoneNumberValidationView: UIView {
         let attrStr = NSAttributedString(string: " Enter your phone number", attributes: [.foregroundColor: UIColor.white])
         phoneNumberField.attributedPlaceholder = attrStr
         okButton.setTitle("Validate my phone number", for: .normal)
+        
+        phoneNumberField.withFlag = true
+        phoneNumberField.withPrefix = true
+        phoneNumberField.withExamplePlaceholder = true
+        phoneNumberField.withDefaultPickerUI = true
     }
 }
 

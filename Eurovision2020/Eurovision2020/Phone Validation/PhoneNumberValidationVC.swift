@@ -9,8 +9,11 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import PhoneNumberKit
 
 class PhoneNumberValidationVC: UIViewController {
+    
+    let phoneNumberKit = PhoneNumberKit()
     
     var v = PhoneNumberValidationView()
     override func loadView() {
@@ -19,14 +22,16 @@ class PhoneNumberValidationVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Phone Number Validation"
+        v.okButton.isEnabled = false
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
         v.blurredEffectView.addGestureRecognizer(tap)
      
-//        on("INJECTION_BUNDLE_NOTIFICATION") {
-//            self.v = HomeView()
-//            self.view = self.v
-//        }
+        on("INJECTION_BUNDLE_NOTIFICATION") {
+            self.v = PhoneNumberValidationView()
+            self.view = self.v
+        }
         
         v.okButton.addTarget(self, action: #selector(okTapped), for: .touchUpInside)
         
@@ -40,6 +45,16 @@ class PhoneNumberValidationVC: UIViewController {
 //            v.phoneNumberField.text = "+1 456"
 //        }
         
+        v.phoneNumberField.addTarget(self, action: #selector(phoneNumberChanged), for: .editingChanged)
+    }
+    
+    @objc
+    func phoneNumberChanged() {
+        guard let phoneNumberString = v.phoneNumberField.text else {
+            return
+        }
+        let phoneNumber = try? phoneNumberKit.parse(phoneNumberString)
+        v.okButton.isEnabled = (phoneNumber != nil)
     }
     
     @objc
@@ -49,15 +64,27 @@ class PhoneNumberValidationVC: UIViewController {
     
     @objc
     func okTapped() {
-        guard let phoneNumber = v.phoneNumberField.text else {
+        guard let phoneNumberString = v.phoneNumberField.text else {
             return
         }
+        guard let phoneNumber = try? phoneNumberKit.parse(phoneNumberString) else {
+            return
+        }
+    
+//            PhoneNumber(numberString: "+33778127906",
+//            countryCode: 33,
+//            leadingZero: false,
+//            nationalNumber: 778127906,
+//            numberExtension: nil,
+//            type: PhoneNumberKit.PhoneNumberType.mobile,
+//            regionID: Optional("FR"))
+        
         
         // Localize sms sent to user's laguage
         Auth.auth().languageCode = Locale.current.languageCode ?? "en"
         
         // Start SMS confirmation
-        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] (verificationID, error) in
+        PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber.numberString, uiDelegate: nil) { [weak self] (verificationID, error) in
             guard let verificationID = verificationID else {
                 print(error)
                 return

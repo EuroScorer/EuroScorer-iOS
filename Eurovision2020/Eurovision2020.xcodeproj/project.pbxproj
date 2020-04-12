@@ -21,6 +21,8 @@
 		9963479D243F06890095BCF1 /* VotingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479C243F06890095BCF1 /* VotingVC.swift */; };
 		9963479F243F06D10095BCF1 /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479E243F06D10095BCF1 /* VotingView.swift */; };
 		996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347A0243F0BD90095BCF1 /* VotingCell.swift */; };
+		99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B60F782443472100C1FA44 /* PhoneNumberKit */; };
+		99B60F7B2443475D00C1FA44 /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */; };
 		99E25F212441C56600D9446C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99E25F202441C56600D9446C /* GoogleService-Info.plist */; };
 		99FFA2BF244301D7002DBD9C /* CombineSugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2BE244301D7002DBD9C /* CombineSugar.swift */; };
 		99FFA2C124431035002DBD9C /* DatabaseScripts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2C024431035002DBD9C /* DatabaseScripts.swift */; };
@@ -47,6 +49,7 @@
 		9963479C243F06890095BCF1 /* VotingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingVC.swift; sourceTree = "<group>"; };
 		9963479E243F06D10095BCF1 /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
 		996347A0243F0BD90095BCF1 /* VotingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingCell.swift; sourceTree = "<group>"; };
+		99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
 		99E25F202441C56600D9446C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99FFA2BE244301D7002DBD9C /* CombineSugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineSugar.swift; sourceTree = "<group>"; };
 		99FFA2C024431035002DBD9C /* DatabaseScripts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseScripts.swift; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */,
+				99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */,
 				99298529243C7B7200F14364 /* Stevia in Frameworks */,
 				99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */,
 				5E1AABCD616444C39F84AF77 /* Pods_Eurovision2020.framework in Frameworks */,
@@ -117,12 +121,12 @@
 			children = (
 				99298513243C632200F14364 /* AppDelegate.swift */,
 				99FFA2CC24431174002DBD9C /* FirebaseImplementation.swift */,
-				99B60F76244345D200C1FA44 /* Welcome */,
-				99B60F7524433B8D00C1FA44 /* Core */,
 				99FFA2C224431091002DBD9C /* Phone Validation */,
 				99FFA2C32443109A002DBD9C /* Voting */,
 				99FFA2C4244310A5002DBD9C /* Summary */,
 				99FFA2C5244310B6002DBD9C /* Helpers */,
+				99B60F7524433B8D00C1FA44 /* Core */,
+				99B60F76244345D200C1FA44 /* Resources */,
 				9929851C243C632300F14364 /* Assets.xcassets */,
 				9929851E243C632300F14364 /* LaunchScreen.storyboard */,
 				99298521243C632300F14364 /* Info.plist */,
@@ -141,11 +145,12 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		99B60F76244345D200C1FA44 /* Welcome */ = {
+		99B60F76244345D200C1FA44 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */,
 			);
-			path = Welcome;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		99FFA2C224431091002DBD9C /* Phone Validation */ = {
@@ -207,6 +212,7 @@
 			packageProductDependencies = (
 				99298528243C7B7200F14364 /* Stevia */,
 				99634798243E36500095BCF1 /* KeyboardLayoutGuide */,
+				99B60F782443472100C1FA44 /* PhoneNumberKit */,
 			);
 			productName = Eurovision2020;
 			productReference = 99298510243C632200F14364 /* Eurovision2020.app */;
@@ -239,6 +245,7 @@
 			packageReferences = (
 				99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */,
 				99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */,
+				99B60F772443472100C1FA44 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 			);
 			productRefGroup = 99298511243C632200F14364 /* Products */;
 			projectDirPath = "";
@@ -254,6 +261,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99B60F7B2443475D00C1FA44 /* PhoneNumberMetadata.json in Resources */,
 				99298520243C632300F14364 /* LaunchScreen.storyboard in Resources */,
 				9929851D243C632300F14364 /* Assets.xcassets in Resources */,
 				99E25F212441C56600D9446C /* GoogleService-Info.plist in Resources */,
@@ -564,6 +572,14 @@
 				version = 1.7.0;
 			};
 		};
+		99B60F772443472100C1FA44 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit";
+			requirement = {
+				kind = exactVersion;
+				version = 3.2.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -576,6 +592,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */;
 			productName = KeyboardLayoutGuide;
+		};
+		99B60F782443472100C1FA44 /* PhoneNumberKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 99B60F772443472100C1FA44 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */;
+			productName = PhoneNumberKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

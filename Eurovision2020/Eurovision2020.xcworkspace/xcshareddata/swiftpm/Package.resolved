@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "PhoneNumberKit",
+        "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit",
+        "state": {
+          "branch": null,
+          "revision": "5c8c906036dd44d0ac6d721c5fd0bf5602d1ff0e",
+          "version": "3.2.0"
+        }
+      },
+      {
         "package": "Stevia",
         "repositoryURL": "https://github.com/freshOS/Stevia.git",
         "state": {
