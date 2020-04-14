@@ -8,8 +8,7 @@
 
 import Foundation
 
-struct Country {
-    static var countries = [Country]()
+struct Country: Decodable {
     
     public init() {}
     public init(code: String, name: String) {

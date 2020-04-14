@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Networking",
+        "repositoryURL": "https://github.com/freshOS/Networking.git",
+        "state": {
+          "branch": null,
+          "revision": "abdf55d3983e3e2a23ba406997803ac10e5b2e27",
+          "version": "0.1.0"
+        }
+      },
+      {
         "package": "PhoneNumberKit",
         "repositoryURL": "https://github.com/marmelroy/PhoneNumberKit",
         "state": {

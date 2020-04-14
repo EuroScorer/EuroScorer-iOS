@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let fbImplementation = FirebaseImplementation()
         Song.Endpoint.fetchSongs = fbImplementation.fetchSongs
-        Country.Endpoint.fetchCountries = fbImplementation.fetchCountries
         
         FirebaseApp.configure()
         
@@ -54,12 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
 //        Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
-        
-        // Fetch countries on App Start
-        Country.fetchCountries().then { fetchedCountries in
-            Country.countries = fetchedCountries
-        }.sinkAndStore(in: &cancellables)
-        
+    
         return true
     }
 }

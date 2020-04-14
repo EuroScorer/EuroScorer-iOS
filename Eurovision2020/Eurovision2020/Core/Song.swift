@@ -8,11 +8,12 @@
 
 import Foundation
 
-class Song {
+final class Song {
+    
     var identifier = ""
-    var country: Country?
-    var title = ""
     var number = 0
+    var title = ""
+    var country: Country?
     var numberOfVotesGiven = 0
     
     func addVote() {
@@ -21,5 +22,13 @@ class Song {
     
     func removeVote() {
         numberOfVotesGiven = numberOfVotesGiven - 1
+    }
+}
+
+extension Song: Decodable {
+    enum CodingKeys: String, CodingKey {
+        case number = "number"
+        case title = "title"
+        case country = "country"
     }
 }
