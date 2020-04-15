@@ -10,6 +10,7 @@ import UIKit
 import Stevia
 import FlagKit
 import Combine
+//import FirebaseAuth
 
 class VotingVC: UIViewController {
     
@@ -48,6 +49,23 @@ class VotingVC: UIViewController {
         v.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         v.confirm.addTarget(self, action:#selector(confirmTapped), for: .touchUpInside)
         v.tableView.register(VotingCell.self, forCellReuseIdentifier: "VotingCell")
+        
+        
+        
+//        let currentUser = Auth.auth().currentUser
+//        print(currentUser?.providerData)
+//        print(currentUser?.metadata)
+//        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+//            print(idToken)
+//            print(error)
+//          if let error = error {
+//            // Handle error
+//            return;
+//          }
+//
+//          // Send token to your backend via HTTPS
+//          // ...
+//        }
     }
         
     @objc
@@ -104,6 +122,16 @@ extension VotingVC: UITableViewDataSource {
 }
 
 extension VotingVC: VotingCellDelegate {
+    
+    func votingCellDidTapPlay(cell: VotingCell) {
+        if let indexPath = v.tableView.indexPath(for: cell) {
+            let song = songs[indexPath.row]
+            if let url = URL(string: song.link) {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
     
     func votingCellDidRemoveVote(cell: VotingCell) {
         if let indexPath = v.tableView.indexPath(for: cell) {

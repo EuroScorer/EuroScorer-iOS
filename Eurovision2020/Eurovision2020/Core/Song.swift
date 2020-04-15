@@ -13,6 +13,7 @@ final class Song {
     var identifier = ""
     var number = 0
     var title = ""
+    var link = ""
     var country: Country?
     var numberOfVotesGiven = 0
     
@@ -30,5 +31,6 @@ extension Song: Decodable {
         case number = "number"
         case title = "title"
         case country = "country"
+        case link = "link"
     }
 }

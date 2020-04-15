@@ -12,6 +12,7 @@ import Stevia
 protocol VotingCellDelegate: class {
     func votingCellDidAddVote(cell: VotingCell)
     func votingCellDidRemoveVote(cell: VotingCell)
+    func votingCellDidTapPlay(cell: VotingCell)
 }
 
 class VotingCell: UITableViewCell {
@@ -23,6 +24,7 @@ class VotingCell: UITableViewCell {
     let title = UILabel()
     let minusButton = UIButton()
     let plusButton = UIButton()
+    let playButton = UIButton()
     let votes = UILabel()
     
     required init?(coder aDecoder: NSCoder) { super.init(coder: aDecoder)}
@@ -36,6 +38,7 @@ class VotingCell: UITableViewCell {
             title
             minusButton
             plusButton
+            playButton
             votes
         }
         
@@ -54,7 +57,7 @@ class VotingCell: UITableViewCell {
             8
             title-20-|
             8
-            minusButton-plusButton
+            minusButton⁃plusButton⁃40-playButton
             20
         }
         
@@ -68,6 +71,8 @@ class VotingCell: UITableViewCell {
         title.Left == flag.Left
         
         minusButton.Left == flag.Left
+        
+        
         
         backgroundColor = .clear
         number.style { l in
@@ -98,12 +103,15 @@ class VotingCell: UITableViewCell {
         }
         minusButton.style(buttonStyle)
         plusButton.style(buttonStyle)
+        playButton.style(buttonStyle)
         
         minusButton.addTarget(self, action: #selector(didTapMinus), for: .touchUpInside)
         plusButton.addTarget(self, action: #selector(didTapPlus), for: .touchUpInside)
-        
+        playButton.addTarget(self, action: #selector(didTapPlay), for: .touchUpInside)
+
         minusButton.setTitle("-", for: .normal)
         plusButton.setTitle("+", for: .normal)
+        playButton.setTitle("▶︎", for: .normal)
     }
     
     @objc
@@ -114,5 +122,10 @@ class VotingCell: UITableViewCell {
     @objc
     func didTapPlus() {
         delegate?.votingCellDidAddVote(cell: self)
+    }
+    
+    @objc
+    func didTapPlay() {
+        delegate?.votingCellDidTapPlay(cell: self)
     }
 }
