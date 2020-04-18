@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let fbImplementation = FirebaseImplementation()
         Song.Endpoint.fetchSongs = fbImplementation.fetchSongs
+        Vote.Endpoint.sendVotes = fbImplementation.sendVotes
         
         FirebaseApp.configure()
         

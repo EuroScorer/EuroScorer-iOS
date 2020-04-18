@@ -25,8 +25,3 @@ class SummaryView: UIView {
 
     }
 }
-
-
-struct Vote {
-    let user: User
-}

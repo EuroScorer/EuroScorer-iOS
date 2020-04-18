@@ -19,4 +19,3 @@ extension Song {
         Song.Endpoint.fetchSongs!()
     }
 }
-

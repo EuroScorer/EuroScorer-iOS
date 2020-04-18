@@ -10,7 +10,6 @@ import UIKit
 import Stevia
 import FlagKit
 import Combine
-//import FirebaseAuth
 
 class VotingVC: UIViewController {
     
@@ -49,23 +48,6 @@ class VotingVC: UIViewController {
         v.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         v.confirm.addTarget(self, action:#selector(confirmTapped), for: .touchUpInside)
         v.tableView.register(VotingCell.self, forCellReuseIdentifier: "VotingCell")
-        
-        
-        
-//        let currentUser = Auth.auth().currentUser
-//        print(currentUser?.providerData)
-//        print(currentUser?.metadata)
-//        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-//            print(idToken)
-//            print(error)
-//          if let error = error {
-//            // Handle error
-//            return;
-//          }
-//
-//          // Send token to your backend via HTTPS
-//          // ...
-//        }
     }
         
     @objc
@@ -90,7 +72,16 @@ class VotingVC: UIViewController {
     
     @objc
     func confirmTapped() {
-        navigationController?.pushViewController(SummaryVC(), animated: true)
+        let votes = ["FR", "GB", "RU", "AL", "CH", "IS", "FR", "IS", "AU", "AU",
+                     "FR", "GB", "RU", "AL", "CH", "IS", "FR", "IS", "AU", "AU"
+        ]
+        Vote.sendVotes(votes).then {
+            print("Votes sent")
+        }.onError { error in
+            print(error)
+        }.sinkAndStore(in: &cancellables)
+        
+//        navigationController?.pushViewController(SummaryVC(), animated: true)
     }
 }
 
@@ -131,7 +122,6 @@ extension VotingVC: VotingCellDelegate {
             }
         }
     }
-    
     
     func votingCellDidRemoveVote(cell: VotingCell) {
         if let indexPath = v.tableView.indexPath(for: cell) {

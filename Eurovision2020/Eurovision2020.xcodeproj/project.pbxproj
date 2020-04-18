@@ -22,6 +22,8 @@
 		9963479D243F06890095BCF1 /* VotingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479C243F06890095BCF1 /* VotingVC.swift */; };
 		9963479F243F06D10095BCF1 /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479E243F06D10095BCF1 /* VotingView.swift */; };
 		996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347A0243F0BD90095BCF1 /* VotingCell.swift */; };
+		99A285932448506900344D5B /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A285922448506900344D5B /* Vote.swift */; };
+		99A285952448507500344D5B /* Vote+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A285942448507500344D5B /* Vote+UseCases.swift */; };
 		99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B60F782443472100C1FA44 /* PhoneNumberKit */; };
 		99B60F7B2443475D00C1FA44 /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */; };
 		99B60F7D2443B99800C1FA44 /* BlurredBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */; };
@@ -50,6 +52,8 @@
 		9963479C243F06890095BCF1 /* VotingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingVC.swift; sourceTree = "<group>"; };
 		9963479E243F06D10095BCF1 /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
 		996347A0243F0BD90095BCF1 /* VotingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingCell.swift; sourceTree = "<group>"; };
+		99A285922448506900344D5B /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
+		99A285942448507500344D5B /* Vote+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vote+UseCases.swift"; sourceTree = "<group>"; };
 		99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
 		99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundView.swift; sourceTree = "<group>"; };
 		99E25F202441C56600D9446C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 				99FFA2C6244310E5002DBD9C /* Country.swift */,
 				99FFA2C8244310F9002DBD9C /* Song.swift */,
 				99FFA2CA2443111C002DBD9C /* Song+UseCases.swift */,
+				99A285922448506900344D5B /* Vote.swift */,
+				99A285942448507500344D5B /* Vote+UseCases.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -343,8 +349,10 @@
 				99FFA2CD24431174002DBD9C /* FirebaseImplementation.swift in Sources */,
 				99B60F7D2443B99800C1FA44 /* BlurredBackgroundView.swift in Sources */,
 				99FFA2C9244310F9002DBD9C /* Song.swift in Sources */,
+				99A285932448506900344D5B /* Vote.swift in Sources */,
 				99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */,
 				99FFA2C124431035002DBD9C /* DatabaseScripts.swift in Sources */,
+				99A285952448507500344D5B /* Vote+UseCases.swift in Sources */,
 				99FFA2CB2443111C002DBD9C /* Song+UseCases.swift in Sources */,
 				9963479F243F06D10095BCF1 /* VotingView.swift in Sources */,
 				9963479B243E36A50095BCF1 /* PhoneNumberValidationView.swift in Sources */,
@@ -493,7 +501,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -519,7 +527,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
