@@ -10,7 +10,7 @@ https://github.com/Eurovision2020/Documentation/blob/master/README.md
 ## Time Spent
 
 ### iOS app
-~ 13h
+~ 15h
 
 ### Backend
-~ 3h
+~ 10h
