@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5E1AABCD616444C39F84AF77 /* Pods_Eurovision2020.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8F67B4E9DA075C51D4D149B /* Pods_Eurovision2020.framework */; };
 		990E8E3E244612AB002A5B62 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 990E8E3D244612AB002A5B62 /* Networking */; };
 		99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99112B8A243F94600067CF2D /* FlagKit.framework */; };
 		99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8C243F9CAD0067CF2D /* SummaryVC.swift */; };
@@ -17,6 +16,26 @@
 		9929851D243C632300F14364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9929851C243C632300F14364 /* Assets.xcassets */; };
 		99298520243C632300F14364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9929851E243C632300F14364 /* LaunchScreen.storyboard */; };
 		99298529243C7B7200F14364 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = 99298528243C7B7200F14364 /* Stevia */; };
+		9953E260244AF65000EF51F5 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E25F244AF65000EF51F5 /* FirebaseAnalytics.framework */; };
+		9953E262244AF65C00EF51F5 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E261244AF65C00EF51F5 /* FirebaseAuth.framework */; };
+		9953E263244AF66A00EF51F5 /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E25A244AF62900EF51F5 /* FirebaseFirestore.framework */; };
+		9953E264244AF68800EF51F5 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E25C244AF63100EF51F5 /* FirebaseCore.framework */; };
+		9953E266244AF6A500EF51F5 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E265244AF6A500EF51F5 /* FirebaseCoreDiagnostics.framework */; };
+		9953E276244AF71500EF51F5 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E267244AF71400EF51F5 /* FIRAnalyticsConnector.framework */; };
+		9953E277244AF71500EF51F5 /* BoringSSL-GRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E268244AF71400EF51F5 /* BoringSSL-GRPC.framework */; };
+		9953E278244AF71500EF51F5 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E269244AF71400EF51F5 /* GoogleDataTransport.framework */; };
+		9953E279244AF71500EF51F5 /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26A244AF71400EF51F5 /* PromisesObjC.framework */; };
+		9953E27A244AF71500EF51F5 /* gRPC-Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26B244AF71500EF51F5 /* gRPC-Core.framework */; };
+		9953E27B244AF71500EF51F5 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26C244AF71500EF51F5 /* leveldb-library.framework */; };
+		9953E27C244AF71500EF51F5 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26D244AF71500EF51F5 /* Firebase.framework */; };
+		9953E27D244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26E244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework */; };
+		9953E27E244AF71500EF51F5 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26F244AF71500EF51F5 /* GoogleAppMeasurement.framework */; };
+		9953E27F244AF71500EF51F5 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E270244AF71500EF51F5 /* GTMSessionFetcher.framework */; };
+		9953E280244AF71500EF51F5 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E271244AF71500EF51F5 /* GoogleUtilities.framework */; };
+		9953E281244AF71500EF51F5 /* abseil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E272244AF71500EF51F5 /* abseil.framework */; };
+		9953E282244AF71500EF51F5 /* gRPC-C++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E273244AF71500EF51F5 /* gRPC-C++.framework */; };
+		9953E283244AF71500EF51F5 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E274244AF71500EF51F5 /* nanopb.framework */; };
+		9953E284244AF71500EF51F5 /* FirebaseInstallations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E275244AF71500EF51F5 /* FirebaseInstallations.framework */; };
 		99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */ = {isa = PBXBuildFile; productRef = 99634798243E36500095BCF1 /* KeyboardLayoutGuide */; };
 		9963479B243E36A50095BCF1 /* PhoneNumberValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479A243E36A50095BCF1 /* PhoneNumberValidationView.swift */; };
 		9963479D243F06890095BCF1 /* VotingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479C243F06890095BCF1 /* VotingVC.swift */; };
@@ -37,7 +56,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3F0EA228B16E3A9BD1043BED /* Pods-Eurovision2020.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurovision2020.debug.xcconfig"; path = "Target Support Files/Pods-Eurovision2020/Pods-Eurovision2020.debug.xcconfig"; sourceTree = "<group>"; };
 		99112B88243F93C90067CF2D /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = ../Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
 		99112B8A243F94600067CF2D /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
 		99112B8C243F9CAD0067CF2D /* SummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
@@ -48,6 +66,26 @@
 		9929851C243C632300F14364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9929851F243C632300F14364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99298521243C632300F14364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9953E25A244AF62900EF51F5 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseFirestore.framework; path = Carthage/Build/iOS/FirebaseFirestore.framework; sourceTree = "<group>"; };
+		9953E25C244AF63100EF51F5 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
+		9953E25F244AF65000EF51F5 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
+		9953E261244AF65C00EF51F5 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Carthage/Build/iOS/FirebaseAuth.framework; sourceTree = "<group>"; };
+		9953E265244AF6A500EF51F5 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Carthage/Build/iOS/FirebaseCoreDiagnostics.framework; sourceTree = "<group>"; };
+		9953E267244AF71400EF51F5 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Carthage/Build/iOS/FIRAnalyticsConnector.framework; sourceTree = "<group>"; };
+		9953E268244AF71400EF51F5 /* BoringSSL-GRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BoringSSL-GRPC.framework"; path = "Carthage/Build/iOS/BoringSSL-GRPC.framework"; sourceTree = "<group>"; };
+		9953E269244AF71400EF51F5 /* GoogleDataTransport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransport.framework; path = Carthage/Build/iOS/GoogleDataTransport.framework; sourceTree = "<group>"; };
+		9953E26A244AF71400EF51F5 /* PromisesObjC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromisesObjC.framework; path = Carthage/Build/iOS/PromisesObjC.framework; sourceTree = "<group>"; };
+		9953E26B244AF71500EF51F5 /* gRPC-Core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-Core.framework"; path = "Carthage/Build/iOS/gRPC-Core.framework"; sourceTree = "<group>"; };
+		9953E26C244AF71500EF51F5 /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Carthage/Build/iOS/leveldb-library.framework"; sourceTree = "<group>"; };
+		9953E26D244AF71500EF51F5 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = "<group>"; };
+		9953E26E244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleDataTransportCCTSupport.framework; path = Carthage/Build/iOS/GoogleDataTransportCCTSupport.framework; sourceTree = "<group>"; };
+		9953E26F244AF71500EF51F5 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = "<group>"; };
+		9953E270244AF71500EF51F5 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = "<group>"; };
+		9953E271244AF71500EF51F5 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Carthage/Build/iOS/GoogleUtilities.framework; sourceTree = "<group>"; };
+		9953E272244AF71500EF51F5 /* abseil.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = abseil.framework; path = Carthage/Build/iOS/abseil.framework; sourceTree = "<group>"; };
+		9953E273244AF71500EF51F5 /* gRPC-C++.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-C++.framework"; path = "Carthage/Build/iOS/gRPC-C++.framework"; sourceTree = "<group>"; };
+		9953E274244AF71500EF51F5 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = "<group>"; };
+		9953E275244AF71500EF51F5 /* FirebaseInstallations.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstallations.framework; path = Carthage/Build/iOS/FirebaseInstallations.framework; sourceTree = "<group>"; };
 		9963479A243E36A50095BCF1 /* PhoneNumberValidationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberValidationView.swift; sourceTree = "<group>"; };
 		9963479C243F06890095BCF1 /* VotingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingVC.swift; sourceTree = "<group>"; };
 		9963479E243F06D10095BCF1 /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
@@ -63,8 +101,6 @@
 		99FFA2C8244310F9002DBD9C /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		99FFA2CA2443111C002DBD9C /* Song+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+UseCases.swift"; sourceTree = "<group>"; };
 		99FFA2CC24431174002DBD9C /* FirebaseImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseImplementation.swift; sourceTree = "<group>"; };
-		C8F67B4E9DA075C51D4D149B /* Pods_Eurovision2020.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eurovision2020.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F4AB9607EED72B90F8705FB3 /* Pods-Eurovision2020.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eurovision2020.release.xcconfig"; path = "Target Support Files/Pods-Eurovision2020/Pods-Eurovision2020.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,29 +112,58 @@
 				99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */,
 				99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */,
 				99298529243C7B7200F14364 /* Stevia in Frameworks */,
+				9953E276244AF71500EF51F5 /* FIRAnalyticsConnector.framework in Frameworks */,
+				9953E277244AF71500EF51F5 /* BoringSSL-GRPC.framework in Frameworks */,
+				9953E278244AF71500EF51F5 /* GoogleDataTransport.framework in Frameworks */,
+				9953E279244AF71500EF51F5 /* PromisesObjC.framework in Frameworks */,
+				9953E27A244AF71500EF51F5 /* gRPC-Core.framework in Frameworks */,
+				9953E27B244AF71500EF51F5 /* leveldb-library.framework in Frameworks */,
+				9953E27C244AF71500EF51F5 /* Firebase.framework in Frameworks */,
+				9953E27D244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
+				9953E27E244AF71500EF51F5 /* GoogleAppMeasurement.framework in Frameworks */,
+				9953E27F244AF71500EF51F5 /* GTMSessionFetcher.framework in Frameworks */,
+				9953E280244AF71500EF51F5 /* GoogleUtilities.framework in Frameworks */,
+				9953E281244AF71500EF51F5 /* abseil.framework in Frameworks */,
+				9953E282244AF71500EF51F5 /* gRPC-C++.framework in Frameworks */,
+				9953E283244AF71500EF51F5 /* nanopb.framework in Frameworks */,
+				9953E284244AF71500EF51F5 /* FirebaseInstallations.framework in Frameworks */,
+				9953E260244AF65000EF51F5 /* FirebaseAnalytics.framework in Frameworks */,
+				9953E262244AF65C00EF51F5 /* FirebaseAuth.framework in Frameworks */,
+				9953E264244AF68800EF51F5 /* FirebaseCore.framework in Frameworks */,
+				9953E266244AF6A500EF51F5 /* FirebaseCoreDiagnostics.framework in Frameworks */,
+				9953E263244AF66A00EF51F5 /* FirebaseFirestore.framework in Frameworks */,
 				99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */,
-				5E1AABCD616444C39F84AF77 /* Pods_Eurovision2020.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9217D520BC4265709AD7612C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3F0EA228B16E3A9BD1043BED /* Pods-Eurovision2020.debug.xcconfig */,
-				F4AB9607EED72B90F8705FB3 /* Pods-Eurovision2020.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		99112B85243F92B70067CF2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9953E272244AF71500EF51F5 /* abseil.framework */,
+				9953E268244AF71400EF51F5 /* BoringSSL-GRPC.framework */,
+				9953E267244AF71400EF51F5 /* FIRAnalyticsConnector.framework */,
+				9953E26D244AF71500EF51F5 /* Firebase.framework */,
+				9953E275244AF71500EF51F5 /* FirebaseInstallations.framework */,
+				9953E26F244AF71500EF51F5 /* GoogleAppMeasurement.framework */,
+				9953E269244AF71400EF51F5 /* GoogleDataTransport.framework */,
+				9953E26E244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework */,
+				9953E271244AF71500EF51F5 /* GoogleUtilities.framework */,
+				9953E273244AF71500EF51F5 /* gRPC-C++.framework */,
+				9953E26B244AF71500EF51F5 /* gRPC-Core.framework */,
+				9953E270244AF71500EF51F5 /* GTMSessionFetcher.framework */,
+				9953E26C244AF71500EF51F5 /* leveldb-library.framework */,
+				9953E274244AF71500EF51F5 /* nanopb.framework */,
+				9953E26A244AF71400EF51F5 /* PromisesObjC.framework */,
+				9953E265244AF6A500EF51F5 /* FirebaseCoreDiagnostics.framework */,
+				9953E261244AF65C00EF51F5 /* FirebaseAuth.framework */,
+				9953E25F244AF65000EF51F5 /* FirebaseAnalytics.framework */,
+				9953E25C244AF63100EF51F5 /* FirebaseCore.framework */,
+				9953E25A244AF62900EF51F5 /* FirebaseFirestore.framework */,
 				99112B8A243F94600067CF2D /* FlagKit.framework */,
 				99112B88243F93C90067CF2D /* FlagKit.framework */,
-				C8F67B4E9DA075C51D4D149B /* Pods_Eurovision2020.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -110,7 +175,6 @@
 				99298512243C632200F14364 /* Eurovision2020 */,
 				99298511243C632200F14364 /* Products */,
 				99112B85243F92B70067CF2D /* Frameworks */,
-				9217D520BC4265709AD7612C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -205,12 +269,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 99298524243C632300F14364 /* Build configuration list for PBXNativeTarget "Eurovision2020" */;
 			buildPhases = (
-				D49791B1B15EA762720CBC2A /* [CP] Check Pods Manifest.lock */,
 				9929850C243C632200F14364 /* Sources */,
 				9929850D243C632200F14364 /* Frameworks */,
 				9929850E243C632200F14364 /* Resources */,
 				99112B84243F924E0067CF2D /* ShellScript */,
-				086666CEFE2E5AEBF28A1735 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -281,23 +343,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		086666CEFE2E5AEBF28A1735 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Eurovision2020/Pods-Eurovision2020-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Eurovision2020/Pods-Eurovision2020-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Eurovision2020/Pods-Eurovision2020-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		99112B84243F924E0067CF2D /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -316,28 +361,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-		D49791B1B15EA762720CBC2A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Eurovision2020-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -496,7 +519,6 @@
 		};
 		99298525243C632300F14364 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3F0EA228B16E3A9BD1043BED /* Pods-Eurovision2020.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -512,6 +534,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marsacprod.eurovision2020;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -522,7 +545,6 @@
 		};
 		99298526243C632300F14364 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F4AB9607EED72B90F8705FB3 /* Pods-Eurovision2020.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -538,6 +560,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marsacprod.eurovision2020;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

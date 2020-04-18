@@ -1,1 +1,4 @@
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAnalyticsBinary.json" "6.22.0"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseAuthBinary.json" "6.22.0"
+binary "https://dl.google.com/dl/firebase/ios/carthage/FirebaseFirestoreBinary.json" "6.22.0"
 github "madebybowtie/FlagKit" "v2.2"
