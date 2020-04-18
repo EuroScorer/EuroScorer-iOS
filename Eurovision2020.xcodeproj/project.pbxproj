@@ -27,7 +27,6 @@
 		9953E279244AF71500EF51F5 /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26A244AF71400EF51F5 /* PromisesObjC.framework */; };
 		9953E27A244AF71500EF51F5 /* gRPC-Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26B244AF71500EF51F5 /* gRPC-Core.framework */; };
 		9953E27B244AF71500EF51F5 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26C244AF71500EF51F5 /* leveldb-library.framework */; };
-		9953E27C244AF71500EF51F5 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26D244AF71500EF51F5 /* Firebase.framework */; };
 		9953E27D244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26E244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework */; };
 		9953E27E244AF71500EF51F5 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26F244AF71500EF51F5 /* GoogleAppMeasurement.framework */; };
 		9953E27F244AF71500EF51F5 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E270244AF71500EF51F5 /* GTMSessionFetcher.framework */; };
@@ -118,7 +117,6 @@
 				9953E279244AF71500EF51F5 /* PromisesObjC.framework in Frameworks */,
 				9953E27A244AF71500EF51F5 /* gRPC-Core.framework in Frameworks */,
 				9953E27B244AF71500EF51F5 /* leveldb-library.framework in Frameworks */,
-				9953E27C244AF71500EF51F5 /* Firebase.framework in Frameworks */,
 				9953E27D244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
 				9953E27E244AF71500EF51F5 /* GoogleAppMeasurement.framework in Frameworks */,
 				9953E27F244AF71500EF51F5 /* GTMSessionFetcher.framework in Frameworks */,
