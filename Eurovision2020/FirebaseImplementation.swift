@@ -14,38 +14,29 @@ import FirebaseAuth
 
 class FirebaseImplementation: NetworkingService {
     
-    var cancellables = Set<AnyCancellable>()
-    
-    var network: NetworkingClient = {
-        var client = NetworkingClient(baseURL: "https://us-central1-eurovision2020-ea486.cloudfunctions.net/api/v1")
-        client.logLevels = .debug
-        return client
-    }()
+    var network = NetworkingClient(baseURL: "https://us-central1-eurovision2020-ea486.cloudfunctions.net/api/v1")
     
     func fetchSongs() -> AnyPublisher<[Song], Error> {
         get("/songs")
     }
     
     func sendVotes(_ votes:[String]) -> AnyPublisher<Void, Error> {
-        
-        return Future<Void, Error> { promise in
-            let currentUser = Auth.auth().currentUser
-            currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-                print(idToken)
-                print(error)
+        fetchIdToken().then { [unowned self] idToken in
+            self.network.headers["Authorization"] = idToken
+            return self.network.post("/vote", params: ["votes": votes])
+        }.eraseToAnyPublisher()
+    }
+    
+    private func fetchIdToken() -> Future<String, Error> {
+        Future<String, Error> { promise in
+            Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
                 if let error = error {
                     promise(.failure(error))
-                    return
+                } else if let idToken = idToken {
+                    promise(.success(idToken))
                 }
-                self.network.headers["Authorization"] = idToken
-                self.network.post("/vote", params: ["votes": votes]).then {
-                    print("OK")
-                    promise(.success(()))
-                }.onError { error in
-                    promise(.failure(error))
-                }.sinkAndStore(in: &self.cancellables)
             }
-        }.eraseToAnyPublisher()
+        }
     }
 }
 
