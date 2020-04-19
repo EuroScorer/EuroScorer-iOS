@@ -147,7 +147,7 @@ extension VotingVC: VotingCellDelegate {
     }
     
     func playHapticsFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
-        let generator = UIImpactFeedbackGenerator(style: .medium)
+        let generator = UIImpactFeedbackGenerator(style: style)
         generator.impactOccurred()
     }
 }
