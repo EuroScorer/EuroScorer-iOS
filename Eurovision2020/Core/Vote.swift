@@ -8,6 +8,4 @@
 
 import Foundation
 
-struct Vote {
-    let user: User
-}
+struct Vote { }
