@@ -129,7 +129,7 @@ extension VotingVC: VotingCellDelegate {
         let song = songs[indexPath.row]
         if let index = votes.firstIndex(of: song.country!.code) {
             votes.remove(at: index)
-            v.tableView.reloadRows(at: [indexPath], with: .none)
+            cell.votes.text = "\(numberOfVotesFor(song: song)) votes"
             refreshVotes()
             playHapticsFeedback(style: .soft)
         }
@@ -140,7 +140,7 @@ extension VotingVC: VotingCellDelegate {
         let song = songs[indexPath.row]
         if canVote() {
             addVoteFor(song: song)
-            v.tableView.reloadRows(at: [indexPath], with: .none)
+            cell.votes.text = "\(numberOfVotesFor(song: song)) votes"
             refreshVotes()
             playHapticsFeedback(style: .medium)
         }
