@@ -13,15 +13,15 @@ import PhoneNumberKit
 
 class PhoneNumberValidationView: UIView {
     
-    var blurredEffectView: UIVisualEffectView!
-    let okButton = UIButton()
+    let blurredbackground = BlurredBackgroundView()
     let phoneNumberBackground = UIView()
     let phoneNumberField = PhoneNumberTextField()
-    let blurredbackground = BlurredBackgroundView()
+    let okButton = UIButton()
     
     convenience init() {
         self.init(frame: .zero)
         
+        // MARK: - View Hieararchy
         subviews {
             blurredbackground
             phoneNumberBackground.subviews {
@@ -29,20 +29,14 @@ class PhoneNumberValidationView: UIView {
             }
             okButton
         }
-    
+
+        // MARK: - Layout
+        |-20-phoneNumberBackground.centerVertically(offset: -100)-20-| ~ 60
+        |-20-phoneNumberField.fillVertically()-20-|
         |-20-okButton-20-| ~ 50
-        
-        phoneNumberBackground.centerVertically(offset: -100)
-        |-20-phoneNumberBackground-20-| ~ 60
-        
-        layout {
-            0
-            |-20-phoneNumberField-20-|
-            0
-        }
-        
         okButton.Bottom == keyboardLayoutGuide.Top - 20
         
+        // MARK: - Style
         phoneNumberBackground.style { v in
             v.backgroundColor = UIColor.black.withAlphaComponent(0.2)
             v.layer.cornerRadius = 10
@@ -50,60 +44,16 @@ class PhoneNumberValidationView: UIView {
         phoneNumberField.style { f in
             f.font = UIFont.systemFont(ofSize: 30, weight: .light)
             f.textColor = .white
-//            f.keyboardType = .phonePad
+            f.withFlag = true
+            f.withPrefix = true
+            f.withExamplePlaceholder = true
+            f.withDefaultPickerUI = true
         }
         okButton.style(Styles.buttonStyle)
-    
-        let attrStr = NSAttributedString(string: " Enter your phone number", attributes: [.foregroundColor: UIColor.white])
-        phoneNumberField.attributedPlaceholder = attrStr
+        
+        // MARK: - Content
+        phoneNumberField.attributedPlaceholder = NSAttributedString(string: " Enter your phone number",
+                                                                    attributes: [.foregroundColor: UIColor.white])
         okButton.setTitle("Validate my phone number", for: .normal)
-        
-        phoneNumberField.withFlag = true
-        phoneNumberField.withPrefix = true
-        phoneNumberField.withExamplePlaceholder = true
-        phoneNumberField.withDefaultPickerUI = true
-    }
-}
-
-
-extension UIButton {
-
-    public func setBackgroundColor(_ color: UIColor, for state: UIControl.State) {
-        let img = UIImage(color: color, size: CGSize(width: 1.0, height: 1.0))
-        setBackgroundImage(img, for: state)
-    }
-}
-
-extension UIImage {
-    public convenience init(color: UIColor, size: CGSize) {
-        
-        var rect = CGRect.zero
-        rect.size = size
-        
-        UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)
-        color.setFill()
-        UIRectFill(rect)
-        
-        let uiImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        
-        if let cgImage = uiImage?.cgImage {
-            self.init(cgImage: cgImage)
-        } else {
-            self.init()
-        }
-    }
-}
-
-
-struct Styles {
-    static func buttonStyle(b: UIButton) {
-        let blue = UIColor(red: 10/255.0, green: 16/255.0, blue: 72/255.0, alpha: 1)
-        b.setBackgroundColor(blue, for: .normal)
-        b.layer.cornerRadius = 5
-        b.clipsToBounds = true
-        b.layer.borderColor = UIColor.white.cgColor
-        b.layer.borderWidth = 0.5
-        b.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
 }

@@ -40,6 +40,8 @@
 		9963479D243F06890095BCF1 /* VotingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479C243F06890095BCF1 /* VotingVC.swift */; };
 		9963479F243F06D10095BCF1 /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479E243F06D10095BCF1 /* VotingView.swift */; };
 		996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347A0243F0BD90095BCF1 /* VotingCell.swift */; };
+		99652F88244C7219008911CE /* UIButton+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99652F87244C7219008911CE /* UIButton+BackgroundColor.swift */; };
+		99652F8B244C7257008911CE /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99652F8A244C7257008911CE /* Styles.swift */; };
 		99A285932448506900344D5B /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A285922448506900344D5B /* Vote.swift */; };
 		99A285952448507500344D5B /* Vote+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A285942448507500344D5B /* Vote+UseCases.swift */; };
 		99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B60F782443472100C1FA44 /* PhoneNumberKit */; };
@@ -89,6 +91,8 @@
 		9963479C243F06890095BCF1 /* VotingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingVC.swift; sourceTree = "<group>"; };
 		9963479E243F06D10095BCF1 /* VotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingView.swift; sourceTree = "<group>"; };
 		996347A0243F0BD90095BCF1 /* VotingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingCell.swift; sourceTree = "<group>"; };
+		99652F87244C7219008911CE /* UIButton+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+BackgroundColor.swift"; sourceTree = "<group>"; };
+		99652F8A244C7257008911CE /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		99A285922448506900344D5B /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		99A285942448507500344D5B /* Vote+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vote+UseCases.swift"; sourceTree = "<group>"; };
 		99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
@@ -192,6 +196,7 @@
 				99FFA2C224431091002DBD9C /* Phone Validation */,
 				99FFA2C32443109A002DBD9C /* Voting */,
 				99FFA2C4244310A5002DBD9C /* Summary */,
+				99652F89244C723F008911CE /* Common */,
 				99FFA2C5244310B6002DBD9C /* Helpers */,
 				99B60F7524433B8D00C1FA44 /* Core */,
 				99B60F76244345D200C1FA44 /* Resources */,
@@ -200,6 +205,14 @@
 				99298521243C632300F14364 /* Info.plist */,
 			);
 			path = Eurovision2020;
+			sourceTree = "<group>";
+		};
+		99652F89244C723F008911CE /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				99652F8A244C7257008911CE /* Styles.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		99B60F7524433B8D00C1FA44 /* Core */ = {
@@ -256,6 +269,7 @@
 				99FFA2C024431035002DBD9C /* DatabaseScripts.swift */,
 				99FFA2BE244301D7002DBD9C /* CombineSugar.swift */,
 				99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */,
+				99652F87244C7219008911CE /* UIButton+BackgroundColor.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -378,7 +392,9 @@
 				9963479F243F06D10095BCF1 /* VotingView.swift in Sources */,
 				9963479B243E36A50095BCF1 /* PhoneNumberValidationView.swift in Sources */,
 				9963479D243F06890095BCF1 /* VotingVC.swift in Sources */,
+				99652F88244C7219008911CE /* UIButton+BackgroundColor.swift in Sources */,
 				99298518243C632200F14364 /* PhoneNumberValidationVC.swift in Sources */,
+				99652F8B244C7257008911CE /* Styles.swift in Sources */,
 				99FFA2BF244301D7002DBD9C /* CombineSugar.swift in Sources */,
 				99FFA2C7244310E5002DBD9C /* Country.swift in Sources */,
 				99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */,
