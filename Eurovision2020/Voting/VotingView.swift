@@ -11,29 +11,24 @@ import Stevia
 
 class VotingView: UIView {
     
+    let blurredbackground = BlurredBackgroundView()
     let refreshControl = UIRefreshControl()
     let tableView = UITableView()
+    let recapContainer = UIView()
+    let hairline = UIView()
     let votesLeft = UILabel()
     let votesGiven = UILabel()
     let confirm = UIButton()
     
     convenience init() {
         self.init(frame: .zero)
-        backgroundColor = .blue
         
-        let blurredbackground = BlurredBackgroundView()
-        let recapContainer = UIView()
-        let votesTitle = UILabel()
-        
-        
-        let hairline = UIView()
-        
+        // MARK: - View Hierarchy
         subviews {
             blurredbackground
             tableView
             recapContainer.subviews {
                 hairline
-                votesTitle
                 votesLeft
                 votesGiven
                 confirm
@@ -41,45 +36,33 @@ class VotingView: UIView {
         }
         tableView.addSubview(refreshControl)
         
+        // MARK: - Layout
         blurredbackground.fillContainer()
-
-    
         layout {
             0
             |tableView|
             |recapContainer|
         }
-        
         recapContainer.Bottom == safeAreaLayoutGuide.Bottom
-        
-        layout {
-            0
-            |hairline| ~ 0.5
-        }
-        
-        
+        hairline.top(0).height(0.5).fillHorizontally()
         layout {
             20
-            |-20⁃votesLeft⁃confirm⁃votesGiven⁃20-|
+            |-20⁃votesLeft⁃confirm.centerHorizontally().height(50)⁃votesGiven⁃20-|
             20
         }
-        
-        confirm.centerHorizontally().height(50)
         confirm.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
         
+        // MARK: - Style
         refreshControl.tintColor = .white
-        tableView.backgroundColor = .clear
-        tableView.separatorColor = UIColor.white.withAlphaComponent(0.2)
-        tableView.allowsSelection = false
+        tableView.style { tbv in
+            tbv.backgroundColor = .clear
+            tbv.separatorColor = UIColor.white.withAlphaComponent(0.2)
+            tbv.allowsSelection = false
+            tbv.register(VotingCell.self, forCellReuseIdentifier: "VotingCell")
+            tbv.estimatedRowHeight = 100
+        }
         recapContainer.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-        
         hairline.backgroundColor = UIColor.white.withAlphaComponent(0.3)
-        votesTitle.textColor = .white
-        votesTitle.text = "Spread your votes".uppercased()
-        votesTitle.textAlignment = .center
-        votesTitle.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        votesTitle.isHidden = true
-        
         let textStyle = { (l: UILabel) in
             l.font = .systemFont(ofSize: 20, weight: .semibold)
             l.textColor = .white
@@ -90,6 +73,9 @@ class VotingView: UIView {
         votesGiven.style(textStyle)
         confirm.style(Styles.buttonStyle)
 
+        // MARK: - Content
         confirm.setTitle("Confirm my votes", for: .normal)
+        
+
     }
 }

@@ -31,6 +31,7 @@ class VotingCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
+        // MARK: - View Hieararchy
         subviews {
             number
             country
@@ -42,38 +43,25 @@ class VotingCell: UITableViewCell {
             votes
         }
         
+        // MARK: - Layout
+        number.width(38)
         layout {
             20
-            |-20-number.width(38)
+            |-20-number-20-flag-country
         }
-        
-        number-20-flag-country
-        
-        flag.CenterY == country.CenterY
-                
         layout {
             20
             country
             8
             title-20-|
             8
-            minusButton⁃plusButton⁃40-playButton
+            minusButton-plusButton-32-playButton
             20
         }
-        
-//        alignHorizontally(minusButton, with: plusButton)
-        
-        layout {
-            votes-20-|
-            20
-        }
-        
-        title.Left == flag.Left
-        
-        minusButton.Left == flag.Left
-        
-        
-        
+        align(lefts: flag, title, minusButton)
+        align(bottoms: playButton-(>=8)-votes-20-|)
+    
+        // MARK: - Style
         backgroundColor = .clear
         number.style { l in
             l.textColor = .white
@@ -93,7 +81,6 @@ class VotingCell: UITableViewCell {
             l.textColor = .white
             l.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         }
-        
         let buttonStyle = { (b: UIButton) in
             b.setBackgroundColor(UIColor.white.withAlphaComponent(0.2), for: .normal)
             b.contentEdgeInsets = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
@@ -104,14 +91,16 @@ class VotingCell: UITableViewCell {
         minusButton.style(buttonStyle)
         plusButton.style(buttonStyle)
         playButton.style(buttonStyle)
-        
-        minusButton.addTarget(self, action: #selector(didTapMinus), for: .touchUpInside)
-        plusButton.addTarget(self, action: #selector(didTapPlus), for: .touchUpInside)
-        playButton.addTarget(self, action: #selector(didTapPlay), for: .touchUpInside)
 
+        // MARK: - Content
         minusButton.setTitle("-", for: .normal)
         plusButton.setTitle("+", for: .normal)
         playButton.setTitle("▶︎", for: .normal)
+        
+        // MARK: - Events
+        minusButton.addTarget(self, action: #selector(didTapMinus), for: .touchUpInside)
+        plusButton.addTarget(self, action: #selector(didTapPlus), for: .touchUpInside)
+        playButton.addTarget(self, action: #selector(didTapPlay), for: .touchUpInside)
     }
     
     @objc

@@ -15,56 +15,39 @@ class VotingVC: UIViewController {
     
     var user: User! = nil
     var votes = [String]()
-    
-    convenience init(user: User) {
-        self.init(nibName: nil, bundle: nil)
-        self.user = user
-    }
-    
     var cancellables = Set<AnyCancellable>()
     var songs = [Song]()
     let maxVotes = 20
     
-    var v = VotingView()
-    override func loadView() {
-        view = v
+    let v = VotingView()
+    override func loadView() { view = v }
+    
+    convenience init(user: User) {
+        self.init(nibName: nil, bundle: nil)
+        self.user = user
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         title = "Spread your votes!"
-    
-        self.render()
-        on("INJECTION_BUNDLE_NOTIFICATION") {
-            self.v = VotingView()
-            self.view = self.v
-            self.render()
-        }
-        
-        
-        refresh()
-        v.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        v.refreshControl.addTarget(self, action: #selector(refreshSongs), for: .valueChanged)
         v.confirm.addTarget(self, action:#selector(confirmTapped), for: .touchUpInside)
-        v.tableView.register(VotingCell.self, forCellReuseIdentifier: "VotingCell")
-        v.tableView.estimatedRowHeight = 100
+        v.tableView.dataSource = self
+        refreshSongs()
+        refreshVotes()
     }
         
     @objc
-    func refresh() {
+    func refreshSongs() {
         Song.fetchSongs().then { [unowned self] fetchedSongs in
-            self.songs = fetchedSongs.sorted { $0.number < $1.number }
+            self.songs = fetchedSongs
             self.v.tableView.reloadData()
         }.finally { [unowned self] in
             self.v.refreshControl.endRefreshing()
         }.sinkAndStore(in: &cancellables)
     }
-    
-    func render() {
-        v.tableView.dataSource = self
-        refreshVotes()
-    }
-    
+
     func refreshVotes() {
         v.votesLeft.text = "\(availableVotes())\nLeft"
         v.votesGiven.text = "\(votesGiven())\nGiven"
@@ -79,7 +62,7 @@ class VotingVC: UIViewController {
 extension VotingVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.count
+        songs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

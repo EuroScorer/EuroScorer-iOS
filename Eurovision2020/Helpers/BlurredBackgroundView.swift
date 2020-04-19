@@ -29,7 +29,6 @@ class BlurredBackgroundView: UIView {
         backgroundImage.clipsToBounds = true
         backgroundImage.image = #imageLiteral(resourceName: "background")
         backgroundImage.contentMode = .scaleAspectFill
-        
         blurredEffectView.backgroundColor = UIColor(red: 10/255.0, green: 16/255.0, blue: 72/255.0, alpha: 1).withAlphaComponent(0.7)
     }
 }

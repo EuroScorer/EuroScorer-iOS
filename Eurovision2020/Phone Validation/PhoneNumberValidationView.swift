@@ -21,7 +21,7 @@ class PhoneNumberValidationView: UIView {
     convenience init() {
         self.init(frame: .zero)
         
-        // MARK: - View Hieararchy
+        // MARK: - View Hierarchy
         subviews {
             blurredbackground
             phoneNumberBackground.subviews {
@@ -31,6 +31,7 @@ class PhoneNumberValidationView: UIView {
         }
 
         // MARK: - Layout
+        blurredbackground.fillContainer()
         |-20-phoneNumberBackground.centerVertically(offset: -100)-20-| ~ 60
         |-20-phoneNumberField.fillVertically()-20-|
         |-20-okButton-20-| ~ 50

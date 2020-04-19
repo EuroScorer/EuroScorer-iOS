@@ -8,20 +8,16 @@
 
 import UIKit
 import FirebaseAuth
-import FirebaseFirestore
 import PhoneNumberKit
 
 class PhoneNumberValidationVC: UIViewController {
         
     let phoneNumberKit = PhoneNumberKit()
-    
     var userRegionID: String?
     var userInternationalNumberPhoneNumber: String?
     
-    var v = PhoneNumberValidationView()
-    override func loadView() {
-        view = v
-    }
+    let v = PhoneNumberValidationView()
+    override func loadView() { view = v }
     
     convenience init() {
         self.init(nibName: nil, bundle: nil)
@@ -36,10 +32,6 @@ class PhoneNumberValidationVC: UIViewController {
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
         v.blurredbackground.addGestureRecognizer(tap)
      
-        on("INJECTION_BUNDLE_NOTIFICATION") {
-            self.v = PhoneNumberValidationView()
-            self.view = self.v
-        }
         
         v.okButton.addTarget(self, action: #selector(okTapped), for: .touchUpInside)
         v.phoneNumberField.addTarget(self, action: #selector(phoneNumberChanged), for: .editingChanged)
@@ -52,9 +44,7 @@ class PhoneNumberValidationVC: UIViewController {
     
     @objc
     func phoneNumberChanged() {
-        guard let phoneNumberString = v.phoneNumberField.text else {
-            return
-        }
+        guard let phoneNumberString = v.phoneNumberField.text else { return }
         let phoneNumber = try? phoneNumberKit.parse(phoneNumberString)
         v.okButton.isEnabled = (phoneNumber != nil)
     }
@@ -66,13 +56,6 @@ class PhoneNumberValidationVC: UIViewController {
     
     @objc
     func okTapped() {
-        // Test Code
-//        let user = User(countryCode: "FR", phoneNumber: "XXX")
-//        navigationController?.pushViewController(VotingVC(user: user), animated: true)
-//        return
-        //
-    
-        
         v.okButton.isEnabled = false
         guard let phoneNumberString = v.phoneNumberField.text else {
             v.okButton.isEnabled = true
@@ -92,7 +75,6 @@ class PhoneNumberValidationVC: UIViewController {
         // Start SMS confirmation
         PhoneAuthProvider.provider().verifyPhoneNumber(userInternationalNumberPhoneNumber!, uiDelegate: nil) { [weak self] (verificationID, error) in
             guard let verificationID = verificationID else {
-                print(error)
                 self?.v.okButton.isEnabled = true
                 return
             }
@@ -120,10 +102,6 @@ class PhoneNumberValidationVC: UIViewController {
     func authWith(id: String, code: String) {
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: id, verificationCode: code)
         Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
-            
-            print("authResult \(authResult)")
-            print("error \(error)")
-            
             if let userPhoneNumber = self?.userInternationalNumberPhoneNumber, error == nil {
                 if let regionID = self?.userRegionID {
                     let user = User(countryCode: regionID, phoneNumber: userPhoneNumber)
@@ -133,10 +111,9 @@ class PhoneNumberValidationVC: UIViewController {
                     ud.setValue(userPhoneNumber, forKey: "userPhoneNumber")
                     ud.setValue(regionID, forKey: "userRegionId")
                     ud.synchronize()
-                    
+
                     self?.navigationController?.pushViewController(VotingVC(user: user), animated: true)
-                }
-                    
+                }                    
             }
         }
     }
