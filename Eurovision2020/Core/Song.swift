@@ -15,15 +15,6 @@ final class Song {
     var title = ""
     var link = ""
     var country: Country?
-    var numberOfVotesGiven = 0
-    
-    func addVote() {
-        numberOfVotesGiven = numberOfVotesGiven + 1
-    }
-    
-    func removeVote() {
-        numberOfVotesGiven = numberOfVotesGiven - 1
-    }
 }
 
 extension Song: Decodable {

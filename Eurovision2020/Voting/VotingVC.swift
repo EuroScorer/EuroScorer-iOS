@@ -14,6 +14,7 @@ import Combine
 class VotingVC: UIViewController {
     
     var user: User! = nil
+    var votes = [String]()
     
     convenience init(user: User) {
         self.init(nibName: nil, bundle: nil)
@@ -23,7 +24,6 @@ class VotingVC: UIViewController {
     var cancellables = Set<AnyCancellable>()
     var songs = [Song]()
     let maxVotes = 20
-    var availableVotes = 0
     
     var v = VotingView()
     override func loadView() {
@@ -34,7 +34,6 @@ class VotingVC: UIViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         title = "Spread your votes!"
-        availableVotes = maxVotes
     
         self.render()
         on("INJECTION_BUNDLE_NOTIFICATION") {
@@ -48,6 +47,7 @@ class VotingVC: UIViewController {
         v.refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
         v.confirm.addTarget(self, action:#selector(confirmTapped), for: .touchUpInside)
         v.tableView.register(VotingCell.self, forCellReuseIdentifier: "VotingCell")
+        v.tableView.estimatedRowHeight = 100
     }
         
     @objc
@@ -66,22 +66,13 @@ class VotingVC: UIViewController {
     }
     
     func refreshVotes() {
-        v.votesLeft.text = "\(availableVotes)\nLeft"
-        v.votesGiven.text = "\(maxVotes - availableVotes)\nGiven"
+        v.votesLeft.text = "\(availableVotes())\nLeft"
+        v.votesGiven.text = "\(votesGiven())\nGiven"
     }
     
     @objc
     func confirmTapped() {
-        let votes = ["FR", "GB", "RU", "AL", "CH", "IS", "FR", "IS", "AU", "AU",
-                     "FR", "GB", "RU", "AL", "CH", "IS", "FR", "IS", "AU", "AU"
-        ]
-        Vote.sendVotes(votes).then {
-            print("Votes sent")
-        }.onError { error in
-            print(error)
-        }.sinkAndStore(in: &cancellables)
-        
-//        navigationController?.pushViewController(SummaryVC(), animated: true)
+        navigationController?.pushViewController(SummaryVC(votes: votes), animated: true)
     }
 }
 
@@ -99,7 +90,7 @@ extension VotingVC: UITableViewDataSource {
         let flag = Flag(countryCode: song.country?.code ?? "GB")!
         cell.flag.image = flag.image(style: .roundedRect)
         cell.title.text = song.title
-        cell.votes.text = "\(song.numberOfVotesGiven) votes"
+        cell.votes.text = "\(numberOfVotesFor(song: song)) votes"
         cell.minusButton.isEnabled = !isMyCountry
         cell.minusButton.isHidden = isMyCountry
         cell.plusButton.isEnabled = !isMyCountry
@@ -111,6 +102,33 @@ extension VotingVC: UITableViewDataSource {
         return cell
     }
 }
+
+// MARK: - Votes
+
+extension VotingVC {
+    
+    func numberOfVotesFor(song: Song) -> Int {
+        votes.filter { $0 == song.country?.code }.count
+    }
+    
+    func addVoteFor(song: Song) {
+        votes.append(song.country!.code)
+    }
+    
+    func canVote() -> Bool {
+        votes.count < maxVotes
+    }
+    
+    func availableVotes() -> Int {
+        maxVotes - votes.count
+    }
+    
+    func votesGiven() -> Int {
+        votes.count
+    }
+}
+
+// MARK: - VotingCellDelegate
 
 extension VotingVC: VotingCellDelegate {
     
@@ -124,26 +142,29 @@ extension VotingVC: VotingCellDelegate {
     }
     
     func votingCellDidRemoveVote(cell: VotingCell) {
-        if let indexPath = v.tableView.indexPath(for: cell) {
-            let song = songs[indexPath.row]
-            if availableVotes < maxVotes && song.numberOfVotesGiven > 0 {
-                song.removeVote()
-                availableVotes = availableVotes + 1
-            }
+        guard let indexPath = v.tableView.indexPath(for: cell) else { return }
+        let song = songs[indexPath.row]
+        if let index = votes.firstIndex(of: song.country!.code) {
+            votes.remove(at: index)
+            v.tableView.reloadRows(at: [indexPath], with: .none)
             refreshVotes()
-            v.tableView.reloadData()
+            playHapticsFeedback(style: .soft)
         }
     }
     
     func votingCellDidAddVote(cell: VotingCell) {
-        if let indexPath = v.tableView.indexPath(for: cell) {
-            let song = songs[indexPath.row]
-            if availableVotes > 0 {
-                song.addVote()
-                availableVotes = availableVotes - 1
-            }
+        guard let indexPath = v.tableView.indexPath(for: cell) else { return }
+        let song = songs[indexPath.row]
+        if canVote() {
+            addVoteFor(song: song)
+            v.tableView.reloadRows(at: [indexPath], with: .none)
             refreshVotes()
-            v.tableView.reloadData()
+            playHapticsFeedback(style: .medium)
         }
+    }
+    
+    func playHapticsFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
     }
 }

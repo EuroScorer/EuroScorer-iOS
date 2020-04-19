@@ -52,11 +52,7 @@ class PhoneNumberValidationView: UIView {
             f.textColor = .white
 //            f.keyboardType = .phonePad
         }
-        okButton.style { b in
-            b.setBackgroundColor(.systemRed, for: .normal)//UIColor(red: 160/255.0, green: 21/255.0, blue: 21/255.0, alpha: 1)
-            b.layer.cornerRadius = 5
-            b.clipsToBounds = true
-        }
+        okButton.style(Styles.buttonStyle)
     
         let attrStr = NSAttributedString(string: " Enter your phone number", attributes: [.foregroundColor: UIColor.white])
         phoneNumberField.attributedPlaceholder = attrStr
@@ -96,5 +92,18 @@ extension UIImage {
         } else {
             self.init()
         }
+    }
+}
+
+
+struct Styles {
+    static func buttonStyle(b: UIButton) {
+        let blue = UIColor(red: 10/255.0, green: 16/255.0, blue: 72/255.0, alpha: 1)
+        b.setBackgroundColor(blue, for: .normal)
+        b.layer.cornerRadius = 5
+        b.clipsToBounds = true
+        b.layer.borderColor = UIColor.white.cgColor
+        b.layer.borderWidth = 0.5
+        b.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
     }
 }

@@ -11,17 +11,25 @@ import Stevia
 
 class SummaryView: UIView {
     
+    private let background = BlurredBackgroundView()
+    let button = UIButton()
+    
     convenience init() {
         self.init(frame: .zero)
-        
-        let background = BlurredBackgroundView()
-        
-        
+
         subviews {
             background
+            button
         }
         
         background.fillContainer()
-
+        
+        button.centerHorizontally().height(50)
+        button.Bottom == safeAreaLayoutGuide.Bottom - 20
+        
+        
+        button.style(Styles.buttonStyle)
+        
+        button.setTitle("Send votes", for: .normal)
     }
 }

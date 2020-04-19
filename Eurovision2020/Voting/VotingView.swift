@@ -48,8 +48,9 @@ class VotingView: UIView {
             0
             |tableView|
             |recapContainer|
-            0
         }
+        
+        recapContainer.Bottom == safeAreaLayoutGuide.Bottom
         
         layout {
             0
@@ -87,11 +88,7 @@ class VotingView: UIView {
         }
         votesLeft.style(textStyle)
         votesGiven.style(textStyle)
-        
-        confirm.setBackgroundColor(.systemRed, for: .normal)
-        confirm.layer.cornerRadius = 5
-        confirm.clipsToBounds = true
-        confirm.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        confirm.style(Styles.buttonStyle)
 
         confirm.setTitle("Confirm my votes", for: .normal)
     }
