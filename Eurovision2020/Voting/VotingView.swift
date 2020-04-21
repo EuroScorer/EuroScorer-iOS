@@ -8,6 +8,7 @@
 
 import UIKit
 import Stevia
+import YouTubeiOSPlayerHelper
 
 class VotingView: UIView {
     
@@ -19,6 +20,8 @@ class VotingView: UIView {
     let votesLeft = UILabel()
     let votesGiven = UILabel()
     let confirm = UIButton()
+    let playerView = WKYTPlayerView()
+    var playerViewHeightConstraint: NSLayoutConstraint?
     
     convenience init() {
         self.init(frame: .zero)
@@ -27,6 +30,7 @@ class VotingView: UIView {
         subviews {
             blurredbackground
             tableView
+            playerView
             recapContainer.subviews {
                 hairline
                 votesLeft
@@ -38,19 +42,35 @@ class VotingView: UIView {
         
         // MARK: - Layout
         blurredbackground.fillContainer()
+        playerView.Top == safeAreaLayoutGuide.Top
         layout {
+            |playerView|
             0
             |tableView|
             |recapContainer|
+            0
         }
-        recapContainer.Bottom == safeAreaLayoutGuide.Bottom
+        
         hairline.top(0).height(0.5).fillHorizontally()
         layout {
             20
             |-20⁃votesLeft⁃confirm.centerHorizontally().height(50)⁃votesGiven⁃20-|
-            20
         }
+        
+        votesLeft.Bottom == safeAreaLayoutGuide.Bottom - 0
+        
         confirm.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
+        
+        
+        
+        playerViewHeightConstraint = playerView.Height == 0
+    
+        
+        playerView.layer.shadowColor = UIColor.black.cgColor
+        playerView.layer.shadowOpacity = 1
+        playerView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        
+    
         
         // MARK: - Style
         refreshControl.tintColor = .white
@@ -64,7 +84,7 @@ class VotingView: UIView {
         recapContainer.backgroundColor = UIColor.black.withAlphaComponent(0.2)
         hairline.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         let textStyle = { (l: UILabel) in
-            l.font = .systemFont(ofSize: 20, weight: .semibold)
+            l.font = .systemFont(ofSize: 18, weight: .semibold)
             l.textColor = .white
             l.numberOfLines = 0
             l.textAlignment = .center

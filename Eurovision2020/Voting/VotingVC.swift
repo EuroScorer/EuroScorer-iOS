@@ -10,6 +10,7 @@ import UIKit
 import Stevia
 import FlagKit
 import Combine
+import YouTubeiOSPlayerHelper
 
 class VotingVC: UIViewController {
     
@@ -34,6 +35,7 @@ class VotingVC: UIViewController {
         v.refreshControl.addTarget(self, action: #selector(refreshSongs), for: .valueChanged)
         v.confirm.addTarget(self, action:#selector(confirmTapped), for: .touchUpInside)
         v.tableView.dataSource = self
+        v.playerView.delegate = self
         refreshSongs()
         refreshVotes()
     }
@@ -119,7 +121,7 @@ extension VotingVC: VotingCellDelegate {
         if let indexPath = v.tableView.indexPath(for: cell) {
             let song = songs[indexPath.row]
             if let url = URL(string: song.link) {
-                UIApplication.shared.openURL(url)
+                v.playerView.load(withVideoId: url.lastPathComponent, playerVars: ["playsinline": NSNumber(value: 1)])
             }
         }
     }
@@ -149,5 +151,24 @@ extension VotingVC: VotingCellDelegate {
     func playHapticsFeedback(style: UIImpactFeedbackGenerator.FeedbackStyle) {
         let generator = UIImpactFeedbackGenerator(style: style)
         generator.impactOccurred()
+    }
+}
+
+extension VotingVC: WKYTPlayerViewDelegate {
+    
+    func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
+        print(playerView)
+        playerView.seek(toSeconds: 6, allowSeekAhead: true)
+
+        v.playerViewHeightConstraint?.constant = v.playerView.frame.width * 0.56
+        UIView.animate(withDuration: 0.3) {
+            self.v.layoutIfNeeded()
+        }
+    }
+    
+    func playerViewPreferredInitialLoading(_ playerView: WKYTPlayerView) -> UIView? {
+        let myView = UIView()
+        myView.backgroundColor = .black
+        return myView
     }
 }

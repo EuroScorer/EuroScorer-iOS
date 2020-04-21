@@ -51,15 +51,15 @@ class VotingCell: UITableViewCell {
         }
         layout {
             20
-            country
+            country-(>=8)-votes-20-|
             8
             title-20-|
             8
-            minusButton-plusButton-32-playButton
+            plusButton-minusButton-(>=20)-playButton-20-| ~ 44
             20
         }
-        align(lefts: flag, title, minusButton)
-        align(bottoms: playButton-(>=8)-votes-20-|)
+        align(lefts: flag, title, plusButton)
+//        align(bottoms: playButton-(>=8)-votes-20-|)
     
         // MARK: - Style
         backgroundColor = .clear
@@ -91,11 +91,21 @@ class VotingCell: UITableViewCell {
         minusButton.style(buttonStyle)
         plusButton.style(buttonStyle)
         playButton.style(buttonStyle)
+        playButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
 
         // MARK: - Content
-        minusButton.setTitle("-", for: .normal)
-        plusButton.setTitle("+", for: .normal)
-        playButton.setTitle("▶︎", for: .normal)
+        let conf = UIImage.SymbolConfiguration(weight: UIImage.SymbolWeight.ultraLight)
+        let img = UIImage(systemName: "play.rectangle.fill", withConfiguration: conf)
+        playButton.setImage(img, for: .normal)
+        playButton.tintColor = .white
+        
+        let imgMinus = UIImage(systemName: "hand.thumbsdown")
+        minusButton.setImage(imgMinus, for: .normal)
+        minusButton.tintColor = .white
+        
+        let imgPlus = UIImage(systemName: "hand.thumbsup.fill")
+        plusButton.setImage(imgPlus, for: .normal)
+        plusButton.tintColor = .white
         
         // MARK: - Events
         minusButton.addTarget(self, action: #selector(didTapMinus), for: .touchUpInside)

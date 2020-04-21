@@ -42,6 +42,7 @@
 		996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347A0243F0BD90095BCF1 /* VotingCell.swift */; };
 		99652F88244C7219008911CE /* UIButton+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99652F87244C7219008911CE /* UIButton+BackgroundColor.swift */; };
 		99652F8B244C7257008911CE /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99652F8A244C7257008911CE /* Styles.swift */; };
+		999CA1E3244F5AE8006F6720 /* YouTubeiOSPlayerHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9946C8B6244F047F00BDA557 /* YouTubeiOSPlayerHelper.framework */; };
 		99A285932448506900344D5B /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A285922448506900344D5B /* Vote.swift */; };
 		99A285952448507500344D5B /* Vote+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A285942448507500344D5B /* Vote+UseCases.swift */; };
 		99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B60F782443472100C1FA44 /* PhoneNumberKit */; };
@@ -55,6 +56,19 @@
 		99FFA2CD24431174002DBD9C /* FirebaseImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2CC24431174002DBD9C /* FirebaseImplementation.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		999CA1D8244F56EE006F6720 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		99112B88243F93C90067CF2D /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = ../Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
 		99112B8A243F94600067CF2D /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
@@ -66,6 +80,7 @@
 		9929851C243C632300F14364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9929851F243C632300F14364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99298521243C632300F14364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9946C8B6244F047F00BDA557 /* YouTubeiOSPlayerHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubeiOSPlayerHelper.framework; path = Carthage/Build/iOS/YouTubeiOSPlayerHelper.framework; sourceTree = "<group>"; };
 		9953E25A244AF62900EF51F5 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseFirestore.framework; path = Carthage/Build/iOS/FirebaseFirestore.framework; sourceTree = "<group>"; };
 		9953E25C244AF63100EF51F5 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
 		9953E25F244AF65000EF51F5 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -127,6 +142,7 @@
 				9953E281244AF71500EF51F5 /* abseil.framework in Frameworks */,
 				9953E282244AF71500EF51F5 /* gRPC-C++.framework in Frameworks */,
 				9953E283244AF71500EF51F5 /* nanopb.framework in Frameworks */,
+				999CA1E3244F5AE8006F6720 /* YouTubeiOSPlayerHelper.framework in Frameworks */,
 				9953E284244AF71500EF51F5 /* FirebaseInstallations.framework in Frameworks */,
 				9953E260244AF65000EF51F5 /* FirebaseAnalytics.framework in Frameworks */,
 				9953E262244AF65C00EF51F5 /* FirebaseAuth.framework in Frameworks */,
@@ -143,6 +159,7 @@
 		99112B85243F92B70067CF2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9946C8B6244F047F00BDA557 /* YouTubeiOSPlayerHelper.framework */,
 				9953E272244AF71500EF51F5 /* abseil.framework */,
 				9953E268244AF71400EF51F5 /* BoringSSL-GRPC.framework */,
 				9953E267244AF71400EF51F5 /* FIRAnalyticsConnector.framework */,
@@ -284,6 +301,7 @@
 				9929850D243C632200F14364 /* Frameworks */,
 				9929850E243C632200F14364 /* Resources */,
 				99112B84243F924E0067CF2D /* ShellScript */,
+				999CA1D8244F56EE006F6720 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -363,6 +381,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/FlagKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/YouTubeiOSPlayerHelper.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -449,6 +468,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -509,6 +529,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -536,7 +557,7 @@
 				CODE_SIGN_ENTITLEMENTS = Eurovision2020/Eurovision2020.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -563,7 +584,7 @@
 				CODE_SIGN_ENTITLEMENTS = Eurovision2020/Eurovision2020.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
