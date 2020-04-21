@@ -92,6 +92,7 @@
 		996347A0243F0BD90095BCF1 /* VotingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingCell.swift; sourceTree = "<group>"; };
 		99652F87244C7219008911CE /* UIButton+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+BackgroundColor.swift"; sourceTree = "<group>"; };
 		99652F8A244C7257008911CE /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
+		99652F8C244C7FD0008911CE /* Eurovision2020.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Eurovision2020.entitlements; sourceTree = "<group>"; };
 		99A285922448506900344D5B /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		99A285942448507500344D5B /* Vote+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vote+UseCases.swift"; sourceTree = "<group>"; };
 		99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
@@ -189,6 +190,7 @@
 		99298512243C632200F14364 /* Eurovision2020 */ = {
 			isa = PBXGroup;
 			children = (
+				99652F8C244C7FD0008911CE /* Eurovision2020.entitlements */,
 				99298513243C632200F14364 /* AppDelegate.swift */,
 				99FFA2CC24431174002DBD9C /* FirebaseImplementation.swift */,
 				99FFA2C224431091002DBD9C /* Phone Validation */,
@@ -531,6 +533,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Eurovision2020/Eurovision2020.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
@@ -557,6 +560,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Eurovision2020/Eurovision2020.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
