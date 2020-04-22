@@ -82,8 +82,8 @@ class VotingVC: UIViewController {
     
     func showLogin() {
         let alert = UIAlertController(title: "Voting", message:
-            "You need to validate your phone number before voting!", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Let's do this", style: .default, handler: { a in
+            "You need to verify your phone number before voting 😎", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Let's do this!", style: .default, handler: { a in
             let vc = PhoneNumberValidationVC()
             vc.didLogin = {
                 self.refreshLogoutButton()
