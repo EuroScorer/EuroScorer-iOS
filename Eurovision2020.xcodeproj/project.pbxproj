@@ -45,6 +45,8 @@
 		999CA1E3244F5AE8006F6720 /* YouTubeiOSPlayerHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9946C8B6244F047F00BDA557 /* YouTubeiOSPlayerHelper.framework */; };
 		99A285932448506900344D5B /* Vote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A285922448506900344D5B /* Vote.swift */; };
 		99A285952448507500344D5B /* Vote+UseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A285942448507500344D5B /* Vote+UseCases.swift */; };
+		99A81D5E2450270900D67261 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A81D5D2450270900D67261 /* User.swift */; };
+		99A81D602450272300D67261 /* User+UserCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A81D5F2450272300D67261 /* User+UserCases.swift */; };
 		99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B60F782443472100C1FA44 /* PhoneNumberKit */; };
 		99B60F7B2443475D00C1FA44 /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */; };
 		99B60F7D2443B99800C1FA44 /* BlurredBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */; };
@@ -110,6 +112,8 @@
 		99652F8C244C7FD0008911CE /* Eurovision2020.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Eurovision2020.entitlements; sourceTree = "<group>"; };
 		99A285922448506900344D5B /* Vote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vote.swift; sourceTree = "<group>"; };
 		99A285942448507500344D5B /* Vote+UseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vote+UseCases.swift"; sourceTree = "<group>"; };
+		99A81D5D2450270900D67261 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		99A81D5F2450272300D67261 /* User+UserCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+UserCases.swift"; sourceTree = "<group>"; };
 		99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
 		99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundView.swift; sourceTree = "<group>"; };
 		99E25F202441C56600D9446C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -239,7 +243,9 @@
 				99FFA2C8244310F9002DBD9C /* Song.swift */,
 				99FFA2CA2443111C002DBD9C /* Song+UseCases.swift */,
 				99A285922448506900344D5B /* Vote.swift */,
+				99A81D5D2450270900D67261 /* User.swift */,
 				99A285942448507500344D5B /* Vote+UseCases.swift */,
+				99A81D5F2450272300D67261 /* User+UserCases.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -414,9 +420,11 @@
 				99652F8B244C7257008911CE /* Styles.swift in Sources */,
 				99FFA2BF244301D7002DBD9C /* CombineSugar.swift in Sources */,
 				99FFA2C7244310E5002DBD9C /* Country.swift in Sources */,
+				99A81D602450272300D67261 /* User+UserCases.swift in Sources */,
 				99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */,
 				996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */,
 				99298514243C632200F14364 /* AppDelegate.swift in Sources */,
+				99A81D5E2450270900D67261 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -557,7 +565,7 @@
 				CODE_SIGN_ENTITLEMENTS = Eurovision2020/Eurovision2020.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -584,7 +592,7 @@
 				CODE_SIGN_ENTITLEMENTS = Eurovision2020/Eurovision2020.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

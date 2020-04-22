@@ -10,10 +10,7 @@ import UIKit
 import Firebase
 import Combine
 
-struct User {
-    var countryCode: String
-    var phoneNumber: String
-}
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,34 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fbImplementation = FirebaseImplementation()
         Song.Endpoint.fetchSongs = fbImplementation.fetchSongs
         Vote.Endpoint.sendVotes = fbImplementation.sendVotes
+        User.Endpoint.getCurrentUser = fbImplementation.getCurrentUser
         
         FirebaseApp.configure()
         
         window = UIWindow()
-        
-        // Test code
-//        let fakeUser = User(countryCode: "FR", phoneNumber: "+33778127906")
-//        let votingVC = VotingVC(user: fakeUser)
-//        var navVC: NavVC! = NavVC(rootViewController: SummaryVC())
-        
-        var navVC: NavVC! = NavVC(rootViewController: PhoneNumberValidationVC())
-        
-        let ud = UserDefaults.standard
-        if let userPhoneNumber = ud.string(forKey: "userPhoneNumber"),
-            let regionCode = ud.string(forKey: "userRegionId") {
-            
-            let user = User(countryCode: regionCode, phoneNumber: userPhoneNumber)
-            navVC = NavVC(rootViewController: VotingVC(user: user))
-        }
-            
-        
+        let votingVC = VotingVC()
+        let navVC: NavVC! = NavVC(rootViewController: votingVC)
         navVC.navigationBar.barStyle = .black
         navVC.navigationBar.prefersLargeTitles = true
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
-        
 //        Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
-    
         return true
     }
 }

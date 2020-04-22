@@ -53,8 +53,8 @@ class PhoneNumberValidationView: UIView {
         okButton.style(Styles.buttonStyle)
         
         // MARK: - Content
-        phoneNumberField.attributedPlaceholder = NSAttributedString(string: " Enter your phone number",
-                                                                    attributes: [.foregroundColor: UIColor.white])
+//        phoneNumberField.attributedPlaceholder = NSAttributedString(string: " Enter your phone number",
+//                                                                    attributes: [.foregroundColor: UIColor.white])
         okButton.setTitle("Validate my phone number", for: .normal)
     }
 }

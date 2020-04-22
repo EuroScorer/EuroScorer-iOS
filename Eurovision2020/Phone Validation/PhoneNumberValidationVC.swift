@@ -11,7 +11,8 @@ import FirebaseAuth
 import PhoneNumberKit
 
 class PhoneNumberValidationVC: UIViewController {
-        
+    
+    var didLogin: (() -> Void)?
     let phoneNumberKit = PhoneNumberKit()
     var userRegionID: String?
     var userInternationalNumberPhoneNumber: String?
@@ -102,19 +103,7 @@ class PhoneNumberValidationVC: UIViewController {
     func authWith(id: String, code: String) {
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: id, verificationCode: code)
         Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
-            if let userPhoneNumber = self?.userInternationalNumberPhoneNumber, error == nil {
-                if let regionID = self?.userRegionID {
-                    let user = User(countryCode: regionID, phoneNumber: userPhoneNumber)
-            
-                    // Store to defaults to persist login even after app exit
-                    let ud = UserDefaults.standard
-                    ud.setValue(userPhoneNumber, forKey: "userPhoneNumber")
-                    ud.setValue(regionID, forKey: "userRegionId")
-                    ud.synchronize()
-
-                    self?.navigationController?.pushViewController(VotingVC(user: user), animated: true)
-                }                    
-            }
+            self?.didLogin?()
         }
     }
 }

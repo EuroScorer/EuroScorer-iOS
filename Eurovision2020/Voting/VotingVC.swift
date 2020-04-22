@@ -11,22 +11,19 @@ import Stevia
 import FlagKit
 import Combine
 import YouTubeiOSPlayerHelper
+import Firebase
 
 class VotingVC: UIViewController {
     
-    var user: User! = nil
     var votes = [String]()
     var cancellables = Set<AnyCancellable>()
     var songs = [Song]()
     let maxVotes = 20
+    var isloggedIn: Bool { User.currentUser != nil }
     
     let v = VotingView()
     override func loadView() { view = v }
     
-    convenience init(user: User) {
-        self.init(nibName: nil, bundle: nil)
-        self.user = user
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +35,25 @@ class VotingVC: UIViewController {
         v.playerView.delegate = self
         refreshSongs()
         refreshVotes()
+        refreshLogoutButton()
+    }
+    
+    func refreshLogoutButton() {
+        if User.currentUser == nil {
+            navigationItem.rightBarButtonItem = nil
+        } else {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutTapped))
+            navigationItem.rightBarButtonItem?.tintColor = .white
+        }
+    }
+    
+    @objc
+    func logoutTapped() {
+        try? Auth.auth().signOut()
+        votes.removeAll()
+        refreshVotes()
+        refreshLogoutButton()
+        v.tableView.reloadData()
     }
         
     @objc
@@ -57,7 +73,30 @@ class VotingVC: UIViewController {
     
     @objc
     func confirmTapped() {
+        if !isloggedIn {
+            showLogin()
+            return
+        }
         navigationController?.pushViewController(SummaryVC(votes: votes), animated: true)
+    }
+    
+    func showLogin() {
+        let alert = UIAlertController(title: "Voting", message:
+            "You need to validate your phone number before voting!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Let's do this", style: .default, handler: { a in
+            let vc = PhoneNumberValidationVC()
+            vc.didLogin = {
+                self.refreshLogoutButton()
+                self.v.tableView.reloadData()
+                self.dismiss(animated: true, completion: nil)
+            }
+            self.present(vc, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Not now", style: .cancel, handler: { a in
+            print("not now")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -69,7 +108,7 @@ extension VotingVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let song = songs[indexPath.row]
-        let isMyCountry = song.country?.code == user.countryCode
+        let isMyCountry = song.country?.code == User.currentUser?.countryCode
         let cell = tableView.dequeueReusableCell(withIdentifier: "VotingCell", for: indexPath) as! VotingCell
         cell.number.text = (song.number < 10) ? "0\(song.number)" : "\(song.number)"
         let flag = Flag(countryCode: song.country?.code ?? "GB")!
@@ -127,6 +166,12 @@ extension VotingVC: VotingCellDelegate {
     }
     
     func votingCellDidRemoveVote(cell: VotingCell) {
+        
+        if !isloggedIn {
+            showLogin()
+            return
+        }
+        
         guard let indexPath = v.tableView.indexPath(for: cell) else { return }
         let song = songs[indexPath.row]
         if let index = votes.firstIndex(of: song.country!.code) {
@@ -138,6 +183,12 @@ extension VotingVC: VotingCellDelegate {
     }
     
     func votingCellDidAddVote(cell: VotingCell) {
+        
+        if !isloggedIn {
+            showLogin()
+            return
+        }
+        
         guard let indexPath = v.tableView.indexPath(for: cell) else { return }
         let song = songs[indexPath.row]
         if canVote() {

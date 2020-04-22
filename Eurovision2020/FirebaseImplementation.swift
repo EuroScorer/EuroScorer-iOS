@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import FirebaseFirestore
 import Combine
 import Networking
-import FirebaseAuth
+import Firebase
+import PhoneNumberKit
 
 class FirebaseImplementation: NetworkingService {
     
@@ -37,6 +37,27 @@ class FirebaseImplementation: NetworkingService {
                 }
             }
         }
+    }
+    
+    private var cachedCurrentUser: User?
+    
+    func getCurrentUser() -> User? {
+        if let cachedUser = cachedCurrentUser, Auth.auth().currentUser != nil {
+            return cachedUser
+        }
+
+        if let cuPhoneNumber = Auth.auth().currentUser?.phoneNumber {
+            let phoneNumberKit = PhoneNumberKit()
+            let parsedNumber = try? phoneNumberKit.parse(cuPhoneNumber)
+            
+            if let regionID = parsedNumber?.regionID {
+                let user = User(countryCode: regionID, phoneNumber: cuPhoneNumber)
+                cachedCurrentUser = user
+                return cachedCurrentUser
+            }
+        }
+
+        return nil
     }
 }
 
