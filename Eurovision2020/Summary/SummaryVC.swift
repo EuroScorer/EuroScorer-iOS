@@ -31,12 +31,22 @@ class SummaryVC: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         title = "Vote Summary"
         
-//        on("INJECTION_BUNDLE_NOTIFICATION") { [weak self] in
-//            self?.v = SummaryView()
-//            self?.view = self?.v
-//        }
+        v.phoneNumber.text = User.currentUser!.phoneNumber
+        let countryName = Locale.current.localizedString(forRegionCode: User.currentUser!.countryCode)
+        v.country.text =  "From \(countryName!)"
         
         v.button.addTarget(self, action: #selector(sendVotesTapped), for: .touchUpInside)
+        
+        
+        let uniqueCountries = Set(votes).sorted()
+        print(uniqueCountries)
+        uniqueCountries.forEach { c in
+            let count = votes.filter { c == $0 }.count
+            let summaryVoteView = SummaryVoteView()
+            summaryVoteView.country.text = Locale.current.localizedString(forRegionCode: c)?.uppercased()
+            summaryVoteView.votes.text = "\(count)"
+            v.votesStackView.addArrangedSubview(summaryVoteView)
+        }
     }
     
     @objc
@@ -49,6 +59,41 @@ class SummaryVC: UIViewController {
         }.onError { error in
             print(error)
         }.sinkAndStore(in: &cancellables)
+    }
+    
+}
+
+
+class SummaryVoteView: UIView {
+
+    let country = UILabel()
+    let votes = UILabel()
+    let separator = UIView()
+    
+    convenience init() {
+        self.init(frame: .zero)
+        
+        subviews {
+            country
+            votes
+            separator
+        }
+        
+        layout {
+            10
+            |-20-country-(>=20)-votes-20-|
+            2
+            |-20-separator-20-| ~ 1
+            10
+        }
+        
+        let textStyle = { (l: UILabel) in
+            l.textColor = .white
+            l.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        }
+        country.style(textStyle)
+        votes.style(textStyle)
+        separator.backgroundColor = .white
     }
     
 }
