@@ -55,10 +55,10 @@ class VotingCell: UITableViewCell {
             8
             title-20-|
             8
-            plusButton-minusButton-(>=20)-playButton-20-| ~ 44
+            minusButton-plusButton-(>=20)-playButton-20-| ~ 44
             20
         }
-        align(lefts: flag, title, plusButton)
+        align(lefts: flag, title, minusButton)
 //        align(bottoms: playButton-(>=8)-votes-20-|)
     
         // MARK: - Style
@@ -99,11 +99,11 @@ class VotingCell: UITableViewCell {
         playButton.setImage(img, for: .normal)
         playButton.tintColor = .white
         
-        let imgMinus = UIImage(systemName: "hand.thumbsdown")
+        let imgMinus = UIImage(systemName: "minus")
         minusButton.setImage(imgMinus, for: .normal)
         minusButton.tintColor = .white
         
-        let imgPlus = UIImage(systemName: "hand.thumbsup.fill")
+        let imgPlus = UIImage(systemName: "plus")
         plusButton.setImage(imgPlus, for: .normal)
         plusButton.tintColor = .white
         
