@@ -29,7 +29,8 @@ class VotingVC: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
         title = "Spread your votes!"
         v.refreshControl.addTarget(self, action: #selector(refreshSongs), for: .valueChanged)
-        v.confirm.addTarget(self, action:#selector(confirmTapped), for: .touchUpInside)
+        v.playerCloseButton.addTarget(self, action: #selector(closePlayerTapped), for: .touchUpInside)
+        v.confirm.addTarget(self, action: #selector(confirmTapped), for: .touchUpInside)
         v.tableView.dataSource = self
         v.playerView.delegate = self
         refreshSongs()
@@ -63,6 +64,12 @@ class VotingVC: UIViewController {
         }.finally { [unowned self] in
             self.v.refreshControl.endRefreshing()
         }.sinkAndStore(in: &cancellables)
+    }
+    
+    @objc
+    func closePlayerTapped() {
+        v.playerView.stopVideo()
+        hidePlayer()
     }
 
     func refreshVotes() {
@@ -124,6 +131,29 @@ extension VotingVC: UITableViewDataSource {
         cell.delegate = self
         return cell
     }
+    
+    func showPlayer() {
+        v.playerCloseButton.isHidden = false
+        v.playerViewHeightConstraint?.constant = v.playerView.frame.width * 0.56
+        UIView.animate(withDuration: 0.3, animations: {
+            self.v.layoutIfNeeded()
+        }) { _ in
+            self.v.playerView.isHidden = false
+            self.v.playerCloseButton.isHidden = false
+        }
+    }
+    
+    func hidePlayer() {
+        v.playerCloseButton.isHidden = true
+        v.playerViewHeightConstraint?.constant = 0
+        UIView.animate(withDuration: 0.3, animations: {
+            self.v.layoutIfNeeded()
+        }) { _ in
+            self.v.playerView.isHidden = true
+            self.v.playerCloseButton.isHidden = true
+        }
+           
+    }
 }
 
 // MARK: - Votes
@@ -160,6 +190,7 @@ extension VotingVC: VotingCellDelegate {
             let song = songs[indexPath.row]
             if let url = URL(string: song.link) {
                 v.playerView.load(withVideoId: url.lastPathComponent, playerVars: ["playsinline": NSNumber(value: 1)])
+                showPlayer()
             }
         }
     }
@@ -208,11 +239,8 @@ extension VotingVC: WKYTPlayerViewDelegate {
     
     func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
         print(playerView)
-        playerView.seek(toSeconds: 6, allowSeekAhead: true)
-
-        v.playerViewHeightConstraint?.constant = v.playerView.frame.width * 0.56
-        UIView.animate(withDuration: 0.3) {
-            self.v.layoutIfNeeded()
+        if !playerView.isHidden {
+            playerView.seek(toSeconds: 6, allowSeekAhead: true)
         }
     }
     
@@ -220,5 +248,13 @@ extension VotingVC: WKYTPlayerViewDelegate {
         let myView = UIView()
         myView.backgroundColor = .black
         return myView
+    }
+    
+    func playerView(_ playerView: WKYTPlayerView, didChangeTo state: WKYTPlayerState) {
+        if state == .playing || state == .buffering  {
+            if playerView.isHidden {
+                playerView.stopVideo()
+            }
+        }
     }
 }

@@ -22,6 +22,7 @@ class VotingView: UIView {
     let confirm = UIButton()
     let playerView = WKYTPlayerView()
     var playerViewHeightConstraint: NSLayoutConstraint?
+    let playerCloseButton = UIButton()
     
     convenience init() {
         self.init(frame: .zero)
@@ -31,6 +32,7 @@ class VotingView: UIView {
             blurredbackground
             tableView
             playerView
+            playerCloseButton
             recapContainer.subviews {
                 hairline
                 votesLeft
@@ -58,6 +60,9 @@ class VotingView: UIView {
         votesLeft.Bottom == safeAreaLayoutGuide.Bottom - 0
         confirm.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
         playerViewHeightConstraint = playerView.Height == 0
+        
+        playerCloseButton.size(44)|
+        playerCloseButton.Top == playerView.Bottom
     
         // MARK: - Style
         refreshControl.tintColor = .white
@@ -82,10 +87,24 @@ class VotingView: UIView {
         playerView.layer.shadowColor = UIColor.black.cgColor
         playerView.layer.shadowOpacity = 1
         playerView.layer.shadowOffset = CGSize(width: 0, height: 1)
+        
+        // Close button
+        let conf = UIImage.SymbolConfiguration(pointSize: 30)
+        let closeImg = UIImage(systemName: "xmark.circle.fill", withConfiguration: conf)
+        playerCloseButton.setImage(closeImg, for: .normal)
+        playerCloseButton.tintColor = .white
+        playerCloseButton.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        playerCloseButton.layer.shadowColor = UIColor.black.cgColor
+        playerCloseButton.layer.shadowOpacity = 1
+        playerCloseButton.layer.shadowOffset = CGSize(width: 0, height: 1)
 
         // MARK: - Content
         confirm.setTitle("Confirm my votes", for: .normal)
         
+        
+
+        
+        playerCloseButton.isHidden = true
 
     }
 }
