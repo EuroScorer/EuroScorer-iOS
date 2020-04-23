@@ -31,7 +31,7 @@ class SummaryVC: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         title = "Vote Summary"
         
-        v.phoneNumber.text = User.currentUser!.phoneNumber
+        v.phoneNumber.text = User.currentUser?.phoneNumber
         let countryName = Locale.current.localizedString(forRegionCode: User.currentUser!.countryCode)
         v.country.text =  "From \(countryName!)"
         

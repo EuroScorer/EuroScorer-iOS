@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct User {
-    var countryCode = ""
-    var phoneNumber = ""
+protocol UserProtocol {
+    var countryCode: String { get }
+    var phoneNumber: String { get }
 }
 
 protocol Song {

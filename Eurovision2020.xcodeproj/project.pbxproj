@@ -47,6 +47,7 @@
 		99B60F7B2443475D00C1FA44 /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */; };
 		99B60F7D2443B99800C1FA44 /* BlurredBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */; };
 		99C5560924517A8D00A2A2BB /* SummaryVoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C5560824517A8D00A2A2BB /* SummaryVoteView.swift */; };
+		99C5560B24517D2A00A2A2BB /* FirebaseModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99C5560A24517D2A00A2A2BB /* FirebaseModels.swift */; };
 		99E25F212441C56600D9446C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 99E25F202441C56600D9446C /* GoogleService-Info.plist */; };
 		99FEB69024516AB500F4E13B /* NavVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FEB68F24516AB500F4E13B /* NavVC.swift */; };
 		99FFA2BF244301D7002DBD9C /* CombineSugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FFA2BE244301D7002DBD9C /* CombineSugar.swift */; };
@@ -110,6 +111,7 @@
 		99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
 		99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundView.swift; sourceTree = "<group>"; };
 		99C5560824517A8D00A2A2BB /* SummaryVoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVoteView.swift; sourceTree = "<group>"; };
+		99C5560A24517D2A00A2A2BB /* FirebaseModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseModels.swift; sourceTree = "<group>"; };
 		99E25F202441C56600D9446C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		99FEB68F24516AB500F4E13B /* NavVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavVC.swift; sourceTree = "<group>"; };
 		99FFA2BE244301D7002DBD9C /* CombineSugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineSugar.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				99FFA2CC24431174002DBD9C /* FirebaseImplementation.swift */,
+				99C5560A24517D2A00A2A2BB /* FirebaseModels.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				99298518243C632200F14364 /* PhoneNumberValidationVC.swift in Sources */,
 				99FEB69024516AB500F4E13B /* NavVC.swift in Sources */,
 				99652F8B244C7257008911CE /* Styles.swift in Sources */,
+				99C5560B24517D2A00A2A2BB /* FirebaseModels.swift in Sources */,
 				99FFA2BF244301D7002DBD9C /* CombineSugar.swift in Sources */,
 				99FFA2C7244310E5002DBD9C /* Models.swift in Sources */,
 				99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */,

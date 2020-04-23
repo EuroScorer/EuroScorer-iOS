@@ -12,12 +12,13 @@ import Combine
 typealias PhoneNumber = String
 typealias SMSCode = String
 
+struct User { }
 extension User {
     
     enum Endpoint {
         static var askForPhoneNumberVerification: ((PhoneNumber) -> AnyPublisher<Void, Error>)!
         static var confirmPhoneNumberWithCode: ((SMSCode) -> AnyPublisher<Void, Error>)!
-        static var getCurrentUser: (() -> User?)!
+        static var getCurrentUser: (() -> UserProtocol?)!
         static var sendVotes: (([String]) -> AnyPublisher<Void, Error>)!
         static var logout: (() -> Void)!
     }
@@ -30,9 +31,12 @@ extension User {
         User.Endpoint.confirmPhoneNumberWithCode(code)
     }
     
-    static var currentUser: User? {
+    static var currentUser: UserProtocol? {
         User.Endpoint.getCurrentUser()
     }
+}
+
+extension UserProtocol {
     
     func sendVotes(_ votes: [String]) -> AnyPublisher<Void, Error> {
         User.Endpoint.sendVotes(votes)

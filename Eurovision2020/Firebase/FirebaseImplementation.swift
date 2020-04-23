@@ -52,9 +52,9 @@ class FirebaseImplementation: NetworkingService {
         }.eraseToAnyPublisher()
     }
     
-    private var cachedCurrentUser: User?
+    private var cachedCurrentUser: UserProtocol?
     
-    func getCurrentUser() -> User? {
+    func getCurrentUser() -> UserProtocol? {
         if let cachedUser = cachedCurrentUser, Auth.auth().currentUser != nil {
             return cachedUser
         }
@@ -64,7 +64,7 @@ class FirebaseImplementation: NetworkingService {
             let parsedNumber = try? phoneNumberKit.parse(cuPhoneNumber)
             
             if let regionID = parsedNumber?.regionID {
-                let user = User(countryCode: regionID, phoneNumber: cuPhoneNumber)
+                let user = FirebaseUser(countryCode: regionID, phoneNumber: cuPhoneNumber)
                 cachedCurrentUser = user
                 return cachedCurrentUser
             }
@@ -103,32 +103,5 @@ class FirebaseImplementation: NetworkingService {
     }
 }
 
+extension FirebaseSong: NetworkingJSONDecodable {}
 
-
-final class FirebaseSong: Song, NetworkingJSONDecodable, Decodable {
-    
-    let number: Int
-    let title: String
-    let link:  String
-    var country: Country?
-    
-    enum CodingKeys: String, CodingKey {
-        case number = "number"
-        case title = "title"
-        case country = "country"
-        case link = "link"
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        number = try container.decode(Int.self, forKey: .number)
-        title = try container.decode(String.self, forKey: .title)
-        link = try container.decode(String.self, forKey: .link)
-        country = try container.decode(FirebaseCountry.self, forKey: .country)
-    }
-}
-
-struct FirebaseCountry: Country, Decodable {
-    var code = ""
-    var name = ""
-}
