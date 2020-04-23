@@ -7,27 +7,25 @@
 //
 
 import UIKit
-import Firebase
-import Combine
-
-
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var cancellables = Set<AnyCancellable>()
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let fbImplementation = FirebaseImplementation()
-        Song.Endpoint.fetchSongs = fbImplementation.fetchSongs
-        Vote.Endpoint.sendVotes = fbImplementation.sendVotes
-        User.Endpoint.getCurrentUser = fbImplementation.getCurrentUser
+        // Inject firebase implementations.
+        let firebase = FirebaseImplementation()
+        User.Endpoint.askForPhoneNumberVerification = firebase.askForPhoneNumberVerification
+        User.Endpoint.confirmPhoneNumberWithCode = firebase.confirmPhoneNumberWithCode
+        User.Endpoint.getCurrentUser = firebase.getCurrentUser
+        User.Endpoint.logout = firebase.logout
+        Song.Endpoint.fetchSongs = firebase.fetchSongs
+        Vote.Endpoint.sendVotes = firebase.sendVotes
+        firebase.startService()
         
-        FirebaseApp.configure()
-        
+        // Setup UI
         window = UIWindow()
         let votingVC = VotingVC()
         let navVC: NavVC! = NavVC(rootViewController: votingVC)
@@ -35,15 +33,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navVC.navigationBar.prefersLargeTitles = true
         window?.rootViewController = navVC
         window?.makeKeyAndVisible()
-//        Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
+        
+        // Uncomment for code injection
+        // Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
+        
         return true
     }
 }
 
-class NavVC: UINavigationController {
-  
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-    }
-}
+
 

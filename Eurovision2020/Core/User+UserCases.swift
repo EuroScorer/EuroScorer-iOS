@@ -7,16 +7,34 @@
 //
 
 import Foundation
+import Combine
 
+typealias PhoneNumber = String
+typealias SMSCode = String
 
 extension User {
     
     enum Endpoint {
-         static var getCurrentUser: (() -> User?)!
+        static var askForPhoneNumberVerification: ((PhoneNumber) -> AnyPublisher<Void, Error>)!
+        static var confirmPhoneNumberWithCode: ((SMSCode) -> AnyPublisher<Void, Error>)!
+        static var getCurrentUser: (() -> User?)!
+        static var logout: (() -> Void)!
+    }
+        
+    static func askForPhoneNumberVerification(number: PhoneNumber) -> AnyPublisher<Void, Error> {
+        User.Endpoint.askForPhoneNumberVerification(number)
+    }
+    
+    static func confirmPhoneNumberWith(code: SMSCode) -> AnyPublisher<Void, Error> {
+        User.Endpoint.confirmPhoneNumberWithCode(code)
     }
     
     static var currentUser: User? {
-        User.Endpoint.getCurrentUser!()
+        User.Endpoint.getCurrentUser()
+    }
+    
+    func logout() {
+        User.Endpoint.logout()
     }
 }
 

@@ -11,7 +11,6 @@ import Stevia
 import FlagKit
 import Combine
 import YouTubeiOSPlayerHelper
-import Firebase
 
 class VotingVC: UIViewController {
     
@@ -49,7 +48,7 @@ class VotingVC: UIViewController {
     
     @objc
     func logoutTapped() {
-        try? Auth.auth().signOut()
+        User.currentUser?.logout()
         votes.removeAll()
         refreshVotes()
         refreshLogoutButton()

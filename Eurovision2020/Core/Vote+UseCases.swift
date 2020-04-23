@@ -16,6 +16,6 @@ extension Vote {
     }
     
     static func sendVotes(_ votes: [String]) -> AnyPublisher<Void, Error> {
-        Vote.Endpoint.sendVotes!(votes)
+        Vote.Endpoint.sendVotes(votes)
     }
 }

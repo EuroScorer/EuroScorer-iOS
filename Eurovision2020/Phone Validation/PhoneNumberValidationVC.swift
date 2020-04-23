@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import FirebaseAuth
+import Combine
 import PhoneNumberKit
 
 class PhoneNumberValidationVC: UIViewController {
     
+    var cancellables = Set<AnyCancellable>()
     var didLogin: (() -> Void)?
     let phoneNumberKit = PhoneNumberKit()
     var userRegionID: String?
@@ -70,40 +71,31 @@ class PhoneNumberValidationVC: UIViewController {
         userInternationalNumberPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .international)
         userRegionID = phoneNumber.regionID
                 
-        // Localize sms sent to user's laguage
-        Auth.auth().languageCode = Locale.current.languageCode ?? "en"
-        
-        // Start SMS confirmation
-        PhoneAuthProvider.provider().verifyPhoneNumber(userInternationalNumberPhoneNumber!, uiDelegate: nil) { [weak self] (verificationID, error) in
-            guard let verificationID = verificationID else {
-                self?.v.okButton.isEnabled = true
-                return
-            }
-
-            // Ask for SMS confirmation code.
-            let alert = UIAlertController(title: "SMS confirmation",
-                                          message: "Confim your phone number by entering the code received via SMS",
-                                          preferredStyle: UIAlertController.Style.alert)
-            alert.addTextField {
-                $0.placeholder = "Code"
-                $0.keyboardType = .numberPad
-                $0.keyboardType = .numberPad
-                $0.font = .systemFont(ofSize: 40, weight: .bold)
-            }
-            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { a in
-                if let smsCode = alert.textFields?.first?.text {
-                    // Confirm Phone number with both verificationID amd SMS code.
-                    self?.authWith(id: verificationID, code: smsCode)
-                }
-            }))
-            self?.present(alert, animated: true, completion: nil)
-        }
+        User.askForPhoneNumberVerification(number: userInternationalNumberPhoneNumber!).then { [unowned self] in
+            self.showSMSCodePopup()
+        }.onError { [unowned self] _ in
+            self.v.okButton.isEnabled = true
+        }.sinkAndStore(in: &cancellables)
     }
     
-    func authWith(id: String, code: String) {
-        let credential = PhoneAuthProvider.provider().credential(withVerificationID: id, verificationCode: code)
-        Auth.auth().signIn(with: credential) { [weak self] (authResult, error) in
-            self?.didLogin?()
+    func showSMSCodePopup() {
+        // Ask for SMS confirmation code.
+        let alert = UIAlertController(title: "SMS confirmation",
+                                      message: "Confim your phone number by entering the code received via SMS",
+                                      preferredStyle: UIAlertController.Style.alert)
+        alert.addTextField {
+            $0.placeholder = "Code"
+            $0.keyboardType = .numberPad
+            $0.keyboardType = .numberPad
+            $0.font = .systemFont(ofSize: 40, weight: .bold)
         }
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { a in
+            if let smsCode = alert.textFields?.first?.text {
+                User.confirmPhoneNumberWith(code: smsCode).then { [unowned self] in
+                    self.didLogin?()
+                }.sinkAndStore(in: &self.cancellables)
+            }
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }

@@ -16,6 +16,6 @@ extension Song {
     }
     
     static func fetchSongs() -> AnyPublisher<[Song], Error> {
-        Song.Endpoint.fetchSongs!()
+        Song.Endpoint.fetchSongs()
     }
 }
