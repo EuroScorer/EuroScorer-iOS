@@ -57,7 +57,7 @@ class VotingVC: UIViewController {
         
     @objc
     func refreshSongs() {
-        Song.fetchSongs().then { [unowned self] fetchedSongs in
+        Songs.fetchSongs().then { [unowned self] fetchedSongs in
             self.songs = fetchedSongs
             self.v.tableView.reloadData()
         }.finally { [unowned self] in

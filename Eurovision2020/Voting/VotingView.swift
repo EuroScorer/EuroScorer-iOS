@@ -50,28 +50,15 @@ class VotingView: UIView {
             |recapContainer|
             0
         }
-        
         hairline.top(0).height(0.5).fillHorizontally()
         layout {
             20
             |-20⁃votesLeft⁃confirm.centerHorizontally().height(50)⁃votesGiven⁃20-|
         }
-        
         votesLeft.Bottom == safeAreaLayoutGuide.Bottom - 0
-        
         confirm.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
-        
-        
-        
         playerViewHeightConstraint = playerView.Height == 0
     
-        
-        playerView.layer.shadowColor = UIColor.black.cgColor
-        playerView.layer.shadowOpacity = 1
-        playerView.layer.shadowOffset = CGSize(width: 0, height: 1)
-        
-    
-        
         // MARK: - Style
         refreshControl.tintColor = .white
         tableView.style { tbv in
@@ -92,6 +79,9 @@ class VotingView: UIView {
         votesLeft.style(textStyle)
         votesGiven.style(textStyle)
         confirm.style(Styles.buttonStyle)
+        playerView.layer.shadowColor = UIColor.black.cgColor
+        playerView.layer.shadowOpacity = 1
+        playerView.layer.shadowOffset = CGSize(width: 0, height: 1)
 
         // MARK: - Content
         confirm.setTitle("Confirm my votes", for: .normal)

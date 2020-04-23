@@ -59,7 +59,6 @@ class VotingCell: UITableViewCell {
             20
         }
         align(lefts: flag, title, minusButton)
-//        align(bottoms: playButton-(>=8)-votes-20-|)
     
         // MARK: - Style
         backgroundColor = .clear

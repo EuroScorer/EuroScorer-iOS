@@ -78,7 +78,9 @@ class FirebaseImplementation: NetworkingService {
     }
     
     func fetchSongs() -> AnyPublisher<[Song], Error> {
-        get("/songs")
+        get("/songs").map { (firebaseSongs: [FirebaseSong]) -> [Song] in
+            firebaseSongs.map { $0 as Song }
+        }.eraseToAnyPublisher()
     }
     
     func sendVotes(_ votes:[String]) -> AnyPublisher<Void, Error> {
@@ -101,4 +103,32 @@ class FirebaseImplementation: NetworkingService {
     }
 }
 
-extension Song: NetworkingJSONDecodable {}
+
+
+final class FirebaseSong: Song, NetworkingJSONDecodable, Decodable {
+    
+    let number: Int
+    let title: String
+    let link:  String
+    var country: Country?
+    
+    enum CodingKeys: String, CodingKey {
+        case number = "number"
+        case title = "title"
+        case country = "country"
+        case link = "link"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        number = try container.decode(Int.self, forKey: .number)
+        title = try container.decode(String.self, forKey: .title)
+        link = try container.decode(String.self, forKey: .link)
+        country = try container.decode(FirebaseCountry.self, forKey: .country)
+    }
+}
+
+struct FirebaseCountry: Country, Decodable {
+    var code = ""
+    var name = ""
+}

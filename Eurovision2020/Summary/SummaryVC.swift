@@ -51,7 +51,7 @@ class SummaryVC: UIViewController {
     
     @objc
     func sendVotesTapped() {
-        Vote.sendVotes(votes).then { [unowned self] in
+        User.currentUser?.sendVotes(votes).then { [unowned self] in
             let alert = UIAlertController(title: "Thank you ❤️", message:
                 "You votes have been succesfully sent ! \nYou can update them until the final date.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
@@ -64,36 +64,4 @@ class SummaryVC: UIViewController {
 }
 
 
-class SummaryVoteView: UIView {
 
-    let country = UILabel()
-    let votes = UILabel()
-    let separator = UIView()
-    
-    convenience init() {
-        self.init(frame: .zero)
-        
-        subviews {
-            country
-            votes
-            separator
-        }
-        
-        layout {
-            10
-            |-20-country-(>=20)-votes-20-|
-            2
-            |-20-separator-20-| ~ 1
-            10
-        }
-        
-        let textStyle = { (l: UILabel) in
-            l.textColor = .white
-            l.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        }
-        country.style(textStyle)
-        votes.style(textStyle)
-        separator.backgroundColor = .white
-    }
-    
-}
