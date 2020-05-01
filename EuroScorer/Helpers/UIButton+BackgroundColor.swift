@@ -1,6 +1,6 @@
 //
 //  UIButton+BackgroundColor.swift
-//  Eurovision2020
+//  EuroScorer
 //
 //  Created by Sacha DSO on 19/04/2020.
 //  Copyright © 2020 MarsacProductions. All rights reserved.

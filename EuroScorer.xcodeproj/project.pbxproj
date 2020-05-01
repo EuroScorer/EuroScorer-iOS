@@ -74,7 +74,7 @@
 		99112B8A243F94600067CF2D /* FlagKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FlagKit.framework; path = Carthage/Build/iOS/FlagKit.framework; sourceTree = "<group>"; };
 		99112B8C243F9CAD0067CF2D /* SummaryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVC.swift; sourceTree = "<group>"; };
 		99112B8E243F9CD60067CF2D /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
-		99298510243C632200F14364 /* Eurovision2020.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eurovision2020.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		99298510243C632200F14364 /* EuroScorer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EuroScorer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99298513243C632200F14364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99298517243C632200F14364 /* PhoneNumberValidationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberValidationVC.swift; sourceTree = "<group>"; };
 		9929851C243C632300F14364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 		996347A0243F0BD90095BCF1 /* VotingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VotingCell.swift; sourceTree = "<group>"; };
 		99652F87244C7219008911CE /* UIButton+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+BackgroundColor.swift"; sourceTree = "<group>"; };
 		99652F8A244C7257008911CE /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
-		99652F8C244C7FD0008911CE /* Eurovision2020.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Eurovision2020.entitlements; sourceTree = "<group>"; };
+		99652F8C244C7FD0008911CE /* EuroScorer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EuroScorer.entitlements; sourceTree = "<group>"; };
 		99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
 		99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundView.swift; sourceTree = "<group>"; };
 		99C5560824517A8D00A2A2BB /* SummaryVoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVoteView.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				99E25F202441C56600D9446C /* GoogleService-Info.plist */,
-				99298512243C632200F14364 /* Eurovision2020 */,
+				99298512243C632200F14364 /* EuroScorer */,
 				99298511243C632200F14364 /* Products */,
 				99112B85243F92B70067CF2D /* Frameworks */,
 			);
@@ -199,15 +199,15 @@
 		99298511243C632200F14364 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				99298510243C632200F14364 /* Eurovision2020.app */,
+				99298510243C632200F14364 /* EuroScorer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		99298512243C632200F14364 /* Eurovision2020 */ = {
+		99298512243C632200F14364 /* EuroScorer */ = {
 			isa = PBXGroup;
 			children = (
-				99652F8C244C7FD0008911CE /* Eurovision2020.entitlements */,
+				99652F8C244C7FD0008911CE /* EuroScorer.entitlements */,
 				99298513243C632200F14364 /* AppDelegate.swift */,
 				99FFA2C224431091002DBD9C /* Phone Validation */,
 				99FFA2C32443109A002DBD9C /* Voting */,
@@ -221,7 +221,7 @@
 				9929851E243C632300F14364 /* LaunchScreen.storyboard */,
 				99298521243C632300F14364 /* Info.plist */,
 			);
-			path = Eurovision2020;
+			path = EuroScorer;
 			sourceTree = "<group>";
 		};
 		99652F89244C723F008911CE /* Common */ = {
@@ -301,9 +301,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9929850F243C632200F14364 /* Eurovision2020 */ = {
+		9929850F243C632200F14364 /* EuroScorer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 99298524243C632300F14364 /* Build configuration list for PBXNativeTarget "Eurovision2020" */;
+			buildConfigurationList = 99298524243C632300F14364 /* Build configuration list for PBXNativeTarget "EuroScorer" */;
 			buildPhases = (
 				9929850C243C632200F14364 /* Sources */,
 				9929850D243C632200F14364 /* Frameworks */,
@@ -315,7 +315,7 @@
 			);
 			dependencies = (
 			);
-			name = Eurovision2020;
+			name = EuroScorer;
 			packageProductDependencies = (
 				99298528243C7B7200F14364 /* Stevia */,
 				99634798243E36500095BCF1 /* KeyboardLayoutGuide */,
@@ -323,7 +323,7 @@
 				990E8E3D244612AB002A5B62 /* Networking */,
 			);
 			productName = Eurovision2020;
-			productReference = 99298510243C632200F14364 /* Eurovision2020.app */;
+			productReference = 99298510243C632200F14364 /* EuroScorer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -341,7 +341,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9929850B243C632200F14364 /* Build configuration list for PBXProject "Eurovision2020" */;
+			buildConfigurationList = 9929850B243C632200F14364 /* Build configuration list for PBXProject "EuroScorer" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -360,7 +360,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9929850F243C632200F14364 /* Eurovision2020 */,
+				9929850F243C632200F14364 /* EuroScorer */,
 			);
 		};
 /* End PBXProject section */
@@ -562,7 +562,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Eurovision2020/Eurovision2020.entitlements;
+				CODE_SIGN_ENTITLEMENTS = EuroScorer/EuroScorer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
@@ -571,7 +571,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Eurovision2020/Info.plist;
+				INFOPLIST_FILE = EuroScorer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -589,7 +589,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Eurovision2020/Eurovision2020.entitlements;
+				CODE_SIGN_ENTITLEMENTS = EuroScorer/EuroScorer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
@@ -598,7 +598,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Eurovision2020/Info.plist;
+				INFOPLIST_FILE = EuroScorer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -615,7 +615,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9929850B243C632200F14364 /* Build configuration list for PBXProject "Eurovision2020" */ = {
+		9929850B243C632200F14364 /* Build configuration list for PBXProject "EuroScorer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				99298522243C632300F14364 /* Debug */,
@@ -624,7 +624,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		99298524243C632300F14364 /* Build configuration list for PBXNativeTarget "Eurovision2020" */ = {
+		99298524243C632300F14364 /* Build configuration list for PBXNativeTarget "EuroScorer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				99298525243C632300F14364 /* Debug */,
