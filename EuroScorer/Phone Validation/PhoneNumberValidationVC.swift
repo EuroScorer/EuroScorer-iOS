@@ -29,6 +29,10 @@ class PhoneNumberValidationVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Phone Validation"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close,
+                                                            target: self,
+                                                            action: #selector(close))
         v.okButton.isEnabled = false
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapped))
@@ -45,6 +49,11 @@ class PhoneNumberValidationVC: UIViewController {
     }
     
     @objc
+    func close() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc
     func phoneNumberChanged() {
         guard let phoneNumberString = v.phoneNumberField.text else { return }
         let phoneNumber = try? phoneNumberKit.parse(phoneNumberString)
@@ -58,13 +67,13 @@ class PhoneNumberValidationVC: UIViewController {
     
     @objc
     func okTapped() {
-        v.okButton.isEnabled = false
+        v.okButton.isLoading = true
         guard let phoneNumberString = v.phoneNumberField.text else {
-            v.okButton.isEnabled = true
+            v.okButton.isLoading = false
             return
         }
         guard let phoneNumber = try? phoneNumberKit.parse(phoneNumberString) else {
-            v.okButton.isEnabled = true
+            v.okButton.isLoading = false
             return
         }
         
@@ -73,8 +82,9 @@ class PhoneNumberValidationVC: UIViewController {
                 
         User.askForPhoneNumberVerification(number: userInternationalNumberPhoneNumber!).then { [unowned self] in
             self.showSMSCodePopup()
-        }.onError { [unowned self] _ in
-            self.v.okButton.isEnabled = true
+        }.onError { [unowned self] error in
+            print(error)
+            self.v.okButton.isLoading = false
         }.sinkAndStore(in: &cancellables)
     }
     

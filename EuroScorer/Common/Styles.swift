@@ -17,6 +17,9 @@ struct Styles {
 //        b.layer.borderColor = UIColor.white.cgColor
 //        b.layer.borderWidth = 0.5
         b.contentEdgeInsets = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+        b.setTitleColor(.white, for: .normal)
+        b.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .highlighted)
+        b.setTitleColor(UIColor.white.withAlphaComponent(0.5), for: .disabled)
     }
 }
 

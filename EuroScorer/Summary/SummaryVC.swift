@@ -51,6 +51,7 @@ class SummaryVC: UIViewController {
     
     @objc
     func sendVotesTapped() {
+        v.button.isLoading = true
         User.currentUser?.sendVotes(votes).then { [unowned self] in
             let alert = UIAlertController(title: "Thank you ❤️", message:
                 "You votes have been succesfully sent ! \nYou can update them until the final date.", preferredStyle: .alert)
@@ -58,9 +59,11 @@ class SummaryVC: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }.onError { error in
             print(error)
-        }.sinkAndStore(in: &cancellables)
+        }.finally { [unowned self] in
+            self.v.button.isLoading = false
+        }
+        .sinkAndStore(in: &cancellables)
     }
-    
 }
 
 

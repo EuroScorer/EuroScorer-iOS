@@ -16,7 +16,7 @@ class PhoneNumberValidationView: UIView {
     let blurredbackground = BlurredBackgroundView()
     let phoneNumberBackground = UIView()
     let phoneNumberField = PhoneNumberTextField()
-    let okButton = UIButton()
+    let okButton = LoadingButton()
     
     convenience init() {
         self.init(frame: .zero)

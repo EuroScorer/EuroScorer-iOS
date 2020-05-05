@@ -16,7 +16,7 @@ class SummaryView: UIView {
     let country = UILabel()
     let votesScrollView = UIScrollView()
     let votesStackView = UIStackView()
-    let button = UIButton()
+    let button = LoadingButton()
     
     convenience init() {
         self.init(frame: .zero)

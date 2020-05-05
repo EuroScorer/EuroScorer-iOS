@@ -11,6 +11,7 @@
 		99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99112B8A243F94600067CF2D /* FlagKit.framework */; };
 		99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8C243F9CAD0067CF2D /* SummaryVC.swift */; };
 		99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8E243F9CD60067CF2D /* SummaryView.swift */; };
+		9920368924600EAE00CE191F /* YoutubePlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 9920368824600EAE00CE191F /* YoutubePlayer */; };
 		99298514243C632200F14364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298513243C632200F14364 /* AppDelegate.swift */; };
 		99298518243C632200F14364 /* PhoneNumberValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298517243C632200F14364 /* PhoneNumberValidationVC.swift */; };
 		9929851D243C632300F14364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9929851C243C632300F14364 /* Assets.xcassets */; };
@@ -42,7 +43,7 @@
 		996347A1243F0BD90095BCF1 /* VotingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996347A0243F0BD90095BCF1 /* VotingCell.swift */; };
 		99652F88244C7219008911CE /* UIButton+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99652F87244C7219008911CE /* UIButton+BackgroundColor.swift */; };
 		99652F8B244C7257008911CE /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99652F8A244C7257008911CE /* Styles.swift */; };
-		999CA1E3244F5AE8006F6720 /* YouTubeiOSPlayerHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9946C8B6244F047F00BDA557 /* YouTubeiOSPlayerHelper.framework */; };
+		99AE3AF0246147A700B4B881 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AE3AEF246147A700B4B881 /* LoadingButton.swift */; };
 		99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B60F782443472100C1FA44 /* PhoneNumberKit */; };
 		99B60F7B2443475D00C1FA44 /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */; };
 		99B60F7D2443B99800C1FA44 /* BlurredBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */; };
@@ -80,7 +81,6 @@
 		9929851C243C632300F14364 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9929851F243C632300F14364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99298521243C632300F14364 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9946C8B6244F047F00BDA557 /* YouTubeiOSPlayerHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YouTubeiOSPlayerHelper.framework; path = Carthage/Build/iOS/YouTubeiOSPlayerHelper.framework; sourceTree = "<group>"; };
 		9953E25A244AF62900EF51F5 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseFirestore.framework; path = Carthage/Build/iOS/FirebaseFirestore.framework; sourceTree = "<group>"; };
 		9953E25C244AF63100EF51F5 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
 		9953E25F244AF65000EF51F5 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -108,6 +108,7 @@
 		99652F87244C7219008911CE /* UIButton+BackgroundColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+BackgroundColor.swift"; sourceTree = "<group>"; };
 		99652F8A244C7257008911CE /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		99652F8C244C7FD0008911CE /* EuroScorer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EuroScorer.entitlements; sourceTree = "<group>"; };
+		99AE3AEF246147A700B4B881 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
 		99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
 		99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundView.swift; sourceTree = "<group>"; };
 		99C5560824517A8D00A2A2BB /* SummaryVoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVoteView.swift; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 				990E8E3E244612AB002A5B62 /* Networking in Frameworks */,
 				99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */,
 				99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */,
+				9920368924600EAE00CE191F /* YoutubePlayer in Frameworks */,
 				99298529243C7B7200F14364 /* Stevia in Frameworks */,
 				9953E276244AF71500EF51F5 /* FIRAnalyticsConnector.framework in Frameworks */,
 				9953E277244AF71500EF51F5 /* BoringSSL-GRPC.framework in Frameworks */,
@@ -142,7 +144,6 @@
 				9953E281244AF71500EF51F5 /* abseil.framework in Frameworks */,
 				9953E282244AF71500EF51F5 /* gRPC-C++.framework in Frameworks */,
 				9953E283244AF71500EF51F5 /* nanopb.framework in Frameworks */,
-				999CA1E3244F5AE8006F6720 /* YouTubeiOSPlayerHelper.framework in Frameworks */,
 				9953E284244AF71500EF51F5 /* FirebaseInstallations.framework in Frameworks */,
 				9953E260244AF65000EF51F5 /* FirebaseAnalytics.framework in Frameworks */,
 				9953E262244AF65C00EF51F5 /* FirebaseAuth.framework in Frameworks */,
@@ -159,7 +160,6 @@
 		99112B85243F92B70067CF2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9946C8B6244F047F00BDA557 /* YouTubeiOSPlayerHelper.framework */,
 				9953E272244AF71500EF51F5 /* abseil.framework */,
 				9953E268244AF71400EF51F5 /* BoringSSL-GRPC.framework */,
 				9953E267244AF71400EF51F5 /* FIRAnalyticsConnector.framework */,
@@ -229,6 +229,7 @@
 			children = (
 				99652F8A244C7257008911CE /* Styles.swift */,
 				99FEB68F24516AB500F4E13B /* NavVC.swift */,
+				99AE3AEF246147A700B4B881 /* LoadingButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -321,6 +322,7 @@
 				99634798243E36500095BCF1 /* KeyboardLayoutGuide */,
 				99B60F782443472100C1FA44 /* PhoneNumberKit */,
 				990E8E3D244612AB002A5B62 /* Networking */,
+				9920368824600EAE00CE191F /* YoutubePlayer */,
 			);
 			productName = Eurovision2020;
 			productReference = 99298510243C632200F14364 /* EuroScorer.app */;
@@ -355,6 +357,7 @@
 				99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */,
 				99B60F772443472100C1FA44 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 				990E8E3C244612AB002A5B62 /* XCRemoteSwiftPackageReference "Networking" */,
+				9920368724600EAE00CE191F /* XCRemoteSwiftPackageReference "youtube-ios-player-helper-swift" */,
 			);
 			productRefGroup = 99298511243C632200F14364 /* Products */;
 			projectDirPath = "";
@@ -389,7 +392,6 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/FlagKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/YouTubeiOSPlayerHelper.framework",
 			);
 			outputFileListPaths = (
 			);
@@ -409,6 +411,7 @@
 			files = (
 				99FFA2CD24431174002DBD9C /* FirebaseImplementation.swift in Sources */,
 				99B60F7D2443B99800C1FA44 /* BlurredBackgroundView.swift in Sources */,
+				99AE3AF0246147A700B4B881 /* LoadingButton.swift in Sources */,
 				99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */,
 				99FFA2CB2443111C002DBD9C /* Models+UseCases.swift in Sources */,
 				9963479F243F06D10095BCF1 /* VotingView.swift in Sources */,
@@ -476,7 +479,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -537,7 +540,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -565,7 +568,7 @@
 				CODE_SIGN_ENTITLEMENTS = EuroScorer/EuroScorer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -592,7 +595,7 @@
 				CODE_SIGN_ENTITLEMENTS = EuroScorer/EuroScorer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -644,12 +647,20 @@
 				version = 0.1.0;
 			};
 		};
+		9920368724600EAE00CE191F /* XCRemoteSwiftPackageReference "youtube-ios-player-helper-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/s4cha/youtube-ios-player-helper-swift";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.1;
+			};
+		};
 		99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/freshOS/Stevia.git";
 			requirement = {
 				kind = exactVersion;
-				version = 5.0.0;
+				version = 5.0.1;
 			};
 		};
 		99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */ = {
@@ -675,6 +686,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 990E8E3C244612AB002A5B62 /* XCRemoteSwiftPackageReference "Networking" */;
 			productName = Networking;
+		};
+		9920368824600EAE00CE191F /* YoutubePlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9920368724600EAE00CE191F /* XCRemoteSwiftPackageReference "youtube-ios-player-helper-swift" */;
+			productName = YoutubePlayer;
 		};
 		99298528243C7B7200F14364 /* Stevia */ = {
 			isa = XCSwiftPackageProductDependency;

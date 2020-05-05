@@ -8,7 +8,7 @@
 
 import UIKit
 import Stevia
-import YouTubeiOSPlayerHelper
+import YoutubePlayer
 
 class VotingView: UIView {
     
@@ -20,7 +20,7 @@ class VotingView: UIView {
     let votesLeft = UILabel()
     let votesGiven = UILabel()
     let confirm = UIButton()
-    let playerView = WKYTPlayerView()
+    let playerView = YTPlayerView()
     var playerViewHeightConstraint: NSLayoutConstraint?
     let playerCloseButton = UIButton()
     

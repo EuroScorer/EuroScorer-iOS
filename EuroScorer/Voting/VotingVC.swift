@@ -10,7 +10,7 @@ import UIKit
 import Stevia
 import FlagKit
 import Combine
-import YouTubeiOSPlayerHelper
+import YoutubePlayer
 
 class VotingVC: UIViewController {
     
@@ -40,11 +40,12 @@ class VotingVC: UIViewController {
     
     func refreshLogoutButton() {
         if User.currentUser == nil {
-            navigationItem.rightBarButtonItem = nil
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItem.Style.plain, target: self, action: #selector(loginTapped))
+            
         } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutTapped))
-            navigationItem.rightBarButtonItem?.tintColor = .white
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutTapped))
         }
+        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     @objc
@@ -86,23 +87,36 @@ class VotingVC: UIViewController {
         navigationController?.pushViewController(SummaryVC(votes: votes), animated: true)
     }
     
+    @objc
+    func loginTapped() {
+        showLoginView()
+    }
+    
     func showLogin() {
         let alert = UIAlertController(title: "Voting", message:
             "You need to verify your phone number before voting 😎", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Let's do this!", style: .default, handler: { a in
-            let vc = PhoneNumberValidationVC()
-            vc.didLogin = {
-                self.refreshLogoutButton()
-                self.v.tableView.reloadData()
-                self.dismiss(animated: true, completion: nil)
-            }
-            self.present(vc, animated: true, completion: nil)
+            self.showLoginView()
         }))
         
         alert.addAction(UIAlertAction(title: "Not now", style: .cancel, handler: { a in
             print("not now")
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showLoginView() {
+        let vc = PhoneNumberValidationVC()
+        vc.didLogin = {
+            self.refreshLogoutButton()
+            self.v.tableView.reloadData()
+            self.dismiss(animated: true, completion: nil)
+        }
+        
+        let navVC = NavVC(rootViewController: vc)
+        navVC.navigationBar.barStyle = .black
+        navVC.modalPresentationStyle = .fullScreen
+        self.present(navVC, animated: true, completion: nil)
     }
 }
 
@@ -189,7 +203,7 @@ extension VotingVC: VotingCellDelegate {
         if let indexPath = v.tableView.indexPath(for: cell) {
             let song = songs[indexPath.row]
             if let url = URL(string: song.link) {
-                v.playerView.load(withVideoId: url.lastPathComponent, playerVars: ["playsinline": NSNumber(value: 1)])
+                v.playerView.loadWith(videoId: url.lastPathComponent, playerVars: ["playsinline": NSNumber(value: 1)])
                 showPlayer()
             }
         }
@@ -235,26 +249,33 @@ extension VotingVC: VotingCellDelegate {
     }
 }
 
-extension VotingVC: WKYTPlayerViewDelegate {
-    
-    func playerViewDidBecomeReady(_ playerView: WKYTPlayerView) {
+extension VotingVC: YTPlayerViewDelegate {
+        
+    func playerViewDidBecomeReady(playerView: YTPlayerView) {
         print(playerView)
         if !playerView.isHidden {
             playerView.seek(toSeconds: 6, allowSeekAhead: true)
         }
     }
     
-    func playerViewPreferredInitialLoading(_ playerView: WKYTPlayerView) -> UIView? {
+    func playerViewPreferredInitialLoading(_ playerView: YTPlayerView) -> UIView? {
         let myView = UIView()
         myView.backgroundColor = .black
         return myView
     }
     
-    func playerView(_ playerView: WKYTPlayerView, didChangeTo state: WKYTPlayerState) {
+    
+    
+    func playerView(playerView: YTPlayerView, didChangeTo state: YTPlayerState) {
         if state == .playing || state == .buffering  {
             if playerView.isHidden {
                 playerView.stopVideo()
             }
         }
+        
+        playerView.duration { time in
+            print(time)
+        }
     }
+    
 }
