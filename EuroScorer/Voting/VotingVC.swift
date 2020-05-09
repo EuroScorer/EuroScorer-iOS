@@ -38,14 +38,24 @@ class VotingVC: UIViewController {
         refreshSongs()
         refreshVotes()
         refreshLogoutButton()
+        tryFetchUserVotes()
+    }
+    
+    func tryFetchUserVotes() {
+        User.currentUser?.fetchVotes().then { [unowned self] previousVotes in
+            self.votes = previousVotes
+            self.refreshVotes()
+            self.v.tableView.reloadData()
+        }.sinkAndStore(in: &cancellables)
     }
     
     func refreshLogoutButton() {
         if User.currentUser == nil {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log in", style: UIBarButtonItem.Style.plain, target: self, action: #selector(loginTapped))
-            
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Login", style: UIBarButtonItem.Style.plain, target: self, action: #selector(loginTapped))
+            navigationItem.rightBarButtonItem?.tintColor = .systemYellow
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutTapped))
+            navigationItem.rightBarButtonItem?.tintColor = .systemRed
         }
 //        navigationItem.rightBarButtonItem?.tintColor = .white
     }
@@ -63,11 +73,19 @@ class VotingVC: UIViewController {
     
     @objc
     func logoutTapped() {
-        User.currentUser?.logout()
-        votes.removeAll()
-        refreshVotes()
-        refreshLogoutButton()
-        v.tableView.reloadData()
+        let alert = UIAlertController(title: "Log out",
+                                      message: "Are you sure you want to log out ?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Yup", style: .destructive, handler: { a in
+            User.currentUser?.logout()
+            self.votes.removeAll()
+            self.refreshVotes()
+            self.refreshLogoutButton()
+            self.v.tableView.reloadData()
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { a in
+            print("not now")
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
         
     @objc
@@ -119,7 +137,6 @@ class VotingVC: UIViewController {
     }
     
     func showLoginView() {
-        
         let privacyPolicyVC = PrivacyPolicyVC()
         let navVC = NavVC(rootViewController: privacyPolicyVC)
         navVC.navigationBar.barStyle = .black
@@ -130,6 +147,7 @@ class VotingVC: UIViewController {
             phoneNumberValidationVC.didLogin = {
                 self.refreshLogoutButton()
                 self.v.tableView.reloadData()
+                self.tryFetchUserVotes()
                 self.dismiss(animated: true, completion: nil)
             }
             navVC.pushViewController(phoneNumberValidationVC, animated: true)
@@ -147,13 +165,20 @@ extension VotingVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let song = songs[indexPath.row]
-        let isMyCountry = song.country?.code == User.currentUser?.countryCode
         let cell = tableView.dequeueReusableCell(withIdentifier: "VotingCell", for: indexPath) as! VotingCell
+        render(cell: cell, with: song)
+        cell.delegate = self
+        return cell
+    }
+    
+    func render(cell: VotingCell, with song: Song) {
+        let isMyCountry = song.country?.code == User.currentUser?.countryCode
         cell.number.text = (song.number < 10) ? "0\(song.number)" : "\(song.number)"
         let flag = Flag(countryCode: song.country?.code ?? "GB")!
         cell.flag.image = flag.image(style: .roundedRect)
         cell.title.text = song.title
-        cell.votes.text = "\(numberOfVotesFor(song: song)) votes"
+        cell.votes.text = "\(numberOfVotesFor(song: song)) pts"
+        cell.votes.textColor = numberOfVotesFor(song: song) > 0 ? .systemYellow : .clear
         cell.minusButton.isEnabled = !isMyCountry
         cell.minusButton.isHidden = isMyCountry
         cell.plusButton.isEnabled = !isMyCountry
@@ -161,8 +186,6 @@ extension VotingVC: UITableViewDataSource {
         cell.votes.isHidden = isMyCountry
         cell.country.text = isMyCountry ? "\(song.country?.name ?? "") (Your country)" : song.country?.name
         cell.backgroundColor = isMyCountry ? UIColor.black.withAlphaComponent(0.5) : .clear
-        cell.delegate = self
-        return cell
     }
     
     func showPlayer() {
@@ -239,7 +262,7 @@ extension VotingVC: VotingCellDelegate {
         let song = songs[indexPath.row]
         if let index = votes.firstIndex(of: song.country!.code) {
             votes.remove(at: index)
-            cell.votes.text = "\(numberOfVotesFor(song: song)) votes"
+            render(cell: cell, with: song)
             refreshVotes()
             playHapticsFeedback(style: .soft)
         }
@@ -256,7 +279,7 @@ extension VotingVC: VotingCellDelegate {
         let song = songs[indexPath.row]
         if canVote() {
             addVoteFor(song: song)
-            cell.votes.text = "\(numberOfVotesFor(song: song)) votes"
+            render(cell: cell, with: song)
             refreshVotes()
             playHapticsFeedback(style: .medium)
         }
