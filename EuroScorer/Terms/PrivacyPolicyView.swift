@@ -31,7 +31,7 @@ class PrivacyPolicyView: UIView {
             10
             |-10-button-10-|// ~ 100
         }
-        button.Bottom == safeAreaLayoutGuide.Bottom
+        button.Bottom == safeAreaLayoutGuide.Bottom - 10
         
         button.style(Styles.buttonStyle)
         
