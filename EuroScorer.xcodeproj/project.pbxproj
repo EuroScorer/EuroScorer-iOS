@@ -44,6 +44,12 @@
 		99652F88244C7219008911CE /* UIButton+BackgroundColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99652F87244C7219008911CE /* UIButton+BackgroundColor.swift */; };
 		99652F8B244C7257008911CE /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99652F8A244C7257008911CE /* Styles.swift */; };
 		99AE3AF0246147A700B4B881 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AE3AEF246147A700B4B881 /* LoadingButton.swift */; };
+		99AE3AF424614F6700B4B881 /* PrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AE3AF324614F6700B4B881 /* PrivacyPolicyVC.swift */; };
+		99AE3AF624614F7800B4B881 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AE3AF524614F7800B4B881 /* PrivacyPolicyView.swift */; };
+		99AE3AF824615C4900B4B881 /* FirebaseRemoteConfig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE3AF724615C4900B4B881 /* FirebaseRemoteConfig.framework */; };
+		99AE3AFE24615EA900B4B881 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE3AFB24615EA900B4B881 /* FirebaseInstanceID.framework */; };
+		99AE3AFF24615EA900B4B881 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE3AFC24615EA900B4B881 /* Protobuf.framework */; };
+		99AE3B0024615EA900B4B881 /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE3AFD24615EA900B4B881 /* FirebaseABTesting.framework */; };
 		99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B60F782443472100C1FA44 /* PhoneNumberKit */; };
 		99B60F7B2443475D00C1FA44 /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */; };
 		99B60F7D2443B99800C1FA44 /* BlurredBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */; };
@@ -109,6 +115,12 @@
 		99652F8A244C7257008911CE /* Styles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		99652F8C244C7FD0008911CE /* EuroScorer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EuroScorer.entitlements; sourceTree = "<group>"; };
 		99AE3AEF246147A700B4B881 /* LoadingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingButton.swift; sourceTree = "<group>"; };
+		99AE3AF324614F6700B4B881 /* PrivacyPolicyVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyVC.swift; sourceTree = "<group>"; };
+		99AE3AF524614F7800B4B881 /* PrivacyPolicyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyView.swift; sourceTree = "<group>"; };
+		99AE3AF724615C4900B4B881 /* FirebaseRemoteConfig.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseRemoteConfig.framework; path = Carthage/Build/iOS/FirebaseRemoteConfig.framework; sourceTree = "<group>"; };
+		99AE3AFB24615EA900B4B881 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Carthage/Build/iOS/FirebaseInstanceID.framework; sourceTree = "<group>"; };
+		99AE3AFC24615EA900B4B881 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Carthage/Build/iOS/Protobuf.framework; sourceTree = "<group>"; };
+		99AE3AFD24615EA900B4B881 /* FirebaseABTesting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseABTesting.framework; path = Carthage/Build/iOS/FirebaseABTesting.framework; sourceTree = "<group>"; };
 		99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PhoneNumberMetadata.json; sourceTree = "<group>"; };
 		99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurredBackgroundView.swift; sourceTree = "<group>"; };
 		99C5560824517A8D00A2A2BB /* SummaryVoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryVoteView.swift; sourceTree = "<group>"; };
@@ -131,26 +143,30 @@
 				99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */,
 				9920368924600EAE00CE191F /* YoutubePlayer in Frameworks */,
 				99298529243C7B7200F14364 /* Stevia in Frameworks */,
-				9953E276244AF71500EF51F5 /* FIRAnalyticsConnector.framework in Frameworks */,
-				9953E277244AF71500EF51F5 /* BoringSSL-GRPC.framework in Frameworks */,
-				9953E278244AF71500EF51F5 /* GoogleDataTransport.framework in Frameworks */,
-				9953E279244AF71500EF51F5 /* PromisesObjC.framework in Frameworks */,
-				9953E27A244AF71500EF51F5 /* gRPC-Core.framework in Frameworks */,
-				9953E27B244AF71500EF51F5 /* leveldb-library.framework in Frameworks */,
-				9953E27D244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
-				9953E27E244AF71500EF51F5 /* GoogleAppMeasurement.framework in Frameworks */,
-				9953E27F244AF71500EF51F5 /* GTMSessionFetcher.framework in Frameworks */,
-				9953E280244AF71500EF51F5 /* GoogleUtilities.framework in Frameworks */,
 				9953E281244AF71500EF51F5 /* abseil.framework in Frameworks */,
-				9953E282244AF71500EF51F5 /* gRPC-C++.framework in Frameworks */,
-				9953E283244AF71500EF51F5 /* nanopb.framework in Frameworks */,
-				9953E284244AF71500EF51F5 /* FirebaseInstallations.framework in Frameworks */,
+				9953E277244AF71500EF51F5 /* BoringSSL-GRPC.framework in Frameworks */,
+				9953E276244AF71500EF51F5 /* FIRAnalyticsConnector.framework in Frameworks */,
 				9953E260244AF65000EF51F5 /* FirebaseAnalytics.framework in Frameworks */,
 				9953E262244AF65C00EF51F5 /* FirebaseAuth.framework in Frameworks */,
 				9953E264244AF68800EF51F5 /* FirebaseCore.framework in Frameworks */,
 				9953E266244AF6A500EF51F5 /* FirebaseCoreDiagnostics.framework in Frameworks */,
 				9953E263244AF66A00EF51F5 /* FirebaseFirestore.framework in Frameworks */,
+				9953E284244AF71500EF51F5 /* FirebaseInstallations.framework in Frameworks */,
+				99AE3AF824615C4900B4B881 /* FirebaseRemoteConfig.framework in Frameworks */,
+				99AE3AFE24615EA900B4B881 /* FirebaseInstanceID.framework in Frameworks */,
+				99AE3AFF24615EA900B4B881 /* Protobuf.framework in Frameworks */,
+				99AE3B0024615EA900B4B881 /* FirebaseABTesting.framework in Frameworks */,
 				99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */,
+				9953E27E244AF71500EF51F5 /* GoogleAppMeasurement.framework in Frameworks */,
+				9953E278244AF71500EF51F5 /* GoogleDataTransport.framework in Frameworks */,
+				9953E27D244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
+				9953E280244AF71500EF51F5 /* GoogleUtilities.framework in Frameworks */,
+				9953E282244AF71500EF51F5 /* gRPC-C++.framework in Frameworks */,
+				9953E27A244AF71500EF51F5 /* gRPC-Core.framework in Frameworks */,
+				9953E27F244AF71500EF51F5 /* GTMSessionFetcher.framework in Frameworks */,
+				9953E27B244AF71500EF51F5 /* leveldb-library.framework in Frameworks */,
+				9953E283244AF71500EF51F5 /* nanopb.framework in Frameworks */,
+				9953E279244AF71500EF51F5 /* PromisesObjC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +176,10 @@
 		99112B85243F92B70067CF2D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				99AE3AFD24615EA900B4B881 /* FirebaseABTesting.framework */,
+				99AE3AFB24615EA900B4B881 /* FirebaseInstanceID.framework */,
+				99AE3AFC24615EA900B4B881 /* Protobuf.framework */,
+				99AE3AF724615C4900B4B881 /* FirebaseRemoteConfig.framework */,
 				9953E272244AF71500EF51F5 /* abseil.framework */,
 				9953E268244AF71400EF51F5 /* BoringSSL-GRPC.framework */,
 				9953E267244AF71400EF51F5 /* FIRAnalyticsConnector.framework */,
@@ -212,6 +232,7 @@
 				99FFA2C224431091002DBD9C /* Phone Validation */,
 				99FFA2C32443109A002DBD9C /* Voting */,
 				99FFA2C4244310A5002DBD9C /* Summary */,
+				99AE3AF124614F4500B4B881 /* Terms */,
 				99652F89244C723F008911CE /* Common */,
 				99FFA2C5244310B6002DBD9C /* Helpers */,
 				99B60F7524433B8D00C1FA44 /* Core */,
@@ -232,6 +253,15 @@
 				99AE3AEF246147A700B4B881 /* LoadingButton.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		99AE3AF124614F4500B4B881 /* Terms */ = {
+			isa = PBXGroup;
+			children = (
+				99AE3AF324614F6700B4B881 /* PrivacyPolicyVC.swift */,
+				99AE3AF524614F7800B4B881 /* PrivacyPolicyView.swift */,
+			);
+			path = Terms;
 			sourceTree = "<group>";
 		};
 		99B60F7524433B8D00C1FA44 /* Core */ = {
@@ -417,10 +447,12 @@
 				9963479F243F06D10095BCF1 /* VotingView.swift in Sources */,
 				9963479B243E36A50095BCF1 /* PhoneNumberValidationView.swift in Sources */,
 				99C5560924517A8D00A2A2BB /* SummaryVoteView.swift in Sources */,
+				99AE3AF424614F6700B4B881 /* PrivacyPolicyVC.swift in Sources */,
 				9963479D243F06890095BCF1 /* VotingVC.swift in Sources */,
 				99652F88244C7219008911CE /* UIButton+BackgroundColor.swift in Sources */,
 				99298518243C632200F14364 /* PhoneNumberValidationVC.swift in Sources */,
 				99FEB69024516AB500F4E13B /* NavVC.swift in Sources */,
+				99AE3AF624614F7800B4B881 /* PrivacyPolicyView.swift in Sources */,
 				99652F8B244C7257008911CE /* Styles.swift in Sources */,
 				99C5560B24517D2A00A2A2BB /* FirebaseModels.swift in Sources */,
 				99FFA2BF244301D7002DBD9C /* CombineSugar.swift in Sources */,
@@ -568,7 +600,7 @@
 				CODE_SIGN_ENTITLEMENTS = EuroScorer/EuroScorer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -595,7 +627,7 @@
 				CODE_SIGN_ENTITLEMENTS = EuroScorer/EuroScorer.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

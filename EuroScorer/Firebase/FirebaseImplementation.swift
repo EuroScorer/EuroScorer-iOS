@@ -11,11 +11,20 @@ import Combine
 import Networking
 import Firebase
 import PhoneNumberKit
+import FirebaseRemoteConfig
 
 class FirebaseImplementation: NetworkingService {
     
     func startService() {
         FirebaseApp.configure()
+        
+        // Get latest remote config data.
+        let remoteConfig = RemoteConfig.remoteConfig()
+        remoteConfig.fetch(withExpirationDuration: 0) { status, error in
+            if error == nil {
+                remoteConfig.activate(completionHandler: nil)
+            }
+        }
     }
     
     var network = NetworkingClient(baseURL: "https://us-central1-eurovision2020-ea486.cloudfunctions.net/api/v1")

@@ -55,7 +55,7 @@ class SummaryVC: UIViewController {
         User.currentUser?.sendVotes(votes).then { [unowned self] in
             let alert = UIAlertController(title: "Thank you ❤️", message:
                 "You votes have been succesfully sent ! \nYou can update them until the final date.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }.onError { error in
             print(error)

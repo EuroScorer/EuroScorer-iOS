@@ -99,7 +99,7 @@ class VotingView: UIView {
         playerCloseButton.layer.shadowOffset = CGSize(width: 0, height: 1)
 
         // MARK: - Content
-        confirm.setTitle("Confirm my votes", for: .normal)
+        confirm.setTitle("See summary", for: .normal)
         
         
 

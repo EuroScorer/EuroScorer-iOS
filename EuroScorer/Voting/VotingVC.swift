@@ -28,6 +28,8 @@ class VotingVC: UIViewController {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
         title = "Spread your votes!"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Privacy", style: UIBarButtonItem.Style.plain, target: self, action: #selector(privacyTapped))
+        navigationItem.leftBarButtonItem?.tintColor = .white
         v.refreshControl.addTarget(self, action: #selector(refreshSongs), for: .valueChanged)
         v.playerCloseButton.addTarget(self, action: #selector(closePlayerTapped), for: .touchUpInside)
         v.confirm.addTarget(self, action: #selector(confirmTapped), for: .touchUpInside)
@@ -45,7 +47,18 @@ class VotingVC: UIViewController {
         } else {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutTapped))
         }
-        navigationItem.rightBarButtonItem?.tintColor = .white
+//        navigationItem.rightBarButtonItem?.tintColor = .white
+    }
+    
+    @objc
+    func privacyTapped() {
+        let privacyPolicyVC = PrivacyPolicyVC()
+        let navVC = NavVC(rootViewController: privacyPolicyVC)
+        navVC.navigationBar.barStyle = .black
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true, completion: nil)
+        privacyPolicyVC.v.button.isHidden = true
+        privacyPolicyVC.v.button.height(0)
     }
     
     @objc
@@ -106,16 +119,22 @@ class VotingVC: UIViewController {
     }
     
     func showLoginView() {
-        let vc = PhoneNumberValidationVC()
-        vc.didLogin = {
-            self.refreshLogoutButton()
-            self.v.tableView.reloadData()
-            self.dismiss(animated: true, completion: nil)
-        }
         
-        let navVC = NavVC(rootViewController: vc)
+        let privacyPolicyVC = PrivacyPolicyVC()
+        let navVC = NavVC(rootViewController: privacyPolicyVC)
         navVC.navigationBar.barStyle = .black
         navVC.modalPresentationStyle = .fullScreen
+        privacyPolicyVC.didAccept = {
+                    
+            let phoneNumberValidationVC = PhoneNumberValidationVC()
+            phoneNumberValidationVC.didLogin = {
+                self.refreshLogoutButton()
+                self.v.tableView.reloadData()
+                self.dismiss(animated: true, completion: nil)
+            }
+            navVC.pushViewController(phoneNumberValidationVC, animated: true)
+        }
+ 
         self.present(navVC, animated: true, completion: nil)
     }
 }

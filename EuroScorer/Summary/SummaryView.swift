@@ -56,6 +56,6 @@ class SummaryView: UIView {
         country.style(textStyle)
         button.style(Styles.buttonStyle)
         
-        button.setTitle("Send votes", for: .normal)
+        button.setTitle("Send my votes", for: .normal)
     }
 }
