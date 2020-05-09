@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         User.Endpoint.confirmPhoneNumberWithCode = firebase.confirmPhoneNumberWithCode
         User.Endpoint.getCurrentUser = firebase.getCurrentUser
         User.Endpoint.sendVotes = firebase.sendVotes
+        User.Endpoint.fetchVotes = firebase.fetchVotes
         User.Endpoint.logout = firebase.logout
         Songs.Endpoint.fetchSongs = firebase.fetchSongs
         firebase.startService()

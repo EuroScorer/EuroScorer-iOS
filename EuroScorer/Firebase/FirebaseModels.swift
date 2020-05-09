@@ -40,3 +40,9 @@ struct FirebaseCountry: Country, Decodable {
     let name: String
 }
 
+
+struct FirebaseVote: Decodable {
+    let user: String
+    let country: String
+    let votes: [String]
+}

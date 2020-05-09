@@ -20,6 +20,7 @@ extension User {
         static var confirmPhoneNumberWithCode: ((SMSCode) -> AnyPublisher<Void, Error>)!
         static var getCurrentUser: (() -> UserProtocol?)!
         static var sendVotes: (([String]) -> AnyPublisher<Void, Error>)!
+        static var fetchVotes: (() -> AnyPublisher<[String], Error>)!
         static var logout: (() -> Void)!
     }
         
@@ -40,6 +41,10 @@ extension UserProtocol {
     
     func sendVotes(_ votes: [String]) -> AnyPublisher<Void, Error> {
         User.Endpoint.sendVotes(votes)
+    }
+    
+    func fetchVotes() -> AnyPublisher<[String], Error> {
+        User.Endpoint.fetchVotes()
     }
     
     func logout() {

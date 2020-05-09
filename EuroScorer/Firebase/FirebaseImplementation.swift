@@ -99,6 +99,15 @@ class FirebaseImplementation: NetworkingService {
         }.eraseToAnyPublisher()
     }
     
+    func fetchVotes() -> AnyPublisher<[String], Error> {
+        fetchIdToken().then { [unowned self] idToken in
+            self.network.headers["Authorization"] = idToken
+            return self.network.get("/vote").map { (vote: FirebaseVote) -> [String] in
+                return vote.votes
+            }.eraseToAnyPublisher()
+        }.eraseToAnyPublisher()
+    }
+    
     private func fetchIdToken() -> Future<String, Error> {
         Future<String, Error> { promise in
             Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
@@ -113,4 +122,7 @@ class FirebaseImplementation: NetworkingService {
 }
 
 extension FirebaseSong: NetworkingJSONDecodable {}
+extension FirebaseVote: NetworkingJSONDecodable {}
+
+
 
