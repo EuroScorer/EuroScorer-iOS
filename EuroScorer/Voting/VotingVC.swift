@@ -54,10 +54,9 @@ class VotingVC: UIViewController {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Login", style: UIBarButtonItem.Style.plain, target: self, action: #selector(loginTapped))
             navigationItem.rightBarButtonItem?.tintColor = .systemYellow
         } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutTapped))
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutTapped))
             navigationItem.rightBarButtonItem?.tintColor = .systemRed
         }
-//        navigationItem.rightBarButtonItem?.tintColor = .white
     }
     
     @objc
