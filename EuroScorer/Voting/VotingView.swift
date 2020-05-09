@@ -57,7 +57,10 @@ class VotingView: UIView {
             20
             |-20⁃votesLeft⁃confirm.centerHorizontally().height(50)⁃votesGiven⁃20-|
         }
-        votesLeft.Bottom == safeAreaLayoutGuide.Bottom - 20
+        
+        
+        let bottomMargin: Double = (UIApplication.shared.windows[0].safeAreaInsets.bottom > 0) ? 0 : 20
+        votesLeft.Bottom == safeAreaLayoutGuide.Bottom - bottomMargin
         confirm.setContentHuggingPriority(UILayoutPriority(251), for: .horizontal)
         playerViewHeightConstraint = playerView.Height == 0
         
