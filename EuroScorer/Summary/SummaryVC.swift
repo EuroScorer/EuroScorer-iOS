@@ -47,6 +47,10 @@ class SummaryVC: UIViewController {
             summaryVoteView.votes.text = "\(count)"
             v.votesStackView.addArrangedSubview(summaryVoteView)
         }
+        
+        User.currentUser?.fetchVotes().then { [unowned self] _ in
+            self.v.button.setTitle("Update my votes", for: .normal)
+        }.sinkAndStore(in: &cancellables)
     }
     
     @objc
