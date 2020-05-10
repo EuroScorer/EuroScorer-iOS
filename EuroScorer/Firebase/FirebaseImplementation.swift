@@ -27,7 +27,7 @@ class FirebaseImplementation: NetworkingService {
         }
     }
     
-    var network = NetworkingClient(baseURL: "https://us-central1-eurovision2020-ea486.cloudfunctions.net/api/v1")
+    var network = NetworkingClient(baseURL: "https://api.euroscorer2020.com/v1")
     
     func askForPhoneNumberVerification(number: PhoneNumber) -> AnyPublisher<Void, Error> {
         Future { promise in
