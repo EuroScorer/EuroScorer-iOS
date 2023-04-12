@@ -25,7 +25,6 @@
 		995CEF5029E6764700CA2B3D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4F29E6764700CA2B3D /* FirebaseFirestoreSwift */; };
 		995CEF5229E6764700CA2B3D /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF5129E6764700CA2B3D /* FirebaseRemoteConfig */; };
 		995CEF5429E6764700CA2B3D /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF5329E6764700CA2B3D /* FirebaseRemoteConfigSwift */; };
-		99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */ = {isa = PBXBuildFile; productRef = 99634798243E36500095BCF1 /* KeyboardLayoutGuide */; };
 		9963479B243E36A50095BCF1 /* PhoneNumberValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479A243E36A50095BCF1 /* PhoneNumberValidationView.swift */; };
 		9963479D243F06890095BCF1 /* VotingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479C243F06890095BCF1 /* VotingVC.swift */; };
 		9963479F243F06D10095BCF1 /* VotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479E243F06D10095BCF1 /* VotingView.swift */; };
@@ -125,7 +124,6 @@
 			files = (
 				995CEF4629E6764700CA2B3D /* FirebaseAnalytics in Frameworks */,
 				990E8E3E244612AB002A5B62 /* Networking in Frameworks */,
-				99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */,
 				995CEF5429E6764700CA2B3D /* FirebaseRemoteConfigSwift in Frameworks */,
 				99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */,
 				995CEF4A29E6764700CA2B3D /* FirebaseAuth in Frameworks */,
@@ -318,7 +316,6 @@
 			name = EuroScorer;
 			packageProductDependencies = (
 				99298528243C7B7200F14364 /* Stevia */,
-				99634798243E36500095BCF1 /* KeyboardLayoutGuide */,
 				99B60F782443472100C1FA44 /* PhoneNumberKit */,
 				990E8E3D244612AB002A5B62 /* Networking */,
 				9920368824600EAE00CE191F /* YoutubePlayer */,
@@ -362,7 +359,6 @@
 			mainGroup = 99298507243C632200F14364;
 			packageReferences = (
 				99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */,
-				99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */,
 				99B60F772443472100C1FA44 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 				990E8E3C244612AB002A5B62 /* XCRemoteSwiftPackageReference "Networking" */,
 				9920368724600EAE00CE191F /* XCRemoteSwiftPackageReference "youtube-ios-player-helper-swift" */,
@@ -487,7 +483,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -543,7 +539,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -565,7 +561,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = EuroScorer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -592,7 +588,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = EuroScorer/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -671,14 +667,6 @@
 				minimumVersion = 9.0.0;
 			};
 		};
-		99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/freshOS/KeyboardLayoutGuide.git";
-			requirement = {
-				kind = exactVersion;
-				version = 1.7.0;
-			};
-		};
 		99B60F772443472100C1FA44 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/marmelroy/PhoneNumberKit";
@@ -749,11 +737,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfigSwift;
-		};
-		99634798243E36500095BCF1 /* KeyboardLayoutGuide */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */;
-			productName = KeyboardLayoutGuide;
 		};
 		99B60F782443472100C1FA44 /* PhoneNumberKit */ = {
 			isa = XCSwiftPackageProductDependency;

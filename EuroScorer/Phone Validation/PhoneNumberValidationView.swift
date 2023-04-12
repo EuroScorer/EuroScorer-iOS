@@ -8,7 +8,6 @@
 
 import UIKit
 import Stevia
-import KeyboardLayoutGuide
 import PhoneNumberKit
 
 class PhoneNumberValidationView: UIView {
