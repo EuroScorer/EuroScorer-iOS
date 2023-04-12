@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		990E8E3E244612AB002A5B62 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 990E8E3D244612AB002A5B62 /* Networking */; };
-		99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99112B8A243F94600067CF2D /* FlagKit.framework */; };
 		99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8C243F9CAD0067CF2D /* SummaryVC.swift */; };
 		99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8E243F9CD60067CF2D /* SummaryView.swift */; };
 		9920368924600EAE00CE191F /* YoutubePlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 9920368824600EAE00CE191F /* YoutubePlayer */; };
@@ -17,25 +16,15 @@
 		9929851D243C632300F14364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9929851C243C632300F14364 /* Assets.xcassets */; };
 		99298520243C632300F14364 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9929851E243C632300F14364 /* LaunchScreen.storyboard */; };
 		99298529243C7B7200F14364 /* Stevia in Frameworks */ = {isa = PBXBuildFile; productRef = 99298528243C7B7200F14364 /* Stevia */; };
-		9953E260244AF65000EF51F5 /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E25F244AF65000EF51F5 /* FirebaseAnalytics.framework */; };
-		9953E262244AF65C00EF51F5 /* FirebaseAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E261244AF65C00EF51F5 /* FirebaseAuth.framework */; };
-		9953E263244AF66A00EF51F5 /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E25A244AF62900EF51F5 /* FirebaseFirestore.framework */; };
-		9953E264244AF68800EF51F5 /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E25C244AF63100EF51F5 /* FirebaseCore.framework */; };
-		9953E266244AF6A500EF51F5 /* FirebaseCoreDiagnostics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E265244AF6A500EF51F5 /* FirebaseCoreDiagnostics.framework */; };
-		9953E276244AF71500EF51F5 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E267244AF71400EF51F5 /* FIRAnalyticsConnector.framework */; };
-		9953E277244AF71500EF51F5 /* BoringSSL-GRPC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E268244AF71400EF51F5 /* BoringSSL-GRPC.framework */; };
-		9953E278244AF71500EF51F5 /* GoogleDataTransport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E269244AF71400EF51F5 /* GoogleDataTransport.framework */; };
-		9953E279244AF71500EF51F5 /* PromisesObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26A244AF71400EF51F5 /* PromisesObjC.framework */; };
-		9953E27A244AF71500EF51F5 /* gRPC-Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26B244AF71500EF51F5 /* gRPC-Core.framework */; };
-		9953E27B244AF71500EF51F5 /* leveldb-library.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26C244AF71500EF51F5 /* leveldb-library.framework */; };
-		9953E27D244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26E244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework */; };
-		9953E27E244AF71500EF51F5 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E26F244AF71500EF51F5 /* GoogleAppMeasurement.framework */; };
-		9953E27F244AF71500EF51F5 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E270244AF71500EF51F5 /* GTMSessionFetcher.framework */; };
-		9953E280244AF71500EF51F5 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E271244AF71500EF51F5 /* GoogleUtilities.framework */; };
-		9953E281244AF71500EF51F5 /* abseil.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E272244AF71500EF51F5 /* abseil.framework */; };
-		9953E282244AF71500EF51F5 /* gRPC-C++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E273244AF71500EF51F5 /* gRPC-C++.framework */; };
-		9953E283244AF71500EF51F5 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E274244AF71500EF51F5 /* nanopb.framework */; };
-		9953E284244AF71500EF51F5 /* FirebaseInstallations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9953E275244AF71500EF51F5 /* FirebaseInstallations.framework */; };
+		995CEF4329E66D5500CA2B3D /* FlagKit in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4229E66D5500CA2B3D /* FlagKit */; };
+		995CEF4629E6764700CA2B3D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4529E6764700CA2B3D /* FirebaseAnalytics */; };
+		995CEF4829E6764700CA2B3D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4729E6764700CA2B3D /* FirebaseAnalyticsSwift */; };
+		995CEF4A29E6764700CA2B3D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4929E6764700CA2B3D /* FirebaseAuth */; };
+		995CEF4C29E6764700CA2B3D /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4B29E6764700CA2B3D /* FirebaseCrashlytics */; };
+		995CEF4E29E6764700CA2B3D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4D29E6764700CA2B3D /* FirebaseFirestore */; };
+		995CEF5029E6764700CA2B3D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4F29E6764700CA2B3D /* FirebaseFirestoreSwift */; };
+		995CEF5229E6764700CA2B3D /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF5129E6764700CA2B3D /* FirebaseRemoteConfig */; };
+		995CEF5429E6764700CA2B3D /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF5329E6764700CA2B3D /* FirebaseRemoteConfigSwift */; };
 		99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */ = {isa = PBXBuildFile; productRef = 99634798243E36500095BCF1 /* KeyboardLayoutGuide */; };
 		9963479B243E36A50095BCF1 /* PhoneNumberValidationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479A243E36A50095BCF1 /* PhoneNumberValidationView.swift */; };
 		9963479D243F06890095BCF1 /* VotingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9963479C243F06890095BCF1 /* VotingVC.swift */; };
@@ -46,10 +35,6 @@
 		99AE3AF0246147A700B4B881 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AE3AEF246147A700B4B881 /* LoadingButton.swift */; };
 		99AE3AF424614F6700B4B881 /* PrivacyPolicyVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AE3AF324614F6700B4B881 /* PrivacyPolicyVC.swift */; };
 		99AE3AF624614F7800B4B881 /* PrivacyPolicyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99AE3AF524614F7800B4B881 /* PrivacyPolicyView.swift */; };
-		99AE3AF824615C4900B4B881 /* FirebaseRemoteConfig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE3AF724615C4900B4B881 /* FirebaseRemoteConfig.framework */; };
-		99AE3AFE24615EA900B4B881 /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE3AFB24615EA900B4B881 /* FirebaseInstanceID.framework */; };
-		99AE3AFF24615EA900B4B881 /* Protobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE3AFC24615EA900B4B881 /* Protobuf.framework */; };
-		99AE3B0024615EA900B4B881 /* FirebaseABTesting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99AE3AFD24615EA900B4B881 /* FirebaseABTesting.framework */; };
 		99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */ = {isa = PBXBuildFile; productRef = 99B60F782443472100C1FA44 /* PhoneNumberKit */; };
 		99B60F7B2443475D00C1FA44 /* PhoneNumberMetadata.json in Resources */ = {isa = PBXBuildFile; fileRef = 99B60F7A2443475D00C1FA44 /* PhoneNumberMetadata.json */; };
 		99B60F7D2443B99800C1FA44 /* BlurredBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99B60F7C2443B99800C1FA44 /* BlurredBackgroundView.swift */; };
@@ -138,35 +123,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				995CEF4629E6764700CA2B3D /* FirebaseAnalytics in Frameworks */,
 				990E8E3E244612AB002A5B62 /* Networking in Frameworks */,
 				99634799243E36500095BCF1 /* KeyboardLayoutGuide in Frameworks */,
+				995CEF5429E6764700CA2B3D /* FirebaseRemoteConfigSwift in Frameworks */,
 				99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */,
+				995CEF4A29E6764700CA2B3D /* FirebaseAuth in Frameworks */,
+				995CEF4829E6764700CA2B3D /* FirebaseAnalyticsSwift in Frameworks */,
 				9920368924600EAE00CE191F /* YoutubePlayer in Frameworks */,
+				995CEF4C29E6764700CA2B3D /* FirebaseCrashlytics in Frameworks */,
 				99298529243C7B7200F14364 /* Stevia in Frameworks */,
-				9953E281244AF71500EF51F5 /* abseil.framework in Frameworks */,
-				9953E277244AF71500EF51F5 /* BoringSSL-GRPC.framework in Frameworks */,
-				9953E276244AF71500EF51F5 /* FIRAnalyticsConnector.framework in Frameworks */,
-				9953E260244AF65000EF51F5 /* FirebaseAnalytics.framework in Frameworks */,
-				9953E262244AF65C00EF51F5 /* FirebaseAuth.framework in Frameworks */,
-				9953E264244AF68800EF51F5 /* FirebaseCore.framework in Frameworks */,
-				9953E266244AF6A500EF51F5 /* FirebaseCoreDiagnostics.framework in Frameworks */,
-				9953E263244AF66A00EF51F5 /* FirebaseFirestore.framework in Frameworks */,
-				9953E284244AF71500EF51F5 /* FirebaseInstallations.framework in Frameworks */,
-				99AE3AF824615C4900B4B881 /* FirebaseRemoteConfig.framework in Frameworks */,
-				99AE3AFE24615EA900B4B881 /* FirebaseInstanceID.framework in Frameworks */,
-				99AE3AFF24615EA900B4B881 /* Protobuf.framework in Frameworks */,
-				99AE3B0024615EA900B4B881 /* FirebaseABTesting.framework in Frameworks */,
-				99112B8B243F94600067CF2D /* FlagKit.framework in Frameworks */,
-				9953E27E244AF71500EF51F5 /* GoogleAppMeasurement.framework in Frameworks */,
-				9953E278244AF71500EF51F5 /* GoogleDataTransport.framework in Frameworks */,
-				9953E27D244AF71500EF51F5 /* GoogleDataTransportCCTSupport.framework in Frameworks */,
-				9953E280244AF71500EF51F5 /* GoogleUtilities.framework in Frameworks */,
-				9953E282244AF71500EF51F5 /* gRPC-C++.framework in Frameworks */,
-				9953E27A244AF71500EF51F5 /* gRPC-Core.framework in Frameworks */,
-				9953E27F244AF71500EF51F5 /* GTMSessionFetcher.framework in Frameworks */,
-				9953E27B244AF71500EF51F5 /* leveldb-library.framework in Frameworks */,
-				9953E283244AF71500EF51F5 /* nanopb.framework in Frameworks */,
-				9953E279244AF71500EF51F5 /* PromisesObjC.framework in Frameworks */,
+				995CEF4E29E6764700CA2B3D /* FirebaseFirestore in Frameworks */,
+				995CEF5229E6764700CA2B3D /* FirebaseRemoteConfig in Frameworks */,
+				995CEF4329E66D5500CA2B3D /* FlagKit in Frameworks */,
+				995CEF5029E6764700CA2B3D /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,7 +309,6 @@
 				9929850C243C632200F14364 /* Sources */,
 				9929850D243C632200F14364 /* Frameworks */,
 				9929850E243C632200F14364 /* Resources */,
-				99112B84243F924E0067CF2D /* ShellScript */,
 				999CA1D8244F56EE006F6720 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -353,6 +322,15 @@
 				99B60F782443472100C1FA44 /* PhoneNumberKit */,
 				990E8E3D244612AB002A5B62 /* Networking */,
 				9920368824600EAE00CE191F /* YoutubePlayer */,
+				995CEF4229E66D5500CA2B3D /* FlagKit */,
+				995CEF4529E6764700CA2B3D /* FirebaseAnalytics */,
+				995CEF4729E6764700CA2B3D /* FirebaseAnalyticsSwift */,
+				995CEF4929E6764700CA2B3D /* FirebaseAuth */,
+				995CEF4B29E6764700CA2B3D /* FirebaseCrashlytics */,
+				995CEF4D29E6764700CA2B3D /* FirebaseFirestore */,
+				995CEF4F29E6764700CA2B3D /* FirebaseFirestoreSwift */,
+				995CEF5129E6764700CA2B3D /* FirebaseRemoteConfig */,
+				995CEF5329E6764700CA2B3D /* FirebaseRemoteConfigSwift */,
 			);
 			productName = Eurovision2020;
 			productReference = 99298510243C632200F14364 /* EuroScorer.app */;
@@ -365,7 +343,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = MarsacProductions;
 				TargetAttributes = {
 					9929850F243C632200F14364 = {
@@ -388,6 +366,8 @@
 				99B60F772443472100C1FA44 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 				990E8E3C244612AB002A5B62 /* XCRemoteSwiftPackageReference "Networking" */,
 				9920368724600EAE00CE191F /* XCRemoteSwiftPackageReference "youtube-ios-player-helper-swift" */,
+				995CEF4129E66D5500CA2B3D /* XCRemoteSwiftPackageReference "FlagKit" */,
+				995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 99298511243C632200F14364 /* Products */;
 			projectDirPath = "";
@@ -411,28 +391,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		99112B84243F924E0067CF2D /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/FlagKit.framework",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/FlagKit.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9929850C243C632200F14364 /* Sources */ = {
@@ -503,6 +461,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -564,6 +523,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -602,10 +562,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = EuroScorer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -631,10 +589,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = J9YALKHJ5R;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = EuroScorer/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -699,6 +655,22 @@
 				version = 5.0.1;
 			};
 		};
+		995CEF4129E66D5500CA2B3D /* XCRemoteSwiftPackageReference "FlagKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/madebybowtie/FlagKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		99634797243E36500095BCF1 /* XCRemoteSwiftPackageReference "KeyboardLayoutGuide" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/freshOS/KeyboardLayoutGuide.git";
@@ -732,6 +704,51 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */;
 			productName = Stevia;
+		};
+		995CEF4229E66D5500CA2B3D /* FlagKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995CEF4129E66D5500CA2B3D /* XCRemoteSwiftPackageReference "FlagKit" */;
+			productName = FlagKit;
+		};
+		995CEF4529E6764700CA2B3D /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		995CEF4729E6764700CA2B3D /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		995CEF4929E6764700CA2B3D /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		995CEF4B29E6764700CA2B3D /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		995CEF4D29E6764700CA2B3D /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		995CEF4F29E6764700CA2B3D /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		995CEF5129E6764700CA2B3D /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		995CEF5329E6764700CA2B3D /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
 		};
 		99634798243E36500095BCF1 /* KeyboardLayoutGuide */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -22,7 +22,7 @@ class FirebaseImplementation: NetworkingService {
         let remoteConfig = RemoteConfig.remoteConfig()
         remoteConfig.fetch(withExpirationDuration: 0) { status, error in
             if error == nil {
-                remoteConfig.activate(completionHandler: nil)
+                remoteConfig.activate(completion: nil)
             }
         }
     }
