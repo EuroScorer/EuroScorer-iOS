@@ -636,7 +636,7 @@
 			repositoryURL = "https://github.com/freshOS/Networking.git";
 			requirement = {
 				kind = exactVersion;
-				version = 0.1.0;
+				version = 1.2.1;
 			};
 		};
 		9920368724600EAE00CE191F /* XCRemoteSwiftPackageReference "youtube-ios-player-helper-swift" */ = {

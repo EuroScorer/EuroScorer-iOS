@@ -120,9 +120,3 @@ class FirebaseImplementation: NetworkingService {
         }
     }
 }
-
-extension FirebaseSong: NetworkingJSONDecodable {}
-extension FirebaseVote: NetworkingJSONDecodable {}
-
-
-
