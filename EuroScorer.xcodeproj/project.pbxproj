@@ -659,8 +659,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/madebybowtie/FlagKit.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
+				kind = exactVersion;
+				version = 2.4.0;
 			};
 		};
 		995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
