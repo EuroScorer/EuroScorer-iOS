@@ -17,6 +17,6 @@ class FirebaseSongRepository: NetworkingService, SongRepository {
     
     func fetchSongs() async throws -> [Song] {
         let firebaseSongs: [FirebaseSong] = try await get("/songs")
-        return firebaseSongs.map { $0 as Song }
+        return firebaseSongs.map { $0.toSong() }
     }
 }

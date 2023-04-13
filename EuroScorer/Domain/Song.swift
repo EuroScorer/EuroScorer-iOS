@@ -8,9 +8,9 @@
 
 import Foundation
 
-protocol Song {
-    var number: Int { get }
-    var title: String { get }
-    var link: String { get }
-    var country: Country? { get }
+struct Song {
+    let number: Int
+    let title: String
+    let link: String
+    let country: Country?
 }

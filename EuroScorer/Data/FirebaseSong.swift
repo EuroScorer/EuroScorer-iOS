@@ -8,24 +8,15 @@
 
 import Foundation
 
-struct FirebaseSong: Song, Decodable {
+struct FirebaseSong: Decodable {
     let number: Int
     let title: String
     let link:  String
-    var country: Country?
-    
-    enum CodingKeys: String, CodingKey {
-        case number = "number"
-        case title = "title"
-        case country = "country"
-        case link = "link"
-    }
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        number = try container.decode(Int.self, forKey: .number)
-        title = try container.decode(String.self, forKey: .title)
-        link = try container.decode(String.self, forKey: .link)
-        country = try container.decode(FirebaseCountry.self, forKey: .country)
+    var country: FirebaseCountry?
+}
+
+extension FirebaseSong {
+    func toSong() -> Song {
+        return Song(number: number, title: title, link: link, country: country)
     }
 }
