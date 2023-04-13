@@ -23,7 +23,17 @@ class VotingVC: UIViewController {
     let v = VotingView()
     override func loadView() { view = v }
     
-
+    private let songService: SongService
+    
+    required init(songService: SongService) {
+        self.songService = songService
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.largeTitleDisplayMode = .never
@@ -89,12 +99,23 @@ class VotingVC: UIViewController {
         
     @objc
     func refreshSongs() {
-        Songs.fetchSongs().then { [unowned self] fetchedSongs in
-            self.songs = fetchedSongs
-            self.v.tableView.reloadData()
-        }.finally { [unowned self] in
-            self.v.refreshControl.endRefreshing()
-        }.sinkAndStore(in: &cancellables)
+        Task { @MainActor in
+            do {
+                let fetchedSongs = try await songService.fetchSongs()
+                songs = fetchedSongs
+                v.tableView.reloadData()
+            } catch {
+                
+            }
+            v.refreshControl.endRefreshing()
+        }
+        
+//        Songs.fetchSongs().then { [unowned self] fetchedSongs in
+//            self.songs = fetchedSongs
+//            self.v.tableView.reloadData()
+//        }.finally { [unowned self] in
+//            self.v.refreshControl.endRefreshing()
+//        }.sinkAndStore(in: &cancellables)
     }
     
     @objc

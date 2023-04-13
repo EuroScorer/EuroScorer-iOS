@@ -23,6 +23,9 @@
 		992D04E329E7791A002B9CED /* FirebaseSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D04E229E7791A002B9CED /* FirebaseSong.swift */; };
 		992D04E529E77943002B9CED /* FirebaseCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D04E429E77943002B9CED /* FirebaseCountry.swift */; };
 		992D04E729E77956002B9CED /* FirebaseVote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D04E629E77956002B9CED /* FirebaseVote.swift */; };
+		992D04E929E77ABB002B9CED /* SongRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D04E829E77ABB002B9CED /* SongRepository.swift */; };
+		992D04EB29E77AC8002B9CED /* SongService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D04EA29E77AC8002B9CED /* SongService.swift */; };
+		992D04ED29E77B15002B9CED /* FirebaseSongRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D04EC29E77B15002B9CED /* FirebaseSongRepository.swift */; };
 		995CEF4329E66D5500CA2B3D /* FlagKit in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4229E66D5500CA2B3D /* FlagKit */; };
 		995CEF4629E6764700CA2B3D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4529E6764700CA2B3D /* FirebaseAnalytics */; };
 		995CEF4829E6764700CA2B3D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4729E6764700CA2B3D /* FirebaseAnalyticsSwift */; };
@@ -83,6 +86,9 @@
 		992D04E229E7791A002B9CED /* FirebaseSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSong.swift; sourceTree = "<group>"; };
 		992D04E429E77943002B9CED /* FirebaseCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseCountry.swift; sourceTree = "<group>"; };
 		992D04E629E77956002B9CED /* FirebaseVote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseVote.swift; sourceTree = "<group>"; };
+		992D04E829E77ABB002B9CED /* SongRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRepository.swift; sourceTree = "<group>"; };
+		992D04EA29E77AC8002B9CED /* SongService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongService.swift; sourceTree = "<group>"; };
+		992D04EC29E77B15002B9CED /* FirebaseSongRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseSongRepository.swift; sourceTree = "<group>"; };
 		9953E25A244AF62900EF51F5 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseFirestore.framework; path = Carthage/Build/iOS/FirebaseFirestore.framework; sourceTree = "<group>"; };
 		9953E25C244AF63100EF51F5 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = "<group>"; };
 		9953E25F244AF65000EF51F5 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				99FFA2CC24431174002DBD9C /* FirebaseImplementation.swift */,
+				992D04EC29E77B15002B9CED /* FirebaseSongRepository.swift */,
 				992D04E029E7790B002B9CED /* FirebaseUser.swift */,
 				992D04E229E7791A002B9CED /* FirebaseSong.swift */,
 				992D04E429E77943002B9CED /* FirebaseCountry.swift */,
@@ -251,6 +258,8 @@
 				992D04DC29E77879002B9CED /* Country.swift */,
 				992D04DE29E7788C002B9CED /* UserProtocol.swift */,
 				99FFA2CA2443111C002DBD9C /* Models+UseCases.swift */,
+				992D04E829E77ABB002B9CED /* SongRepository.swift */,
+				992D04EA29E77AC8002B9CED /* SongService.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -416,8 +425,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				992D04EB29E77AC8002B9CED /* SongService.swift in Sources */,
 				99FFA2CD24431174002DBD9C /* FirebaseImplementation.swift in Sources */,
 				99B60F7D2443B99800C1FA44 /* BlurredBackgroundView.swift in Sources */,
+				992D04E929E77ABB002B9CED /* SongRepository.swift in Sources */,
 				99AE3AF0246147A700B4B881 /* LoadingButton.swift in Sources */,
 				99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */,
 				99FFA2CB2443111C002DBD9C /* Models+UseCases.swift in Sources */,
@@ -432,6 +443,7 @@
 				99652F88244C7219008911CE /* UIButton+BackgroundColor.swift in Sources */,
 				992D04E329E7791A002B9CED /* FirebaseSong.swift in Sources */,
 				99298518243C632200F14364 /* PhoneNumberValidationVC.swift in Sources */,
+				992D04ED29E77B15002B9CED /* FirebaseSongRepository.swift in Sources */,
 				99FEB69024516AB500F4E13B /* NavVC.swift in Sources */,
 				992D04DF29E7788C002B9CED /* UserProtocol.swift in Sources */,
 				99AE3AF624614F7800B4B881 /* PrivacyPolicyView.swift in Sources */,

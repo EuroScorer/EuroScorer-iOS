@@ -86,12 +86,7 @@ class FirebaseImplementation: NetworkingService {
         try? Auth.auth().signOut()
     }
     
-    func fetchSongs() -> AnyPublisher<[Song], Error> {
-        get("/songs").map { (firebaseSongs: [FirebaseSong]) -> [Song] in
-            firebaseSongs.map { $0 as Song }
-        }.eraseToAnyPublisher()
-    }
-    
+
     func sendVotes(_ votes:[String]) -> AnyPublisher<Void, Error> {
         fetchIdToken().then { [unowned self] idToken in
             self.network.headers["Authorization"] = idToken

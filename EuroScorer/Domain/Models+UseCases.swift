@@ -12,6 +12,7 @@ import Combine
 typealias PhoneNumber = String
 typealias SMSCode = String
 
+
 struct User { }
 extension User {
     
@@ -49,16 +50,5 @@ extension UserProtocol {
     
     func logout() {
         User.Endpoint.logout()
-    }
-}
-
-struct Songs {
-    
-    enum Endpoint {
-        static var fetchSongs: (() -> AnyPublisher<[Song], Error>)!
-    }
-
-    static func fetchSongs() -> AnyPublisher<[Song], Error> {
-        Songs.Endpoint.fetchSongs()
     }
 }

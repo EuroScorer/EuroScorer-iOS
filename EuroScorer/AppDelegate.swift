@@ -23,12 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         User.Endpoint.sendVotes = firebase.sendVotes
         User.Endpoint.fetchVotes = firebase.fetchVotes
         User.Endpoint.logout = firebase.logout
-        Songs.Endpoint.fetchSongs = firebase.fetchSongs
+        
+        let songService = SongService(repository: FirebaseSongRepository())
         firebase.startService()
         
         // Setup UI
         window = UIWindow()
-        let votingVC = VotingVC()
+        let votingVC = VotingVC(songService: songService)
         let navVC: NavVC! = NavVC(rootViewController: votingVC)
         navVC.navigationBar.barStyle = .black
         navVC.navigationBar.prefersLargeTitles = true
