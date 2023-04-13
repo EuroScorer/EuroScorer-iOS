@@ -12,21 +12,32 @@ import Combine
 typealias PhoneNumber = String
 typealias SMSCode = String
 
+protocol UserRepository {
+    func askForPhoneNumberVerification(phoneNumber: PhoneNumber) async throws
+}
+
+class UserService {
+    
+    private let repository: UserRepository
+    
+    init(repository: UserRepository) {
+        self.repository = repository
+    }
+    
+    func askForPhoneNumberVerification(phoneNumber: PhoneNumber) async throws {
+        return try await repository.askForPhoneNumberVerification(phoneNumber: phoneNumber)
+    }
+}
 
 struct User { }
 extension User {
     
     enum Endpoint {
-        static var askForPhoneNumberVerification: ((PhoneNumber) -> AnyPublisher<Void, Error>)!
         static var confirmPhoneNumberWithCode: ((SMSCode) -> AnyPublisher<Void, Error>)!
         static var getCurrentUser: (() -> UserProtocol?)!
         static var sendVotes: (([String]) -> AnyPublisher<Void, Error>)!
         static var fetchVotes: (() -> AnyPublisher<[String], Error>)!
         static var logout: (() -> Void)!
-    }
-        
-    static func askForPhoneNumberVerification(number: PhoneNumber) -> AnyPublisher<Void, Error> {
-        User.Endpoint.askForPhoneNumberVerification(number)
     }
     
     static func confirmPhoneNumberWith(code: SMSCode) -> AnyPublisher<Void, Error> {

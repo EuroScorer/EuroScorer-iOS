@@ -19,11 +19,17 @@ class PhoneNumberValidationVC: UIViewController {
     var userInternationalNumberPhoneNumber: String?
     
     let v = PhoneNumberValidationView()
+    private let userService: UserService
     override func loadView() { view = v }
     
-    convenience init() {
-        self.init(nibName: nil, bundle: nil)
+    required init(userService: UserService) {
+        self.userService = userService
+        super.init(nibName: nil, bundle: nil)
         overrideUserInterfaceStyle = .dark
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
@@ -79,13 +85,15 @@ class PhoneNumberValidationVC: UIViewController {
         
         userInternationalNumberPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .international)
         userRegionID = phoneNumber.regionID
-                
-        User.askForPhoneNumberVerification(number: userInternationalNumberPhoneNumber!).then { [unowned self] in
-            self.showSMSCodePopup()
-        }.onError { [unowned self] error in
-            print(error)
-            self.v.okButton.isLoading = false
-        }.sinkAndStore(in: &cancellables)
+        
+        Task { @MainActor in
+            do {
+                try await userService.askForPhoneNumberVerification(phoneNumber: userInternationalNumberPhoneNumber!)
+                self.showSMSCodePopup()
+            } catch {
+                self.v.okButton.isLoading = false
+            }
+        }
     }
     
     func showSMSCodePopup() {

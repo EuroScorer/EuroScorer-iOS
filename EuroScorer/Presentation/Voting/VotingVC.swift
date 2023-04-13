@@ -24,9 +24,11 @@ class VotingVC: UIViewController {
     override func loadView() { view = v }
     
     private let songService: SongService
+    private let userService: UserService
     
-    required init(songService: SongService) {
+    required init(songService: SongService, userService: UserService) {
         self.songService = songService
+        self.userService = userService
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -163,7 +165,7 @@ class VotingVC: UIViewController {
         navVC.modalPresentationStyle = .fullScreen
         privacyPolicyVC.didAccept = {
                     
-            let phoneNumberValidationVC = PhoneNumberValidationVC()
+            let phoneNumberValidationVC = PhoneNumberValidationVC(userService: self.userService)
             phoneNumberValidationVC.didLogin = {
                 self.refreshLogoutButton()
                 self.v.tableView.reloadData()

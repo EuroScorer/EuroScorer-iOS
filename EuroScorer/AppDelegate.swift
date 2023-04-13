@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Inject firebase implementations.
         let firebase = FirebaseImplementation()
-        User.Endpoint.askForPhoneNumberVerification = firebase.askForPhoneNumberVerification
         User.Endpoint.confirmPhoneNumberWithCode = firebase.confirmPhoneNumberWithCode
         User.Endpoint.getCurrentUser = firebase.getCurrentUser
         User.Endpoint.sendVotes = firebase.sendVotes
@@ -25,11 +24,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         User.Endpoint.logout = firebase.logout
         
         let songService = SongService(repository: FirebaseSongRepository())
-        firebase.startService()
+        
+        let userService = UserService(repository: FirebaseUserRepository())
+        
         
         // Setup UI
         window = UIWindow()
-        let votingVC = VotingVC(songService: songService)
+        let votingVC = VotingVC(songService: songService, userService: userService)
         let navVC: NavVC! = NavVC(rootViewController: votingVC)
         navVC.navigationBar.barStyle = .black
         navVC.navigationBar.prefersLargeTitles = true

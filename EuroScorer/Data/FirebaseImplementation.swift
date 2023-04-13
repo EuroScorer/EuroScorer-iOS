@@ -13,9 +13,9 @@ import Firebase
 import PhoneNumberKit
 import FirebaseRemoteConfig
 
-class FirebaseImplementation: NetworkingService {
+class FirebaseUserRepository: UserRepository {
     
-    func startService() {
+    init() {
         FirebaseApp.configure()
         
         // Get latest remote config data.
@@ -27,24 +27,28 @@ class FirebaseImplementation: NetworkingService {
         }
     }
     
-    var network = NetworkingClient(baseURL: "https://euroscorer-api.web.app/v1") //"https://api.euroscorer2020.com/v1")
+    private var currentVerificationID: String?
     
-    func askForPhoneNumberVerification(number: PhoneNumber) -> AnyPublisher<Void, Error> {
-        Future { promise in
+    func askForPhoneNumberVerification(phoneNumber: PhoneNumber) async throws {
+        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
             // Localize sms sent to user's laguage
             Auth.auth().languageCode = Locale.current.languageCode ?? "en"
-            
             // Start SMS confirmation
-            PhoneAuthProvider.provider().verifyPhoneNumber(number, uiDelegate: nil) { [weak self] verificationID, error in
+            PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] verificationID, error in
                     if let e = error {
-                        promise(.failure(e))
+                        continuation.resume(with: .failure(e))
                     } else {
                         self?.currentVerificationID = verificationID
-                        promise(.success(()))
+                        continuation.resume(with: .success(()))
                     }
             }
-        }.eraseToAnyPublisher()
+        }
     }
+}
+
+class FirebaseImplementation: NetworkingService {
+    
+    var network = NetworkingClient(baseURL: "https://euroscorer-api.web.app/v1") //"https://api.euroscorer2020.com/v1")
         
     var currentVerificationID: String?
     func confirmPhoneNumberWithCode(code: SMSCode) -> AnyPublisher<Void, Error> {
