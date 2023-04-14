@@ -9,7 +9,7 @@
 import UIKit
 import Stevia
 
-protocol VotingCellDelegate: class {
+protocol VotingCellDelegate: AnyObject {
     func votingCellDidAddVote(cell: VotingCell)
     func votingCellDidRemoveVote(cell: VotingCell)
     func votingCellDidTapPlay(cell: VotingCell)
