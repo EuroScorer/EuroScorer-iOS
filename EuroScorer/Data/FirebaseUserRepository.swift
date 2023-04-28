@@ -31,19 +31,10 @@ class FirebaseUserRepository: UserRepository, NetworkingService {
     }
     
     func askForPhoneNumberVerification(phoneNumber: PhoneNumber) async throws {
-        try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
-            // Localize sms sent to user's laguage
-            Auth.auth().languageCode = Locale.current.languageCode ?? "en"
-            // Start SMS confirmation
-            PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { [weak self] verificationID, error in
-                    if let e = error {
-                        continuation.resume(with: .failure(e))
-                    } else {
-                        self?.currentVerificationID = verificationID
-                        continuation.resume(with: .success(()))
-                    }
-            }
-        }
+        // Localize sms sent to user's laguage
+        Auth.auth().languageCode = Locale.current.languageCode ?? "en"
+        
+        currentVerificationID = try await PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil)
     }
     
     private var cachedCurrentUser: User?
@@ -85,15 +76,8 @@ class FirebaseUserRepository: UserRepository, NetworkingService {
     }
  
     private func fetchIdToken() async throws -> String {
-        return try await withCheckedThrowingContinuation { continuation in
-            Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-                if let error = error {
-                    continuation.resume(throwing: error)
-                } else if let idToken = idToken {
-                    continuation.resume(returning: idToken)
-                }
-            }
-        }
+        let tokenResult = try await Auth.auth().currentUser?.getIDTokenResult(forcingRefresh: true)
+        return tokenResult?.token ?? ""
     }
     
     func confirmPhoneNumberWith(code: SMSCode) async throws {

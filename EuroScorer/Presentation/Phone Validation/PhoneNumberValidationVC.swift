@@ -89,6 +89,7 @@ class PhoneNumberValidationVC: UIViewController {
                 try await userService.askForPhoneNumberVerification(phoneNumber: userInternationalNumberPhoneNumber!)
                 self.showSMSCodePopup()
             } catch {
+                print(error)
                 self.v.okButton.isLoading = false
             }
         }
