@@ -109,7 +109,7 @@ class PhoneNumberValidationVC: UIViewController {
         }
         alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { a in
             if let smsCode = alert.textFields?.first?.text {
-                User.confirmPhoneNumberWith(code: smsCode).then { [unowned self] in
+                self.userService.confirmPhoneNumberWith(code: smsCode).then { [unowned self] in
                     self.didLogin?()
                 }.sinkAndStore(in: &self.cancellables)
             }

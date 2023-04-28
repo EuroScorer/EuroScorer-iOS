@@ -19,9 +19,11 @@ class SummaryVC: UIViewController {
     }
     
     let votes: [String]
+    private let userService: UserService
     
     required init?(coder: NSCoder) { fatalError("init(coder:) has not been implemented") }
-    init(votes: [String]) {
+    init(userService: UserService, votes: [String]) {
+        self.userService = userService
         self.votes = votes
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,8 +33,8 @@ class SummaryVC: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         title = "Vote Summary"
         
-        v.phoneNumber.text = User.currentUser?.phoneNumber
-        let countryName = Locale.current.localizedString(forRegionCode: User.currentUser!.countryCode)
+        v.phoneNumber.text = userService.getCurrentUser()?.phoneNumber
+        let countryName = Locale.current.localizedString(forRegionCode: userService.getCurrentUser()!.countryCode)
         v.country.text =  "From \(countryName!)"
         
         v.button.addTarget(self, action: #selector(sendVotesTapped), for: .touchUpInside)
@@ -48,7 +50,7 @@ class SummaryVC: UIViewController {
             v.votesStackView.addArrangedSubview(summaryVoteView)
         }
         
-        User.currentUser?.fetchVotes().then { [unowned self] _ in
+        userService.fetchVotes().then { [unowned self] _ in
             self.v.button.setTitle("Update my votes", for: .normal)
         }.sinkAndStore(in: &cancellables)
     }
@@ -56,7 +58,7 @@ class SummaryVC: UIViewController {
     @objc
     func sendVotesTapped() {
         v.button.isLoading = true
-        User.currentUser?.sendVotes(votes).then { [unowned self] in
+        userService.sendVotes(votes).then { [unowned self] in
             let alert = UIAlertController(title: "Thank you ❤️", message:
                 "You votes have been succesfully sent ! \nYou can update them until the final date.", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))

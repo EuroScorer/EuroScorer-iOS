@@ -1,5 +1,5 @@
 //
-//  UserProtocol.swift
+//  User.swift
 //  EuroScorer
 //
 //  Created by Sacha Durand Saint Omer on 12/04/2023.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol UserProtocol {
-    var countryCode: String { get }
-    var phoneNumber: String { get }
+struct User {
+    let countryCode: String
+    let phoneNumber: String
 }

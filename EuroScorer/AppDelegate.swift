@@ -16,17 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         // Inject firebase implementations.
-        let firebase = FirebaseImplementation()
-        User.Endpoint.confirmPhoneNumberWithCode = firebase.confirmPhoneNumberWithCode
-        User.Endpoint.getCurrentUser = firebase.getCurrentUser
-        User.Endpoint.sendVotes = firebase.sendVotes
-        User.Endpoint.fetchVotes = firebase.fetchVotes
-        User.Endpoint.logout = firebase.logout
-        
         let songService = SongService(repository: FirebaseSongRepository())
-        
         let userService = UserService(repository: FirebaseUserRepository())
-        
         
         // Setup UI
         window = UIWindow()

@@ -1,5 +1,5 @@
 //
-//  FirebaseImplementation.swift
+//  FirebaseUserRepository.swift
 //  EuroScorer
 //
 //  Created by Sacha DSO on 12/04/2020.
@@ -13,7 +13,11 @@ import Firebase
 import PhoneNumberKit
 import FirebaseRemoteConfig
 
-class FirebaseUserRepository: UserRepository {
+class FirebaseUserRepository: UserRepository, NetworkingService {
+    
+    var network = NetworkingClient(baseURL: "https://euroscorer-api.web.app/v1") //"https://api.euroscorer2020.com/v1")
+    
+    var currentVerificationID: String?
     
     init() {
         FirebaseApp.configure()
@@ -26,8 +30,6 @@ class FirebaseUserRepository: UserRepository {
             }
         }
     }
-    
-    private var currentVerificationID: String?
     
     func askForPhoneNumberVerification(phoneNumber: PhoneNumber) async throws {
         try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<Void, Error>) in
@@ -44,30 +46,10 @@ class FirebaseUserRepository: UserRepository {
             }
         }
     }
-}
-
-class FirebaseImplementation: NetworkingService {
     
-    var network = NetworkingClient(baseURL: "https://euroscorer-api.web.app/v1") //"https://api.euroscorer2020.com/v1")
-        
-    var currentVerificationID: String?
-    func confirmPhoneNumberWithCode(code: SMSCode) -> AnyPublisher<Void, Error> {
-        let verificationID = currentVerificationID ?? ""
-        return Future { promise in
-            let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: code)
-            Auth.auth().signIn(with: credential) { _, error in
-                if let e = error {
-                    promise(.failure(e))
-                } else {
-                    promise(.success(()))
-                }
-            }
-        }.eraseToAnyPublisher()
-    }
+    private var cachedCurrentUser: User?
     
-    private var cachedCurrentUser: UserProtocol?
-    
-    func getCurrentUser() -> UserProtocol? {
+    func getCurrentUser() -> User? {
         if let cachedUser = cachedCurrentUser, Auth.auth().currentUser != nil {
             return cachedUser
         }
@@ -78,7 +60,7 @@ class FirebaseImplementation: NetworkingService {
             
             if let regionID = parsedNumber?.regionID {
                 let user = FirebaseUser(countryCode: regionID, phoneNumber: cuPhoneNumber)
-                cachedCurrentUser = user
+                cachedCurrentUser = user.toUser()
                 return cachedCurrentUser
             }
         }
@@ -86,12 +68,7 @@ class FirebaseImplementation: NetworkingService {
         return nil
     }
     
-    func logout() {
-        try? Auth.auth().signOut()
-    }
-    
-
-    func sendVotes(_ votes:[String]) -> AnyPublisher<Void, Error> {
+    func sendVotes(_ votes: [String]) -> AnyPublisher<Void, Error> {
         fetchIdToken().then { [unowned self] idToken in
             self.network.headers["Authorization"] = idToken
             return self.network.post("/vote", params: ["votes": votes])
@@ -107,6 +84,10 @@ class FirebaseImplementation: NetworkingService {
         }.eraseToAnyPublisher()
     }
     
+    func logout() {
+        try? Auth.auth().signOut()
+    }
+    
     private func fetchIdToken() -> Future<String, Error> {
         Future<String, Error> { promise in
             Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
@@ -117,5 +98,19 @@ class FirebaseImplementation: NetworkingService {
                 }
             }
         }
+    }
+    
+    func confirmPhoneNumberWith(code: SMSCode) -> AnyPublisher<Void, Error> {
+        let verificationID = currentVerificationID ?? ""
+        return Future { promise in
+            let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: code)
+            Auth.auth().signIn(with: credential) { _, error in
+                if let e = error {
+                    promise(.failure(e))
+                } else {
+                    promise(.success(()))
+                }
+            }
+        }.eraseToAnyPublisher()
     }
 }

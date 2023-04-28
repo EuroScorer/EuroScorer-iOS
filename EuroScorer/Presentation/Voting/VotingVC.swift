@@ -18,7 +18,7 @@ class VotingVC: UIViewController {
     var cancellables = Set<AnyCancellable>()
     var songs = [Song]()
     let maxVotes = 20
-    var isloggedIn: Bool { User.currentUser != nil }
+    var isloggedIn: Bool { userService.getCurrentUser() != nil }
     
     let v = VotingView()
     override func loadView() { view = v }
@@ -54,7 +54,7 @@ class VotingVC: UIViewController {
     }
     
     func tryFetchUserVotes() {
-        User.currentUser?.fetchVotes().then { [unowned self] previousVotes in
+        userService.fetchVotes().then { [unowned self] previousVotes in
             self.votes = previousVotes
             self.refreshVotes()
             self.v.tableView.reloadData()
@@ -62,7 +62,7 @@ class VotingVC: UIViewController {
     }
     
     func refreshLogoutButton() {
-        if User.currentUser == nil {
+        if userService.getCurrentUser() == nil {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Login", style: UIBarButtonItem.Style.plain, target: self, action: #selector(loginTapped))
             navigationItem.rightBarButtonItem?.tintColor = .systemYellow
         } else {
@@ -87,7 +87,7 @@ class VotingVC: UIViewController {
         let alert = UIAlertController(title: "Log out",
                                       message: "Are you sure you want to log out ?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yup", style: .destructive, handler: { a in
-            User.currentUser?.logout()
+            self.userService.logout()
             self.votes.removeAll()
             self.refreshVotes()
             self.refreshLogoutButton()
@@ -137,7 +137,7 @@ class VotingVC: UIViewController {
             showLogin()
             return
         }
-        navigationController?.pushViewController(SummaryVC(votes: votes), animated: true)
+        navigationController?.pushViewController(SummaryVC(userService: userService, votes: votes), animated: true)
     }
     
     @objc
@@ -194,7 +194,7 @@ extension VotingVC: UITableViewDataSource {
     }
     
     func render(cell: VotingCell, with song: Song) {
-        let isMyCountry = song.country?.code == User.currentUser?.countryCode
+        let isMyCountry = song.country?.code == userService.getCurrentUser()?.countryCode
         cell.number.text = (song.number < 10) ? "0\(song.number)" : "\(song.number)"
         let flag = Flag(countryCode: song.country?.code ?? "GB")!
         cell.flag.image = flag.image(style: .roundedRect)

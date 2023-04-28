@@ -17,7 +17,7 @@ protocol UserRepository {
     func getCurrentUser() -> User?
     func sendVotes(_ votes: [String]) -> AnyPublisher<Void, Error>
     func fetchVotes() -> AnyPublisher<[String], Error>
-    func confirmPhoneNumberWithCode(code: SMSCode) -> AnyPublisher<Void, Error>
+    func confirmPhoneNumberWith(code: SMSCode) -> AnyPublisher<Void, Error>
     func logout()
 }
 

@@ -8,7 +8,13 @@
 
 import Foundation
 
-struct FirebaseUser: UserProtocol {
+struct FirebaseUser {
     let countryCode: String
     let phoneNumber: String
+}
+
+extension FirebaseUser {
+    func toUser() -> User {
+        return User(countryCode: countryCode, phoneNumber: phoneNumber)
+    }
 }
