@@ -9,13 +9,11 @@
 import UIKit
 import Stevia
 import FlagKit
-import Combine
 import YouTubeiOSPlayerHelper
 
 class VotingVC: UIViewController {
     
     var votes = [String]()
-    var cancellables = Set<AnyCancellable>()
     var songs = [Song]()
     let maxVotes = 20
     var isloggedIn: Bool { userService.getCurrentUser() != nil }
@@ -111,13 +109,6 @@ class VotingVC: UIViewController {
             }
             v.refreshControl.endRefreshing()
         }
-        
-//        Songs.fetchSongs().then { [unowned self] fetchedSongs in
-//            self.songs = fetchedSongs
-//            self.v.tableView.reloadData()
-//        }.finally { [unowned self] in
-//            self.v.refreshControl.endRefreshing()
-//        }.sinkAndStore(in: &cancellables)
     }
     
     @objc

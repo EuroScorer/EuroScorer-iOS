@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 import Networking
 import Firebase
 import PhoneNumberKit
@@ -69,13 +68,13 @@ class FirebaseUserRepository: UserRepository, NetworkingService {
     }
     
     func sendVotes(_ votes: [String]) async throws {
-        let idToken = try await fetchIdTokenAsync()
+        let idToken = try await fetchIdToken()
         network.headers["Authorization"] = idToken
         return try await network.post("/vote", params: ["votes": votes])
     }
     
     func fetchVotes() async throws -> [String] {
-        let idToken = try await fetchIdTokenAsync()
+        let idToken = try await fetchIdToken()
         network.headers["Authorization"] = idToken
         let vote:FirebaseVote = try await network.get("/vote")
         return vote.votes
@@ -84,20 +83,8 @@ class FirebaseUserRepository: UserRepository, NetworkingService {
     func logout() {
         try? Auth.auth().signOut()
     }
-    
-    private func fetchIdToken() -> Future<String, Error> {
-        Future<String, Error> { promise in
-            Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-                if let error = error {
-                    promise(.failure(error))
-                } else if let idToken = idToken {
-                    promise(.success(idToken))
-                }
-            }
-        }
-    }
-    
-    private func fetchIdTokenAsync() async throws -> String {
+ 
+    private func fetchIdToken() async throws -> String {
         return try await withCheckedThrowingContinuation { continuation in
             Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
                 if let error = error {
@@ -109,17 +96,9 @@ class FirebaseUserRepository: UserRepository, NetworkingService {
         }
     }
     
-    func confirmPhoneNumberWith(code: SMSCode) -> AnyPublisher<Void, Error> {
+    func confirmPhoneNumberWith(code: SMSCode) async throws {
         let verificationID = currentVerificationID ?? ""
-        return Future { promise in
-            let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: code)
-            Auth.auth().signIn(with: credential) { _, error in
-                if let e = error {
-                    promise(.failure(e))
-                } else {
-                    promise(.success(()))
-                }
-            }
-        }.eraseToAnyPublisher()
+        let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationID, verificationCode: code)
+        let _ = try await Auth.auth().signIn(with: credential)
     }
 }

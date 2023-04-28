@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 
 class UserService {
     
@@ -33,8 +32,8 @@ class UserService {
         return try await repository.fetchVotes()
     }
     
-    func confirmPhoneNumberWith(code: SMSCode) -> AnyPublisher<Void, Error> {
-        return repository.confirmPhoneNumberWith(code: code)
+    func confirmPhoneNumberWith(code: SMSCode) async throws {
+        return try await repository.confirmPhoneNumberWith(code: code)
     }
     
     func logout() {

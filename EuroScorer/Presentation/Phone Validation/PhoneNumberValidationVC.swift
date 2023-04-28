@@ -7,12 +7,10 @@
 //
 
 import UIKit
-import Combine
 import PhoneNumberKit
 
 class PhoneNumberValidationVC: UIViewController {
     
-    var cancellables = Set<AnyCancellable>()
     var didLogin: (() -> Void)?
     let phoneNumberKit = PhoneNumberKit()
     var userRegionID: String?
@@ -109,9 +107,10 @@ class PhoneNumberValidationVC: UIViewController {
         }
         alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { a in
             if let smsCode = alert.textFields?.first?.text {
-                self.userService.confirmPhoneNumberWith(code: smsCode).then { [unowned self] in
+                Task { @MainActor in
+                    try await self.userService.confirmPhoneNumberWith(code: smsCode)
                     self.didLogin?()
-                }.sinkAndStore(in: &self.cancellables)
+                }
             }
         }))
         present(alert, animated: true, completion: nil)

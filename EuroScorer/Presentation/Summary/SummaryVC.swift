@@ -8,11 +8,9 @@
 
 import UIKit
 import Stevia
-import Combine
 
 class SummaryVC: UIViewController {
     
-    var cancellables = Set<AnyCancellable>()
     var v = SummaryView()
     override func loadView() {
         view = v
