@@ -25,8 +25,8 @@ class UserService {
         return repository.getCurrentUser()
     }
     
-    func sendVotes(_ votes: [String]) -> AnyPublisher<Void, Error> {
-        return repository.sendVotes(votes)
+    func sendVotes(_ votes: [String]) async throws {
+        return try await repository.sendVotes(votes)
     }
     
     func fetchVotes() -> AnyPublisher<[String], Error> {

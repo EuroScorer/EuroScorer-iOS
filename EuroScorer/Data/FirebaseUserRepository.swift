@@ -68,11 +68,10 @@ class FirebaseUserRepository: UserRepository, NetworkingService {
         return nil
     }
     
-    func sendVotes(_ votes: [String]) -> AnyPublisher<Void, Error> {
-        fetchIdToken().then { [unowned self] idToken in
-            self.network.headers["Authorization"] = idToken
-            return self.network.post("/vote", params: ["votes": votes])
-        }.eraseToAnyPublisher()
+    func sendVotes(_ votes: [String]) async throws {
+        let idToken = try await fetchIdTokenAsync()
+        network.headers["Authorization"] = idToken
+        return try await network.post("/vote", params: ["votes": votes])
     }
     
     func fetchVotes() -> AnyPublisher<[String], Error> {
@@ -95,6 +94,18 @@ class FirebaseUserRepository: UserRepository, NetworkingService {
                     promise(.failure(error))
                 } else if let idToken = idToken {
                     promise(.success(idToken))
+                }
+            }
+        }
+    }
+    
+    private func fetchIdTokenAsync() async throws -> String {
+        return try await withCheckedThrowingContinuation { continuation in
+            Auth.auth().currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+                if let error = error {
+                    continuation.resume(throwing: error)
+                } else if let idToken = idToken {
+                    continuation.resume(returning: idToken)
                 }
             }
         }

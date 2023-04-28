@@ -58,17 +58,18 @@ class SummaryVC: UIViewController {
     @objc
     func sendVotesTapped() {
         v.button.isLoading = true
-        userService.sendVotes(votes).then { [unowned self] in
-            let alert = UIAlertController(title: "Thank you ❤️", message:
-                "You votes have been succesfully sent ! \nYou can update them until the final date.", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alert, animated: true, completion: nil)
-        }.onError { error in
-            print(error)
-        }.finally { [unowned self] in
-            self.v.button.isLoading = false
+        Task { @MainActor in
+            do {
+                try await userService.sendVotes(votes)
+                let alert = UIAlertController(title: "Thank you ❤️", message:
+                                                "You votes have been succesfully sent ! \nYou can update them until the final date.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } catch {
+                print(error)
+            }
+            v.button.isLoading = false
         }
-        .sinkAndStore(in: &cancellables)
     }
 }
 
