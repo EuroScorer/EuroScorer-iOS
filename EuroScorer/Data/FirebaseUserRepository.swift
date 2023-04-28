@@ -74,13 +74,11 @@ class FirebaseUserRepository: UserRepository, NetworkingService {
         return try await network.post("/vote", params: ["votes": votes])
     }
     
-    func fetchVotes() -> AnyPublisher<[String], Error> {
-        fetchIdToken().then { [unowned self] idToken in
-            self.network.headers["Authorization"] = idToken
-            return self.network.get("/vote").map { (vote: FirebaseVote) -> [String] in
-                return vote.votes
-            }.eraseToAnyPublisher()
-        }.eraseToAnyPublisher()
+    func fetchVotes() async throws -> [String] {
+        let idToken = try await fetchIdTokenAsync()
+        network.headers["Authorization"] = idToken
+        let vote:FirebaseVote = try await network.get("/vote")
+        return vote.votes
     }
     
     func logout() {

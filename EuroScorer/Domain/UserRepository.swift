@@ -16,7 +16,7 @@ protocol UserRepository {
     func askForPhoneNumberVerification(phoneNumber: PhoneNumber) async throws
     func getCurrentUser() -> User?
     func sendVotes(_ votes: [String]) async throws
-    func fetchVotes() -> AnyPublisher<[String], Error>
+    func fetchVotes() async throws -> [String]
     func confirmPhoneNumberWith(code: SMSCode) -> AnyPublisher<Void, Error>
     func logout()
 }

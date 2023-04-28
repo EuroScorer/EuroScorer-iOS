@@ -50,9 +50,10 @@ class SummaryVC: UIViewController {
             v.votesStackView.addArrangedSubview(summaryVoteView)
         }
         
-        userService.fetchVotes().then { [unowned self] _ in
-            self.v.button.setTitle("Update my votes", for: .normal)
-        }.sinkAndStore(in: &cancellables)
+        Task { @MainActor in
+            _ = try await userService.fetchVotes()
+            v.button.setTitle("Update my votes", for: .normal)
+        }
     }
     
     @objc

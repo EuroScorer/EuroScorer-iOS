@@ -54,11 +54,11 @@ class VotingVC: UIViewController {
     }
     
     func tryFetchUserVotes() {
-        userService.fetchVotes().then { [unowned self] previousVotes in
-            self.votes = previousVotes
-            self.refreshVotes()
-            self.v.tableView.reloadData()
-        }.sinkAndStore(in: &cancellables)
+        Task { @MainActor in
+            votes = try await userService.fetchVotes()
+            refreshVotes()
+            v.tableView.reloadData()
+        }
     }
     
     func refreshLogoutButton() {

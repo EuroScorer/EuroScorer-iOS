@@ -29,8 +29,8 @@ class UserService {
         return try await repository.sendVotes(votes)
     }
     
-    func fetchVotes() -> AnyPublisher<[String], Error> {
-        return repository.fetchVotes()
+    func fetchVotes() async throws -> [String]{
+        return try await repository.fetchVotes()
     }
     
     func confirmPhoneNumberWith(code: SMSCode) -> AnyPublisher<Void, Error> {
