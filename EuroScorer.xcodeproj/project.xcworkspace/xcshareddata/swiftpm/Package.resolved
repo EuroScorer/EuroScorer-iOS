@@ -145,12 +145,12 @@
       }
     },
     {
-      "identity" : "youtube-ios-player-helper-swift",
+      "identity" : "youtube-ios-player-helper",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/s4cha/youtube-ios-player-helper-swift",
+      "location" : "https://github.com/youtube/youtube-ios-player-helper",
       "state" : {
-        "revision" : "dfd50f46d29ebd2a72fe70ed7d434ad12548594a",
-        "version" : "1.0.1"
+        "revision" : "f57129cd4380ec0a74dd3a59da3270a1d653d59b",
+        "version" : "1.0.4"
       }
     }
   ],

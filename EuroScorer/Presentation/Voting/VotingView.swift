@@ -8,7 +8,7 @@
 
 import UIKit
 import Stevia
-import YoutubePlayer
+import YouTubeiOSPlayerHelper
 
 class VotingView: UIView {
     

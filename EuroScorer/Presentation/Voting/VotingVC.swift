@@ -10,7 +10,7 @@ import UIKit
 import Stevia
 import FlagKit
 import Combine
-import YoutubePlayer
+import YouTubeiOSPlayerHelper
 
 class VotingVC: UIViewController {
     
@@ -267,7 +267,7 @@ extension VotingVC: VotingCellDelegate {
         if let indexPath = v.tableView.indexPath(for: cell) {
             let song = songs[indexPath.row]
             if let url = URL(string: song.link) {
-                v.playerView.loadWith(videoId: url.lastPathComponent, playerVars: ["playsinline": NSNumber(value: 1)])
+                v.playerView.load(withVideoId: url.lastPathComponent, playerVars: ["playsinline": NSNumber(value: 1)])
                 showPlayer()
             }
         }
@@ -336,10 +336,5 @@ extension VotingVC: YTPlayerViewDelegate {
                 playerView.stopVideo()
             }
         }
-        
-        playerView.duration { time in
-            print(time)
-        }
     }
-    
 }

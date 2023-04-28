@@ -10,7 +10,6 @@
 		990E8E3E244612AB002A5B62 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = 990E8E3D244612AB002A5B62 /* Networking */; };
 		99112B8D243F9CAD0067CF2D /* SummaryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8C243F9CAD0067CF2D /* SummaryVC.swift */; };
 		99112B8F243F9CD60067CF2D /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99112B8E243F9CD60067CF2D /* SummaryView.swift */; };
-		9920368924600EAE00CE191F /* YoutubePlayer in Frameworks */ = {isa = PBXBuildFile; productRef = 9920368824600EAE00CE191F /* YoutubePlayer */; };
 		99298514243C632200F14364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298513243C632200F14364 /* AppDelegate.swift */; };
 		99298518243C632200F14364 /* PhoneNumberValidationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99298517243C632200F14364 /* PhoneNumberValidationVC.swift */; };
 		9929851D243C632300F14364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9929851C243C632300F14364 /* Assets.xcassets */; };
@@ -26,6 +25,7 @@
 		992D04E929E77ABB002B9CED /* SongRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D04E829E77ABB002B9CED /* SongRepository.swift */; };
 		992D04EB29E77AC8002B9CED /* SongService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D04EA29E77AC8002B9CED /* SongService.swift */; };
 		992D04ED29E77B15002B9CED /* FirebaseSongRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992D04EC29E77B15002B9CED /* FirebaseSongRepository.swift */; };
+		992D04F029E8D8D8002B9CED /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 992D04EF29E8D8D8002B9CED /* YouTubeiOSPlayerHelper */; };
 		995CEF4329E66D5500CA2B3D /* FlagKit in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4229E66D5500CA2B3D /* FlagKit */; };
 		995CEF4629E6764700CA2B3D /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4529E6764700CA2B3D /* FirebaseAnalytics */; };
 		995CEF4829E6764700CA2B3D /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 995CEF4729E6764700CA2B3D /* FirebaseAnalyticsSwift */; };
@@ -144,9 +144,9 @@
 				99B60F792443472100C1FA44 /* PhoneNumberKit in Frameworks */,
 				995CEF4A29E6764700CA2B3D /* FirebaseAuth in Frameworks */,
 				995CEF4829E6764700CA2B3D /* FirebaseAnalyticsSwift in Frameworks */,
-				9920368924600EAE00CE191F /* YoutubePlayer in Frameworks */,
 				995CEF4C29E6764700CA2B3D /* FirebaseCrashlytics in Frameworks */,
 				99298529243C7B7200F14364 /* Stevia in Frameworks */,
+				992D04F029E8D8D8002B9CED /* YouTubeiOSPlayerHelper in Frameworks */,
 				995CEF4E29E6764700CA2B3D /* FirebaseFirestore in Frameworks */,
 				995CEF5229E6764700CA2B3D /* FirebaseRemoteConfig in Frameworks */,
 				995CEF4329E66D5500CA2B3D /* FlagKit in Frameworks */,
@@ -350,7 +350,6 @@
 				99298528243C7B7200F14364 /* Stevia */,
 				99B60F782443472100C1FA44 /* PhoneNumberKit */,
 				990E8E3D244612AB002A5B62 /* Networking */,
-				9920368824600EAE00CE191F /* YoutubePlayer */,
 				995CEF4229E66D5500CA2B3D /* FlagKit */,
 				995CEF4529E6764700CA2B3D /* FirebaseAnalytics */,
 				995CEF4729E6764700CA2B3D /* FirebaseAnalyticsSwift */,
@@ -360,6 +359,7 @@
 				995CEF4F29E6764700CA2B3D /* FirebaseFirestoreSwift */,
 				995CEF5129E6764700CA2B3D /* FirebaseRemoteConfig */,
 				995CEF5329E6764700CA2B3D /* FirebaseRemoteConfigSwift */,
+				992D04EF29E8D8D8002B9CED /* YouTubeiOSPlayerHelper */,
 			);
 			productName = Eurovision2020;
 			productReference = 99298510243C632200F14364 /* EuroScorer.app */;
@@ -393,9 +393,9 @@
 				99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */,
 				99B60F772443472100C1FA44 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */,
 				990E8E3C244612AB002A5B62 /* XCRemoteSwiftPackageReference "Networking" */,
-				9920368724600EAE00CE191F /* XCRemoteSwiftPackageReference "youtube-ios-player-helper-swift" */,
 				995CEF4129E66D5500CA2B3D /* XCRemoteSwiftPackageReference "FlagKit" */,
 				995CEF4429E6764700CA2B3D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				992D04EE29E8D8D8002B9CED /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */,
 			);
 			productRefGroup = 99298511243C632200F14364 /* Products */;
 			projectDirPath = "";
@@ -675,20 +675,20 @@
 				version = 1.2.1;
 			};
 		};
-		9920368724600EAE00CE191F /* XCRemoteSwiftPackageReference "youtube-ios-player-helper-swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/s4cha/youtube-ios-player-helper-swift";
-			requirement = {
-				kind = exactVersion;
-				version = 1.0.1;
-			};
-		};
 		99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/freshOS/Stevia.git";
 			requirement = {
 				kind = exactVersion;
 				version = 5.0.1;
+			};
+		};
+		992D04EE29E8D8D8002B9CED /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/youtube/youtube-ios-player-helper";
+			requirement = {
+				kind = exactVersion;
+				version = 1.0.4;
 			};
 		};
 		995CEF4129E66D5500CA2B3D /* XCRemoteSwiftPackageReference "FlagKit" */ = {
@@ -723,15 +723,15 @@
 			package = 990E8E3C244612AB002A5B62 /* XCRemoteSwiftPackageReference "Networking" */;
 			productName = Networking;
 		};
-		9920368824600EAE00CE191F /* YoutubePlayer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9920368724600EAE00CE191F /* XCRemoteSwiftPackageReference "youtube-ios-player-helper-swift" */;
-			productName = YoutubePlayer;
-		};
 		99298528243C7B7200F14364 /* Stevia */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */;
 			productName = Stevia;
+		};
+		992D04EF29E8D8D8002B9CED /* YouTubeiOSPlayerHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 992D04EE29E8D8D8002B9CED /* XCRemoteSwiftPackageReference "youtube-ios-player-helper" */;
+			productName = YouTubeiOSPlayerHelper;
 		};
 		995CEF4229E66D5500CA2B3D /* FlagKit */ = {
 			isa = XCSwiftPackageProductDependency;
