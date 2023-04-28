@@ -17,6 +17,10 @@ struct FirebaseSong: Decodable {
 
 extension FirebaseSong {
     func toSong() -> Song {
-        return Song(number: number, title: title, link: link, country: country)
+        var c: Country?
+        if let country = country {
+            c = Country(code: country.code, name: country.name)
+        }
+        return Song(number: number, title: title, link: link, country: c)
     }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FirebaseCountry: Country, Decodable {
+struct FirebaseCountry: Decodable {
     let code: String
     let name: String
 }

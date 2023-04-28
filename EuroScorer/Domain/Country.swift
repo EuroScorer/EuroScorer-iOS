@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol Country {
-    var code: String { get }
-    var name: String { get }
+struct Country {
+    let code: String
+    let name: String
 }
