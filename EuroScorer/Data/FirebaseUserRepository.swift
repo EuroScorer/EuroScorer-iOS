@@ -61,7 +61,7 @@ class FirebaseUserRepository: UserRepository, NetworkingService {
     func sendVotes(_ votes: [String]) async throws {
         let idToken = try await fetchIdToken()
         network.headers["Authorization"] = idToken
-        return try await network.post("/vote", params: ["votes": votes])
+        return try await network.post("/vote", body: .urlEncoded(["votes": votes]))
     }
     
     func fetchVotes() async throws -> [String] {

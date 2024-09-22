@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -676,7 +676,7 @@
 			repositoryURL = "https://github.com/freshOS/Networking.git";
 			requirement = {
 				kind = exactVersion;
-				version = 1.2.1;
+				version = 2.0.2;
 			};
 		};
 		99298527243C7B7200F14364 /* XCRemoteSwiftPackageReference "Stevia" */ = {
@@ -707,8 +707,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				kind = exactVersion;
+				version = 10.29.0;
 			};
 		};
 		99B60F772443472100C1FA44 /* XCRemoteSwiftPackageReference "PhoneNumberKit" */ = {
