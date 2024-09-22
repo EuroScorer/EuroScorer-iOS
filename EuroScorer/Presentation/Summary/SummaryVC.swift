@@ -31,9 +31,19 @@ class SummaryVC: UIViewController {
         navigationItem.largeTitleDisplayMode = .always
         title = "Vote Summary"
         
-        v.phoneNumber.text = userService.getCurrentUser()?.phoneNumber
-        let countryName = Locale.current.localizedString(forRegionCode: userService.getCurrentUser()!.countryCode)
-        v.country.text =  "From \(countryName!)"
+        Task {
+            let phoneNumber = try await userService.getCurrentUser()?.phoneNumber
+            await MainActor.run {
+                v.phoneNumber.text = phoneNumber
+            }
+        }
+        Task {
+            let countryCode = try await userService.getCurrentUser()!.countryCode
+            await MainActor.run {
+                let countryName = Locale.current.localizedString(forRegionCode: countryCode)
+                v.country.text =  "From \(countryName!)"
+            }
+        }
         
         v.button.addTarget(self, action: #selector(sendVotesTapped), for: .touchUpInside)
         
@@ -48,26 +58,32 @@ class SummaryVC: UIViewController {
             v.votesStackView.addArrangedSubview(summaryVoteView)
         }
         
-        Task { @MainActor in
+        Task {
             _ = try await userService.fetchVotes()
-            v.button.setTitle("Update my votes", for: .normal)
+            await MainActor.run {
+                v.button.setTitle("Update my votes", for: .normal)
+            }
         }
     }
     
     @objc
     func sendVotesTapped() {
         v.button.isLoading = true
-        Task { @MainActor in
+        Task {
             do {
                 try await userService.sendVotes(votes)
-                let alert = UIAlertController(title: "Thank you ❤️", message:
-                                                "You votes have been succesfully sent ! \nYou can update them until the final date.", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                await MainActor.run {
+                    let alert = UIAlertController(title: "Thank you ❤️", message:
+                                                    "You votes have been succesfully sent ! \nYou can update them until the final date.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             } catch {
                 print(error)
             }
-            v.button.isLoading = false
+            await MainActor.run {
+                v.button.isLoading = false
+            }
         }
     }
 }

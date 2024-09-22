@@ -16,7 +16,15 @@ class VotingVC: UIViewController {
     var votes = [String]()
     var songs = [Song]()
     let maxVotes = 20
-    var isloggedIn: Bool { userService.getCurrentUser() != nil }
+    var userCountryCode: String = ""
+    
+    func isloggedIn() async -> Bool {
+        do {
+            return try await userService.getCurrentUser() != nil
+        } catch {
+            return false
+        }
+    }
     
     let v = VotingView()
     override func loadView() { view = v }
@@ -45,27 +53,41 @@ class VotingVC: UIViewController {
         v.confirm.addTarget(self, action: #selector(confirmTapped), for: .touchUpInside)
         v.tableView.dataSource = self
         v.playerView.delegate = self
-        refreshSongs()
-        refreshVotes()
-        refreshLogoutButton()
-        tryFetchUserVotes()
+
+        Task {
+            userCountryCode = try await userService.getCurrentUser()?.countryCode ?? ""
+            print(userCountryCode)
+            await MainActor.run {
+                refreshSongs()
+                refreshVotes()
+                refreshLogoutButton()
+                tryFetchUserVotes()
+            }
+        }
     }
     
     func tryFetchUserVotes() {
-        Task { @MainActor in
+        Task {
             votes = try await userService.fetchVotes()
-            refreshVotes()
-            v.tableView.reloadData()
+            await MainActor.run {
+                refreshVotes()
+                v.tableView.reloadData()
+            }
         }
     }
     
     func refreshLogoutButton() {
-        if userService.getCurrentUser() == nil {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Login", style: UIBarButtonItem.Style.plain, target: self, action: #selector(loginTapped))
-            navigationItem.rightBarButtonItem?.tintColor = .systemYellow
-        } else {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutTapped))
-            navigationItem.rightBarButtonItem?.tintColor = .systemRed
+        Task {
+            let currentUser = try await userService.getCurrentUser()
+            await MainActor.run {
+                if currentUser == nil {
+                    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Login", style: UIBarButtonItem.Style.plain, target: self, action: #selector(loginTapped))
+                    navigationItem.rightBarButtonItem?.tintColor = .systemYellow
+                } else {
+                    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: UIBarButtonItem.Style.plain, target: self, action: #selector(logoutTapped))
+                    navigationItem.rightBarButtonItem?.tintColor = .systemRed
+                }
+            }
         }
     }
     
@@ -85,11 +107,15 @@ class VotingVC: UIViewController {
         let alert = UIAlertController(title: "Log out",
                                       message: "Are you sure you want to log out ?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Yup", style: .destructive, handler: { a in
-            self.userService.logout()
-            self.votes.removeAll()
-            self.refreshVotes()
-            self.refreshLogoutButton()
-            self.v.tableView.reloadData()
+            Task {
+                await self.userService.logout()
+                await MainActor.run {
+                    self.votes.removeAll()
+                    self.refreshVotes()
+                    self.refreshLogoutButton()
+                    self.v.tableView.reloadData()
+                }
+            }
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { a in
             print("not now")
@@ -99,15 +125,19 @@ class VotingVC: UIViewController {
         
     @objc
     func refreshSongs() {
-        Task { @MainActor in
+        Task {
             do {
                 let fetchedSongs = try await songService.fetchSongs()
-                songs = fetchedSongs
-                v.tableView.reloadData()
+                await MainActor.run {
+                    songs = fetchedSongs
+                    v.tableView.reloadData()
+                }
             } catch {
                 
             }
-            v.refreshControl.endRefreshing()
+            await MainActor.run {
+                v.refreshControl.endRefreshing()
+            }
         }
     }
     
@@ -124,11 +154,16 @@ class VotingVC: UIViewController {
     
     @objc
     func confirmTapped() {
-        if !isloggedIn {
-            showLogin()
-            return
+        Task {
+            let logged = await isloggedIn()
+            await MainActor.run {
+                if !logged {
+                    showLogin()
+                } else {
+                    navigationController?.pushViewController(SummaryVC(userService: userService, votes: votes), animated: true)
+                }
+            }
         }
-        navigationController?.pushViewController(SummaryVC(userService: userService, votes: votes), animated: true)
     }
     
     @objc
@@ -185,7 +220,7 @@ extension VotingVC: UITableViewDataSource {
     }
     
     func render(cell: VotingCell, with song: Song) {
-        let isMyCountry = song.country?.code == userService.getCurrentUser()?.countryCode
+        let isMyCountry = song.country?.code == userCountryCode
         cell.number.text = (song.number < 10) ? "0\(song.number)" : "\(song.number)"
         let flag = Flag(countryCode: song.country?.code ?? "GB")!
         cell.flag.image = flag.image(style: .roundedRect)
@@ -252,8 +287,10 @@ extension VotingVC {
 
 // MARK: - VotingCellDelegate
 
+@MainActor
 extension VotingVC: VotingCellDelegate {
     
+
     func votingCellDidTapPlay(cell: VotingCell) {
         if let indexPath = v.tableView.indexPath(for: cell) {
             let song = songs[indexPath.row]
@@ -265,36 +302,42 @@ extension VotingVC: VotingCellDelegate {
     }
     
     func votingCellDidRemoveVote(cell: VotingCell) {
-        
-        if !isloggedIn {
-            showLogin()
-            return
-        }
-        
-        guard let indexPath = v.tableView.indexPath(for: cell) else { return }
-        let song = songs[indexPath.row]
-        if let index = votes.firstIndex(of: song.country!.code) {
-            votes.remove(at: index)
-            render(cell: cell, with: song)
-            refreshVotes()
-            playHapticsFeedback(style: .soft)
+        Task {
+            let logged = await isloggedIn()
+            await MainActor.run {
+                if !logged {
+                    showLogin()
+                } else {
+                    guard let indexPath = v.tableView.indexPath(for: cell) else { return }
+                    let song = songs[indexPath.row]
+                    if let index = votes.firstIndex(of: song.country!.code) {
+                        votes.remove(at: index)
+                        render(cell: cell, with: song)
+                        refreshVotes()
+                        playHapticsFeedback(style: .soft)
+                    }
+                }
+            }
         }
     }
     
     func votingCellDidAddVote(cell: VotingCell) {
-        
-        if !isloggedIn {
-            showLogin()
-            return
-        }
-        
-        guard let indexPath = v.tableView.indexPath(for: cell) else { return }
-        let song = songs[indexPath.row]
-        if canVote() {
-            addVoteFor(song: song)
-            render(cell: cell, with: song)
-            refreshVotes()
-            playHapticsFeedback(style: .medium)
+        Task {
+            let logged = await isloggedIn()
+            await MainActor.run {
+                if !logged {
+                    showLogin()
+                } else {
+                    guard let indexPath = v.tableView.indexPath(for: cell) else { return }
+                    let song = songs[indexPath.row]
+                    if canVote() {
+                        addVoteFor(song: song)
+                        render(cell: cell, with: song)
+                        refreshVotes()
+                        playHapticsFeedback(style: .medium)
+                    }
+                }
+            }
         }
     }
     
@@ -304,7 +347,7 @@ extension VotingVC: VotingCellDelegate {
     }
 }
 
-extension VotingVC: YTPlayerViewDelegate {
+extension VotingVC: @preconcurrency YTPlayerViewDelegate {
         
     func playerViewDidBecomeReady(playerView: YTPlayerView) {
         print(playerView)

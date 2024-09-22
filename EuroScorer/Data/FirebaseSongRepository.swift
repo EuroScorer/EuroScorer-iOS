@@ -7,13 +7,14 @@
 //
 
 import Foundation
-import Networking
+@preconcurrency import Networking
 
-class FirebaseSongRepository: NetworkingService, SongRepository {
+
+final class FirebaseSongRepository: NetworkingService, SongRepository {
     
     init() {}
     
-    var network = NetworkingClient(baseURL: "https://euroscorer-api.web.app/v1")
+    let network = NetworkingClient(baseURL: "https://euroscorer-api.web.app/v1")
     
     func fetchSongs() async throws -> [Song] {
         let firebaseSongs: [FirebaseSong] = try await get("/songs")

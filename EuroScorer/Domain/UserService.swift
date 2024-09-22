@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserService {
+actor UserService {
     
     private let repository: UserRepository
     
@@ -20,8 +20,8 @@ class UserService {
         return try await repository.askForPhoneNumberVerification(phoneNumber: phoneNumber)
     }
     
-    func getCurrentUser() -> User? {
-        return repository.getCurrentUser()
+    func getCurrentUser() async throws -> User? {
+        return try await repository.getCurrentUser()
     }
     
     func sendVotes(_ votes: [String]) async throws {
@@ -36,7 +36,7 @@ class UserService {
         return try await repository.confirmPhoneNumberWith(code: code)
     }
     
-    func logout() {
-        repository.logout()
+    func logout() async {
+        await repository.logout()
     }
 }

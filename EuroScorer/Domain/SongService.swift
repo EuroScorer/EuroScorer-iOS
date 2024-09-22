@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SongService {
+actor SongService {
     
     private let repository: SongRepository
     

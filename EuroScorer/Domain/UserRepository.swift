@@ -11,12 +11,12 @@ import Foundation
 typealias PhoneNumber = String
 typealias SMSCode = String
 
-protocol UserRepository {
+protocol UserRepository: Sendable {
     func askForPhoneNumberVerification(phoneNumber: PhoneNumber) async throws
-    func getCurrentUser() -> User?
+    func getCurrentUser() async throws -> User?
     func sendVotes(_ votes: [String]) async throws
     func fetchVotes() async throws -> [String]
     func confirmPhoneNumberWith(code: SMSCode) async throws
-    func logout()
+    func logout() async
 }
 

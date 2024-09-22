@@ -9,7 +9,8 @@
 import UIKit
 
 struct Styles {
-    static func buttonStyle(b: UIButton) {
+    
+    @MainActor static func buttonStyle(b: UIButton) {
         let blue = UIColor(red: 10/255.0, green: 16/255.0, blue: 72/255.0, alpha: 1)
         b.setBackgroundColor(blue, for: .normal)
         b.layer.cornerRadius = 5

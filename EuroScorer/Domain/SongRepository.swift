@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol SongRepository {
+protocol SongRepository: Sendable {
     func fetchSongs() async throws -> [Song]
 }

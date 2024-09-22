@@ -17,7 +17,7 @@ extension UIButton {
 }
 
 extension UIImage {
-    public convenience init(color: UIColor, size: CGSize) {
+    @MainActor public convenience init(color: UIColor, size: CGSize) {
         var rect = CGRect.zero
         rect.size = size
         UIGraphicsBeginImageContextWithOptions(size, false, UIScreen.main.scale)

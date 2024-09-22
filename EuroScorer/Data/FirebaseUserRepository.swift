@@ -7,16 +7,17 @@
 //
 
 import Foundation
-import Networking
-import Firebase
+@preconcurrency import Networking
+@preconcurrency import Firebase
 import PhoneNumberKit
 import FirebaseRemoteConfig
 
-class FirebaseUserRepository: UserRepository, NetworkingService {
+actor FirebaseUserRepository: UserRepository, @preconcurrency NetworkingService {
     
-    var network = NetworkingClient(baseURL: "https://euroscorer-api.web.app/v1") //"https://api.euroscorer2020.com/v1")
+    let network = NetworkingClient(baseURL: "https://euroscorer-api.web.app/v1") //"https://api.euroscorer2020.com/v1")
     
-    var currentVerificationID: String?
+    var currentVerificationID: String = ""
+    private var cachedCurrentUser: User?
     
     init() {
         FirebaseApp.configure()
@@ -37,9 +38,7 @@ class FirebaseUserRepository: UserRepository, NetworkingService {
         currentVerificationID = try await PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil)
     }
     
-    private var cachedCurrentUser: User?
-    
-    func getCurrentUser() -> User? {
+    func getCurrentUser() async throws -> User? {
         if let cachedUser = cachedCurrentUser, Auth.auth().currentUser != nil {
             return cachedUser
         }

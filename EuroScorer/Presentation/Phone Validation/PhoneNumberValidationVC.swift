@@ -84,13 +84,16 @@ class PhoneNumberValidationVC: UIViewController {
         userInternationalNumberPhoneNumber = phoneNumberKit.format(phoneNumber, toType: .international)
         userRegionID = phoneNumber.regionID
         
-        Task { @MainActor in
+        Task {
             do {
                 try await userService.askForPhoneNumberVerification(phoneNumber: userInternationalNumberPhoneNumber!)
-                self.showSMSCodePopup()
+                await MainActor.run {
+                    self.showSMSCodePopup()
+                }
             } catch {
-                print(error)
-                self.v.okButton.isLoading = false
+                await MainActor.run {
+                    self.v.okButton.isLoading = false
+                }
             }
         }
     }
@@ -108,9 +111,11 @@ class PhoneNumberValidationVC: UIViewController {
         }
         alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { a in
             if let smsCode = alert.textFields?.first?.text {
-                Task { @MainActor in
+                Task {
                     try await self.userService.confirmPhoneNumberWith(code: smsCode)
-                    self.didLogin?()
+                    await MainActor.run {
+                        self.didLogin?()
+                    }
                 }
             }
         }))
