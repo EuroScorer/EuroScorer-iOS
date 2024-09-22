@@ -141,8 +141,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/freshOS/Stevia.git",
       "state" : {
-        "revision" : "be8aaca132c7d94bcb50622c3c960219440194de",
-        "version" : "5.0.1"
+        "revision" : "93cc4684d3260e66c840513a417293182a7fda27",
+        "version" : "6.0.0"
       }
     },
     {
